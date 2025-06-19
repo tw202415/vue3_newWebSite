@@ -32,7 +32,7 @@
               </p>
               <ul class="space-y-1">
                 <li
-                  v-for="(feature, idx) in service.features"
+                  v-for="(idx) in service.features"
                   :key="idx"
                   class="flex items-center text-xs text-gray-600 dark:text-gray-300"
                 >
