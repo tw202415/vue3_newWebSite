@@ -137,7 +137,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue';
+import { ref } from 'vue';
 import { Heart, Star } from 'lucide-vue-next';
 import { useAuth } from '@/composables/useAuth';
 import { useCart } from '@/composables/useCart';

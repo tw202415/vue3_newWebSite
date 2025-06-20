@@ -9,5 +9,14 @@ export default defineConfig({
     alias: {
       '@': path.resolve(__dirname, './src')
     }
+  },
+  server: {
+    proxy: {
+      '/api': {
+        target: 'http://192.168.20.43:7289',
+        changeOrigin: true,
+        secure: false // 如果使用HTTPS，设为true
+      }
+    }
   }
 })

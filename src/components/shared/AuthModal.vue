@@ -153,7 +153,7 @@ interface Emits {
   (e: 'close'): void;
 }
 
-const props = defineProps<Props>();
+defineProps<Props>();
 const emit = defineEmits<Emits>();
 
 const { t } = useI18n();
