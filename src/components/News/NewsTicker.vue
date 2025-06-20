@@ -42,8 +42,8 @@ import "swiper/css"
 import "swiper/css/autoplay"
 import "swiper/css/navigation"
 import { getAnnouncements } from "@/apis/CMSAPI" // ✅ 改成正式 API
-import NewsDialog from "@/components/Common/NewsDialog.vue"
-import NewsCard from "@/components/Common/NewsCard.vue"
+import NewsDialog from "@/components/common/NewsDialog.vue"
+import NewsCard from "@/components/common/NewsCard.vue"
 
 const newsList = ref([])
 const newsDialogRef = ref(null)

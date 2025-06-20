@@ -194,7 +194,7 @@
 import { ref, computed, onMounted } from 'vue'
 import { getCalculatorNotice, getPurchaseSettings } from '@/apis/CMSAPI'
 import { useI18n } from '@/composables/useI18n';
-import BaseDialog from '@/components/Common/BaseDialog.vue'
+import BaseDialog from '@/components/common/BaseDialog.vue'
 
 const { t } = useI18n();
 const countries = ref([
