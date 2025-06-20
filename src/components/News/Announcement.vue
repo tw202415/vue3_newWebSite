@@ -93,13 +93,11 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 import { ChevronLeft, ChevronRight, Play, Pause } from 'lucide-vue-next'
 import type { Announcement } from '@/types'
 
 const newsList = ref<Announcement[]>([])
-const page = ref(1)
-const pageSize = 10
 const newsDialogRef = ref(null)
 
 // ✅ 抓資料（不補 id）
@@ -131,27 +129,6 @@ const getAnnouncementsData = async () => {
   }
 }
 
-// ✅ 分頁邏輯
-const totalPages = computed(() =>
-  Math.ceil(newsList.value.length / pageSize)
-)
-
-const displayedNews = computed(() => {
-  const start = (page.value - 1) * pageSize
-  const end = start + pageSize
-  return newsList.value.slice(start, end)
-})
-
-const hasMore = computed(() => page.value < totalPages.value)
-
-const prevPage = () => {
-  if (page.value > 1) page.value--
-}
-
-const nextPage = () => {
-  if (hasMore.value) page.value++
-}
-
 // 當前顯示的公告索引
 const currentIndex = ref(0)
 
@@ -179,20 +156,6 @@ const nextAnnouncement = () => {
 // 跳轉到指定公告
 const goToAnnouncement = (index: number) => {
   currentIndex.value = index
-}
-
-// 獲取優先級樣式
-const getPriorityClass = (priority: string) => {
-  switch (priority) {
-    case 'high':
-      return 'bg-red-500/20 text-red-300 border border-red-500/30'
-    case 'medium':
-      return 'bg-yellow-500/20 text-yellow-300 border border-yellow-500/30'
-    case 'low':
-      return 'bg-green-500/20 text-green-300 border border-green-500/30'
-    default:
-      return 'bg-gray-500/20 text-gray-300 border border-gray-500/30'
-  }
 }
 
 // 獲取優先級文字
