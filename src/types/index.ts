@@ -73,6 +73,13 @@ export interface RegisterCredentials {
   password: string;
 }
 
+export interface Announcement {
+  icon: string;
+  title: string;
+  date: string;
+  content: string;
+}
+
 export type Theme = 'light' | 'dark';
 export type Language = 'zh-TW' | 'en-US';
 

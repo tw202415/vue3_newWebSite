@@ -4,7 +4,7 @@
     <div class="flex items-center justify-between mb-4">
       <h2 class="text-2xl font-semibold">📢 最新公告</h2>
       <div class="flex items-center space-x-2 text-sm text-gray-400">
-        <span>{{ currentIndex + 1 }} / {{ announcements.length }}</span>
+        <span>{{ currentIndex + 1 }} / {{ newsList.length }}</span>
       </div>
     </div>
 
@@ -17,7 +17,7 @@
       >
         <div class="flex">
           <div 
-            v-for="(announcement, index) in announcements" 
+            v-for="(announcement, index) in newsList" 
             :key="index"
             class="w-full flex-shrink-0 px-2"
           >
@@ -59,7 +59,7 @@
       <!-- 指示器 -->
       <div class="flex space-x-2">
         <button
-          v-for="(_, index) in announcements"
+          v-for="(_, index) in newsList"
           :key="index"
           @click="goToAnnouncement(index)"
           :class="[
@@ -72,7 +72,7 @@
       <!-- 右箭頭 -->
       <button 
         @click="nextAnnouncement"
-        :disabled="currentIndex === announcements.length - 1"
+        :disabled="currentIndex === newsList.length - 1"
         class="flex items-center justify-center w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
       >
         <ChevronRight :size="20" />
@@ -95,21 +95,38 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { ChevronLeft, ChevronRight, Play, Pause } from 'lucide-vue-next'
+import type { Announcement } from '@/types'
 
-
-const newsList = ref([])
+const newsList = ref<Announcement[]>([])
 const page = ref(1)
 const pageSize = 10
 const newsDialogRef = ref(null)
 
-
 // ✅ 抓資料（不補 id）
-const announcements = async () => {
+const getAnnouncementsData = async () => {
   try {
-    newsList.value = await getAnnouncements()
-    console.log(newList.value)
+    // This should be replaced with actual API call
+    // newsList.value = await getAnnouncements()
+    
+    // Temporary mock data for demonstration
+    newsList.value = [
+      {
+        icon: '📢',
+        title: '系統維護通知',
+        date: '2024-01-15',
+        content: '系統將於本週末進行維護升級，屆時服務可能暫時中斷。'
+      },
+      {
+        icon: '🎉',
+        title: '新功能上線',
+        date: '2024-01-10',
+        content: '我們很高興宣布新的物流追蹤功能已經上線！'
+      }
+    ]
+    
+    console.log(newsList.value)
   } catch (error) {
-    console.error("無法取得新聞資料:", error.message)
+    console.error("無法取得新聞資料:", error)
     newsList.value = []
   }
 }
@@ -151,7 +168,7 @@ const previousAnnouncement = () => {
 
 // 切換到下一個公告
 const nextAnnouncement = () => {
-  if (currentIndex.value < announcements.value.length - 1) {
+  if (currentIndex.value < newsList.value.length - 1) {
     currentIndex.value++
   } else if (isAutoPlay.value) {
     // 自動播放時循環到第一個
@@ -221,20 +238,17 @@ const stopAutoPlay = () => {
 }
 
 // ✅ 開啟對話框
-const openNews = (news) => {
+const openNews = (news: Announcement) => {
   newsDialogRef.value?.openDialog(news.title, news.content)
 }
-onMounted(announcements)
 
 // 組件掛載時開始自動播放
 onMounted(() => {
-    
-    if (isAutoPlay.value) {
-        startAutoPlay()
-    }
+  getAnnouncementsData()
+  if (isAutoPlay.value) {
+    startAutoPlay()
+  }
 })
-
-
 
 // 組件卸載時清理定時器
 onUnmounted(() => {
