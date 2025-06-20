@@ -98,7 +98,6 @@ import { ChevronLeft, ChevronRight, Play, Pause } from 'lucide-vue-next'
 import type { Announcement } from '@/types'
 
 const newsList = ref<Announcement[]>([])
-const newsDialogRef = ref(null)
 
 // ✅ 抓資料（不補 id）
 const getAnnouncementsData = async () => {
@@ -158,20 +157,6 @@ const goToAnnouncement = (index: number) => {
   currentIndex.value = index
 }
 
-// 獲取優先級文字
-const getPriorityText = (priority: string) => {
-  switch (priority) {
-    case 'high':
-      return '重要'
-    case 'medium':
-      return '一般'
-    case 'low':
-      return '通知'
-    default:
-      return '公告'
-  }
-}
-
 // 切換自動播放
 const toggleAutoPlay = () => {
   isAutoPlay.value = !isAutoPlay.value
@@ -198,11 +183,6 @@ const stopAutoPlay = () => {
     clearInterval(autoPlayInterval.value)
     autoPlayInterval.value = null
   }
-}
-
-// ✅ 開啟對話框
-const openNews = (news: Announcement) => {
-  newsDialogRef.value?.openDialog(news.title, news.content)
 }
 
 // 組件掛載時開始自動播放

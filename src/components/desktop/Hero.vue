@@ -95,9 +95,18 @@ import Announcement from "@/components/News/Announcement.vue";
 
 const { t } = useI18n();
 
-const reasons = ref([])
+interface ReasonMeta {
+  label: string;
+  unit: string;
+}
 
-const reasonMeta = [
+interface Reason extends ReasonMeta {
+  value: string | number;
+}
+
+const reasons = ref<Reason[]>([])
+
+const reasonMeta: ReasonMeta[] = [
   { label: "至今成立", unit: "年" },
   { label: "累積會員", unit: "人" },
   { label: "每天快遞", unit: "件" },
@@ -106,7 +115,7 @@ const reasonMeta = [
 ]
 
 // 加入格式化：有些值是字串（像 "3-5"）就不要加千分位
-const formatNumber = (val) => {
+const formatNumber = (val: string | number) => {
   const num = Number(val)
   return isNaN(num) ? val : num.toLocaleString("en-US")
 }
@@ -127,13 +136,6 @@ onMounted(async () => {
     console.error("取得 reason 資料失敗：", err.message)
   }
 })
-
-
-
-
-
-
-
 </script>
 
 <style scoped>
