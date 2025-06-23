@@ -87,7 +87,7 @@
 </template>
 
 <script setup lang="ts">
-import { Truck, Zap, Shield, Cpu, ChevronDown } from 'lucide-vue-next';
+import { Zap, ChevronDown } from 'lucide-vue-next';
 import { useI18n } from '@/composables/useI18n';
 import { ref, onMounted } from "vue";
 import { getAboutUsReasons } from "@/apis/CMSAPI";
