@@ -61,7 +61,7 @@ export const getSubMenuOptions = (groupKey: string): Promise<AxiosResponse<SubMe
 
 // ✅ About Us 相關
 export const getAboutUsReasons = (): Promise<AboutUsReason> =>
-  axios.get(`/AboutUs/GetReasons`).then(response => response.data)
+  axios.get(`/AboutUs/GetReasons`).then((response: AxiosResponse<AboutUsReason>) => response.data)
 
 // ✅ 公告
 export const getAnnouncements = (): Promise<AxiosResponse<AnnouncementItem[]>> =>
