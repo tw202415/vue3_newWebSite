@@ -133,7 +133,11 @@ onMounted(async () => {
     }))
     console.log(reasons)
   } catch (err) {
-    console.error("取得 reason 資料失敗：", err.message)
+    if (err instanceof Error) {
+      console.error("取得 reason 資料失敗：", err.message)
+    } else {
+      console.error("取得 reason 資料失敗：", err)
+    }
   }
 })
 </script>

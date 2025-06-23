@@ -127,7 +127,7 @@
 </template>
 
 <script setup lang="ts">
-import { ArrowDown, ArrowRight, Globe } from 'lucide-vue-next';
+import { ArrowRight, Globe } from 'lucide-vue-next';
 import { useI18n } from '@/composables/useI18n';
 import FreightCalculator from '@/components/desktop/FreightCalculator.vue';
 import DaiguoCalculator from '@/components/desktop/DaiguoCalculator.vue';
