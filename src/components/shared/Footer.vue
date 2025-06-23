@@ -42,9 +42,10 @@
         <div>
           <h3 class="text-lg font-semibold mb-4">{{ t('contact.title') }}</h3>
           <div class="space-y-2">
-            <p class="text-gray-300 text-sm">+886-2-1234-5678</p>
-            <p class="text-gray-300 text-sm">service@elfa-shipping.com</p>
-            <p class="text-gray-300 text-sm">台北市信義區信義路五段7號</p>
+            <p class="text-gray-300 text-sm">{{ t('footer.info.phone') }}: (02) 8201-7020</p>
+            <p class="text-gray-300 text-sm">{{ t('footer.info.fax') }}: (02) 8201-7030</p>
+            <p class="text-gray-300 text-sm">{{ t('footer.info.address') }}</p>
+            <p class="text-gray-300 text-sm">{{ t('footer.info.businessHour') }}</p>
           </div>
         </div>
       </div>
@@ -71,9 +72,11 @@ const socialLinks = [
 ];
 
 const quickLinks = [
-  { key: 'services', href: '#services' },
-  { key: 'pricing', href: '#pricing' },
-  { key: 'tracking', href: '#tracking' },
-  { key: 'faq', href: '#faq' }
+  { key: 'service1', href: '#pricing' },
+  { key: 'service2', href: '#tracking' },
+  { key: 'service3', href: '#faq' },
+  { key: 'service4', href: '#services' },
+  { key: 'service5', href: '#services' },
+  { key: 'service6', href: '#services' },
 ];
 </script>

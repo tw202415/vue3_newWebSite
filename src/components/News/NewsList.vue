@@ -23,8 +23,8 @@
 <script setup>
 import { ref, computed, onMounted } from "vue"
 import { getAnnouncements } from "@/apis/CMSAPI"
-import NewsDialog from "../common/NewsDialog.vue"
-import NewsCard from "../common/NewsCard.vue"
+import NewsDialog from "../Common/NewsDialog.vue"
+import NewsCard from "../Common/NewsCard.vue"
 
 const newsList = ref([])
 const page = ref(1)

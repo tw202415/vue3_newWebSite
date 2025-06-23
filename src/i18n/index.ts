@@ -222,9 +222,18 @@ export const translations = {
       description: '您值得信賴的海外購物夥伴',
       links: {
         services: '服務項目',
-        pricing: '運費計算',
-        tracking: '包裹追蹤',
-        faq: '常見問題'
+        service1: '國際轉運條款',
+        service2: '會員及隱私權',
+        service3: '海關禁止進口',
+        service4: '航空禁運品',
+        service5: '集貨運費試算',
+        service6: '代購費用試算',
+      },
+      info: {
+        phone: '電話',
+        fax: '傳真',
+        address: '地址: 新北市新莊區幸福東路60號4樓',
+        businessHour: '營業時間: 週一至週五 09:00 ~ 18:00 / 週六 09:00 ~ 15:00 / 週日與國定假日 公休'
       },
       social: '追蹤我們',
       copyright: '版權所有'
@@ -448,13 +457,22 @@ export const translations = {
       }
     },
     footer: {
-      company: 'ELFA Shipping Network',
+      company: 'ELF INTERNATIONAL EXPRESS CO.,LTD',
       description: 'Your trusted overseas shopping partner',
       links: {
         services: 'Services',
-        pricing: 'Pricing Calculator',
-        tracking: 'Package Tracking',
-        faq: 'FAQ'
+        service1: 'International Shipping Terms & Conditions',
+        service2: 'Privacy & Membership Policy',
+        service3: 'Customs Prohibited Items',
+        service4: 'Air Transport Prohibited Items',
+        service5: 'Shipping Fee Calculator',
+        service6: 'Proxy Purchase Fee Calculator',
+      },
+      info: {
+        phone: 'Phone',
+        fax: 'Fax',
+        address: 'Address: 4F, No. 60, Xingfu East Road, Xinzhuang District, New Taipei City, Taiwan',
+        businessHour: 'Business Hour: Monday to Friday: 09:00 – 18:00 / Saturday: 09:00 – 15:00 / Closed on Sundays and National Holidays'
       },
       social: 'Follow Us',
       copyright: 'All rights reserved'

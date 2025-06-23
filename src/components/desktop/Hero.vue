@@ -87,26 +87,17 @@
 </template>
 
 <script setup lang="ts">
-import { Zap, ChevronDown } from 'lucide-vue-next';
+import { Truck, Zap, Shield, Cpu, ChevronDown } from 'lucide-vue-next';
 import { useI18n } from '@/composables/useI18n';
 import { ref, onMounted } from "vue";
-import { getAboutUsReasons, type AboutUsReason } from "@/apis/CMSAPI";
+import { getAboutUsReasons } from "@/apis/CMSAPI";
 import Announcement from "@/components/News/Announcement.vue";
 
 const { t } = useI18n();
 
-interface ReasonMeta {
-  label: string;
-  unit: string;
-}
+const reasons = ref([])
 
-interface Reason extends ReasonMeta {
-  value: string | number;
-}
-
-const reasons = ref<Reason[]>([])
-
-const reasonMeta: ReasonMeta[] = [
+const reasonMeta = [
   { label: "至今成立", unit: "年" },
   { label: "累積會員", unit: "人" },
   { label: "每天快遞", unit: "件" },
@@ -115,7 +106,7 @@ const reasonMeta: ReasonMeta[] = [
 ]
 
 // 加入格式化：有些值是字串（像 "3-5"）就不要加千分位
-const formatNumber = (val: string | number) => {
+const formatNumber = (val) => {
   const num = Number(val)
   return isNaN(num) ? val : num.toLocaleString("en-US")
 }
@@ -123,23 +114,24 @@ const formatNumber = (val: string | number) => {
 onMounted(async () => {
   try {
     const data = await getAboutUsReasons()
-    console.log(data)
-    const keys = ["reason1", "reason2", "reason3", "reason4", "reason5"] as const
-    const values = keys.map(k => data[k as keyof AboutUsReason] ?? 0)
+    const keys = ["reason1", "reason2", "reason3", "reason4", "reason5"]
+    const values = keys.map(k => data[k] ?? 0)
 
     reasons.value = reasonMeta.map((meta, index) => ({
       ...meta,
       value: values[index]
     }))
-    console.log(reasons)
   } catch (err) {
-    if (err instanceof Error) {
-      console.error("取得 reason 資料失敗：", err.message)
-    } else {
-      console.error("取得 reason 資料失敗：", err)
-    }
+    console.error("取得 reason 資料失敗：", err.message)
   }
 })
+
+
+
+
+
+
+
 </script>
 
 <style scoped>

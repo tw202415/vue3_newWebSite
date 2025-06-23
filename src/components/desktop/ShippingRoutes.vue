@@ -48,13 +48,13 @@
       <div class="relative mb-16">
         <!-- Countries Grid with 3D Effect -->
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 mb-12">
-          <div
+          <router-link
             v-for="(country, index) in countries"
             :key="country.code"
+            :to="`/${country.code}`"
             class="group animate-slide-up"
             :style="{ animationDelay: `${index * 0.1}s` }"
           >
-            <a href="https://www.elf.com.tw/subpage.aspx?MenuId=${country.code}&SubId=36">
             <div class="relative bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-xl rounded-2xl p-6 border border-gray-700/50 hover:border-blue-500/50 transition-all duration-500 transform hover:-translate-y-4 hover:shadow-2xl hover:shadow-blue-500/20 cursor-pointer">
               <!-- Glow Effect -->
               <div class="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
@@ -86,8 +86,7 @@
               <!-- Hover Effect Lines -->
               <div class="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-b-2xl transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
             </div>
-            </a>
-          </div>
+          </router-link>
         </div>
 
       </div>
@@ -127,36 +126,42 @@
 </template>
 
 <script setup lang="ts">
-import { ArrowRight, Globe } from 'lucide-vue-next';
+import { ArrowDown, ArrowRight, Globe } from 'lucide-vue-next';
 import { useI18n } from '@/composables/useI18n';
 import FreightCalculator from '@/components/desktop/FreightCalculator.vue';
 import DaiguoCalculator from '@/components/desktop/DaiguoCalculator.vue';
-
+import { useRoute, useRouter } from 'vue-router'
 
 const { t } = useI18n();
 
+const route = useRoute()
+const router = useRouter()
+
 const countries = [
-  { code: 'shanghai', name: '中國', flag: '🇨🇳' },
-  { code: 'shenzhen', name: '中國', flag: '🇨🇳' },
-  { code: 'shenzhen2', name: '中國', flag: '🇨🇳' },
-  { code: 'japan', name: '日本', flag: '🇯🇵' },
-  { code: 'korea', name: '韓國', flag: '🇰🇷' },
-  { code: 'japan2', name: '日本', flag: '🇯🇵' },
-  { code: 'japan3', name: '日本', flag: '🇯🇵' },
-  { code: 'usa', name: '美國', flag: '🇺🇸' },
-  { code: 'usa2', name: '美國', flag: '🇺🇸' },
-  { code: 'germany', name: '德國', flag: '🇩🇪' },
-  { code: 'gloable', name: '日本', flag: '🇯🇵' },
-  { code: 'gloable2', name: '韓國', flag: '🇰🇷' },
-  { code: 'gloable3', name: '德國', flag: '🇩🇪' }
+  { code: 'shanghai', name: '中國', flag: '🇨🇳'},
+  { code: 'shenzhen', name: '中國', flag: '🇨🇳'},
+  { code: 'shenzhen2', name: '中國', flag: '🇨🇳'},
+  { code: 'japan', name: '日本', flag: '🇯🇵'},
+  { code: 'korea', name: '韓國', flag: '🇰🇷'},
+  { code: 'japan2', name: '日本', flag: '🇯🇵'},
+  { code: 'japan3', name: '日本', flag: '🇯🇵'},
+  { code: 'usa', name: '美國', flag: '🇺🇸'},
+  { code: 'usa2', name: '美國', flag: '🇺🇸'},
+  { code: 'germany', name: '德國', flag: '🇩🇪'},
 ];
 
 const shoppingCountries = [
-  { code: 'japan', name: '日本', flag: '🇯🇵' },
-  { code: 'korea', name: '韓國', flag: '🇰🇷' },
-  { code: 'usa', name: '美國', flag: '🇺🇸' },
-  { code: 'germany', name: '德國', flag: '🇩🇪' }
+  { code: 'japan', name: '日本', flag: '🇯🇵', menuId: '4', subId: '12' },
+  { code: 'korea', name: '韓國', flag: '🇰🇷', menuId: '4', subId: '14' },
+  { code: 'germany', name: '德國', flag: '🇩🇪', menuId: '4', subId: '16' }
 ];
+
+const isActive = (path: string) => {
+  if (path === '/') {
+    return route.path === '/'
+  }
+  return route.path.startsWith(path)
+}
 </script>
 
 <style scoped>

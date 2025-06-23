@@ -8,12 +8,15 @@ import Home from '@/pages/Home.vue';
 import ShoppingMall from '@/pages/ShoppingMall.vue';
 import CountryShop from '@/pages/CountryShop.vue';
 import Cart from '@/pages/Cart.vue';
+import ShippingShanghaiAirFreight from '@/shippings/ShippingShanghaiAirFreight.vue';
+
 
 const routes = [
   { path: '/', name: 'Home', component: Home },
   { path: '/shopping', name: 'ShoppingMall', component: ShoppingMall },
   { path: '/shop/:country', name: 'CountryShop', component: CountryShop, props: true },
-  { path: '/cart', name: 'Cart', component: Cart }
+  { path: '/cart', name: 'Cart', component: Cart },
+  { path: '/shanghai', name: 'ShippingShanghaiAirFreight', component: ShippingShanghaiAirFreight}
 ];
 
 const router = createRouter({

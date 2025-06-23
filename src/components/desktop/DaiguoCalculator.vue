@@ -107,65 +107,13 @@
                   </ul>
                 </td>
               </tr>
-              <div class="calcu-after">
-                <p>總金額：{{ totalAmount }} {{ selectedCurrency }}</p>
-              </div>
+              <tr class="calcu-after" :style="{ display: isSubmitted ? 'table-row' : 'none' }">
+                  <th class="th_3">預估台幣費用：</th>
+                  <td>{{ totalAmountTWD }} 台幣（集貨幣扣款）</td>
+                </tr>
               </tbody>
             </table>
             </div>
-          </div>
-
-          <!-- 運費計算結果 -->
-          <div v-if="feeResult">
-            <table class="index-table result-table same-style">
-              <thead>
-                <tr>
-                  <th rowspan="2">集貨站</th>
-                  <th
-                    :colspan="feeResult.warehouses[0].methods.length"
-                    v-for="warehouse in feeResult.warehouses"
-                    :key="warehouse.warehouseName"
-                  >
-                    {{ warehouse.warehouseName }}
-                  </th>
-                </tr>
-                <tr>
-                  <template v-for="warehouse in feeResult.warehouses" :key="warehouse.warehouseName + '-methods'">
-                    <th v-for="method in warehouse.methods" :key="method.methodName">
-                      {{ method.methodName }}
-                    </th>
-                  </template>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>集貨幣運費</td>
-                  <template v-for="warehouse in feeResult.warehouses" :key="warehouse.warehouseName + '-coin'">
-                    <td v-for="method in warehouse.methods" :key="method.methodName + '-coin'">
-                      <span v-if="method.feesByPayment.Coin.available">
-                        {{ method.feesByPayment.Coin.cost }} 元
-                      </span>
-                      <span v-else class="unavailable">
-                        {{ method.feesByPayment.Coin.message }}
-                      </span>
-                    </td>
-                  </template>
-                </tr>
-                <tr>
-                  <td>信用卡運費</td>
-                  <template v-for="warehouse in feeResult.warehouses" :key="warehouse.warehouseName + '-cc'">
-                    <td v-for="method in warehouse.methods" :key="method.methodName + '-cc'">
-                      <span v-if="method.feesByPayment.CreditCard.available">
-                        {{ method.feesByPayment.CreditCard.cost }} 元
-                      </span>
-                      <span v-else class="unavailable">
-                        {{ method.feesByPayment.CreditCard.message }}
-                      </span>
-                    </td>
-                  </template>
-                </tr>
-              </tbody>
-            </table>
           </div>
 
           <!-- 按鈕 -->
@@ -194,7 +142,7 @@
 import { ref, computed, onMounted } from 'vue'
 import { getCalculatorNotice, getPurchaseSettings } from '@/apis/CMSAPI'
 import { useI18n } from '@/composables/useI18n';
-import BaseDialog from '@/components/common/BaseDialog.vue'
+import BaseDialog from '@/components/Common/BaseDialog.vue'
 
 const { t } = useI18n();
 const countries = ref([
@@ -244,10 +192,10 @@ const totalAmount = computed(() => {
 
 const totalAmountTWD = computed(() => {
   const rate = selectedConfig.value.exchangeRate || 0
-  const totalForeign = purchaseAmount.value +
-    localFreight.value +
-    selectedConfig.value.transferFee +
-    selectedConfig.value.serviceFee
+  const totalForeign = Number(purchaseAmount.value) +
+    Number(localFreight.value) +
+    Number(selectedConfig.value.transferFee) +
+    Number(selectedConfig.value.serviceFee)
   return Math.round(totalForeign * rate) // 取整數
 })
 

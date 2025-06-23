@@ -20,23 +20,24 @@
         :mobile-component="MobileShippingRoutes"
       />
 
-      <!-- Services Section -->
+      <!-- Services Section 
       <ResponsiveComponent
         :desktop-component="DesktopServices"
         :mobile-component="MobileServices"
       />
-
-      <!-- Features Section -->
+      -->
+      <!-- Features Section 
       <ResponsiveComponent
         :desktop-component="DesktopFeatures"
         :mobile-component="MobileFeatures"
       />
-
-      <!-- Contact Section -->
+      -->
+      <!-- Contact Section 
       <ResponsiveComponent
         :desktop-component="DesktopContact"
         :mobile-component="MobileContact"
       />
+      -->
     </main>
 
     <!-- Footer -->
