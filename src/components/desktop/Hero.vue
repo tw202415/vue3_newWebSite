@@ -90,7 +90,7 @@
 import { Zap, ChevronDown } from 'lucide-vue-next';
 import { useI18n } from '@/composables/useI18n';
 import { ref, onMounted } from "vue";
-import { getAboutUsReasons } from "@/apis/CMSAPI";
+import { getAboutUsReasons, type AboutUsReason } from "@/apis/CMSAPI";
 import Announcement from "@/components/News/Announcement.vue";
 
 const { t } = useI18n();
@@ -124,8 +124,8 @@ onMounted(async () => {
   try {
     const data = await getAboutUsReasons()
     console.log(data)
-    const keys = ["reason1", "reason2", "reason3", "reason4", "reason5"]
-    const values = keys.map(k => data[k] ?? 0)
+    const keys = ["reason1", "reason2", "reason3", "reason4", "reason5"] as const
+    const values = keys.map(k => data[k as keyof AboutUsReason] ?? 0)
 
     reasons.value = reasonMeta.map((meta, index) => ({
       ...meta,
