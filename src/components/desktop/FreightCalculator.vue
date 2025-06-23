@@ -198,7 +198,7 @@
 import { ref, computed, watch } from 'vue'
 import { getCalculatorNotice,calculateShippingFee  } from '@/apis/CMSAPI'
 import { useI18n } from '@/composables/useI18n';
-import BaseDialog from '@/components/Common/BaseDialog.vue'
+import BaseDialog from '@/components/common/BaseDialog.vue'
 
 const { t } = useI18n();
 

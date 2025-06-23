@@ -161,7 +161,6 @@ import { getAnnouncements } from '@/apis/CMSAPI'
 const newsList = ref([])
 const page = ref(1)
 const pageSize = 10
-const newsDialogRef = ref(null)
 
 // Modal 相關
 const showModal = ref(false)
