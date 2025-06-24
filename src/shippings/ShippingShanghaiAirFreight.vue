@@ -1,85 +1,102 @@
 <template>
-  <section class="py-20">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <!-- Header -->
-      <div class="text-center mb-16 animate-fade-in">
-        <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">
-          {{ t('shopping.mall.title') }}
-        </h1>
-        <p class="text-xl text-gray-600 dark:text-gray-300">
-          {{ t('shopping.mall.subtitle') }}
-        </p>
-      </div>
+  <div class="min-h-screen bg-gray-900">
+    <!-- 使用標準 Header -->
+    <ResponsiveComponent
+      :desktop-component="DesktopHeader"
+      :mobile-component="MobileHeader"
+    />
 
-      <!-- Country Selection -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-        <router-link
-          v-for="country in countries"
-          :key="country.code"
-          :to="`/shop/${country.code}`"
-          class="group bg-white dark:bg-gray-800 rounded-xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2"
-        >
-          <div class="text-center">
-            <div class="text-6xl mb-4 group-hover:scale-110 transition-transform duration-300">
-              {{ country.flag }}
-            </div>
-            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
-              {{ country.name }}
-            </h3>
-            <p class="text-gray-600 dark:text-gray-300 mb-4">
-              {{ t(`shopping.countries.${country.code}.description`) }}
-            </p>
-            <div class="bg-primary-100 dark:bg-primary-900 text-primary-600 dark:text-primary-400 px-4 py-2 rounded-lg font-medium">
-              {{ t('shopping.browse') }}
-            </div>
-          </div>
-        </router-link>
-      </div>
-
-      <!-- Features -->
-      <div class="mt-20">
-        <h2 class="text-3xl font-bold text-center text-gray-900 dark:text-white mb-12">
-          {{ t('shopping.features.title') }}
-        </h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div
-            v-for="(feature, index) in features"
-            :key="feature.id"
-            class="text-center animate-slide-up"
-            :style="{ animationDelay: `${index * 0.1}s` }"
-          >
-            <div class="bg-gradient-to-br from-primary-500 to-secondary-500 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-              <component :is="feature.icon" :size="32" class="text-white" />
-            </div>
-            <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-              {{ t(`shopping.features.${feature.id}.title`) }}
-            </h3>
-            <p class="text-gray-600 dark:text-gray-300">
-              {{ t(`shopping.features.${feature.id}.description`) }}
-            </p>
-          </div>
+    <!-- 主內容區 -->
+    <div class="flex h-screen pt-16">
+      <!-- 左側科技感菜單 -->
+      <div class="w-64 bg-gray-800 border-r border-cyan-500/20">
+        <div class="p-4 border-b border-cyan-500/20">
+          <h2 class="text-xl font-mono font-bold text-cyan-400 tracking-wider">
+            {{ t('shipping.routes.countries.shanghai') }}
+          </h2>
         </div>
+        <nav class="mt-4">
+          <button
+            v-for="(menu, index) in menus"
+            :key="index"
+            @click="activeTab = menu.id"
+            class="w-full text-left px-4 py-3 font-medium text-gray-300 hover:text-cyan-400 hover:bg-gray-700/50 transition-all duration-300 border-l-4 border-transparent"
+            :class="{
+              '!border-cyan-400 bg-gray-700/70 text-white': activeTab === menu.id
+            }"
+          >
+            <span class="flex items-center">
+              <span class="w-2 h-2 bg-cyan-400 rounded-full mr-3"></span>
+              {{ menu.title }}
+            </span>
+          </button>
+        </nav>
+      </div>
+
+      <!-- 右側內容區 -->
+      <div class="flex-1 overflow-auto bg-gradient-to-br from-gray-900 to-gray-800">
+        <!-- 顶部标题 -->
+        <header class="bg-gray-800/80 backdrop-blur-sm p-6 border-b border-cyan-500/20">
+          <h1 class="text-2xl font-bold text-cyan-400 font-mono tracking-wider">
+            {{ currentTitle }}
+          </h1>
+        </header>
+
+        <!-- 内容切换区 -->
+        <main class="p-6">
+          <div v-show="activeTab === 'process'">
+            <!-- 集运流程内容 -->
+            <ProcessSection />
+          </div>
+          
+          <div v-show="activeTab === 'pricing'">
+            <!-- 运费说明内容 -->
+            <PricingSection />
+          </div>
+          
+          <div v-show="activeTab === 'timeline'">
+            <!-- 运送时间内容 -->
+            <TimelineSection />
+          </div>
+          
+          <div v-show="activeTab === 'faq'">
+            <!-- 常见问题内容 -->
+            <FaqSection />
+          </div>
+        </main>
       </div>
     </div>
-  </section>
+    
+    <!-- 頁腳 -->
+    <Footer class="mt-auto" />
+  </div>
 </template>
 
-<script setup lang="ts">
-import { ShoppingBag, Shield, Truck } from 'lucide-vue-next';
-import { useI18n } from '@/composables/useI18n';
+<script setup>
+import ResponsiveComponent from '@/components/shared/ResponsiveComponent.vue'
+import DesktopHeader from '@/components/desktop/Header.vue'
+import MobileHeader from '@/components/mobile/Header.vue'
+import Footer from '@/components/shared/Footer.vue'
+import { ref, computed } from 'vue'
+import { useI18n } from '@/composables/useI18n'
+import ProcessSection from '@/shippings/ProcessSection.vue'
+import PricingSection from '@/shippings/PricingSection.vue'
+import TimelineSection from '@/shippings/TimelineSection.vue'
+import FaqSection from '@/shippings/FaqSection.vue'
 
-const { t } = useI18n();
+const { t } = useI18n()
 
-const countries = [
-  { code: 'japan', name: '日本', flag: '🇯🇵' },
-  { code: 'korea', name: '韓國', flag: '🇰🇷' },
-  { code: 'usa', name: '美國', flag: '🇺🇸' },
-  { code: 'germany', name: '德國', flag: '🇩🇪' }
-];
+const activeTab = ref('process') // 默认激活第一个标签
 
-const features = [
-  { id: 'authentic', icon: Shield },
-  { id: 'convenient', icon: ShoppingBag },
-  { id: 'shipping', icon: Truck }
-];
+const menus = ref([
+  { id: 'process', title: t('shipping.routes.menu1') },
+  { id: 'pricing', title: t('shipping.routes.menu2') },
+  { id: 'timeline', title: t('shipping.routes.menu3') },
+  { id: 'faq', title: t('shipping.routes.menu4') }
+])
+
+const currentTitle = computed(() => {
+  const menu = menus.value.find(m => m.id === activeTab.value)
+  return menu ? menu.title : ''
+})
 </script>

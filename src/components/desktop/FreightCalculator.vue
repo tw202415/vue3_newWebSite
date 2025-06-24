@@ -240,6 +240,7 @@ const fetchShippingFee = async () => {
       width: width.value,
       height: height.value
     }
+    console.log('payload:', payload)
 
     // 防呆：欄位未填寫就中止
     if (!selectedStation.value) {
