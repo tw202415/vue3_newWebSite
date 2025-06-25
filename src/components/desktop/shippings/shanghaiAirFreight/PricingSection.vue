@@ -220,7 +220,7 @@
     <h2 class="text-xl font-bold text-cyan-400 mb-4">{{ t('shipping.routes.countries.menu2.title2') }}</h2>
     <div class="space-y-4">
       <div 
-        v-for="(item, index) in items"
+        v-for="(item, index) in items2"
         :key="index"
         class="bg-gray-800/50 rounded-lg border border-cyan-500/20 shadow-lg shadow-cyan-500/10 overflow-hidden"
       >
@@ -420,7 +420,7 @@ const items = computed(() => [
 
 ])
 
-const items = computed(() => [
+const items2 = computed(() => [
   
 ])
 const openFaqs = ref(Array(items.value.length).fill(false))
