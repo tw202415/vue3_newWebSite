@@ -25,10 +25,10 @@
             {{ t('nav.shopping') }}
           </router-link>
           <a
-            href="#services"
+            href="#shipping"
             class="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-medium transition-colors duration-200"
           >
-            {{ t('nav.services') }}
+            {{ t('nav.shipping') }}
           </a>
           <a
             href="#contact"

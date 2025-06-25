@@ -1,5 +1,5 @@
 <template>
-  <section class="py-20 bg-gradient-to-br from-slate-900 via-indigo-900 to-slate-900 relative overflow-hidden">
+  <section class="py-10 bg-gradient-to-br from-slate-900 via-indigo-900 to-slate-900 relative overflow-hidden">
     <!-- Background Effects -->
     <div class="absolute inset-0">
       <div class="absolute inset-0 bg-gradient-to-br from-blue-600/10 via-purple-600/10 to-cyan-600/10"></div>

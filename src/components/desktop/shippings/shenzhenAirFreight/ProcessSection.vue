@@ -1,7 +1,7 @@
 <template>
   <div class="space-y-4">
     <div 
-      v-for="(item, index) in faqItems"
+      v-for="(item, index) in processItems"
       :key="index"
       class="bg-gray-800/50 rounded-lg border border-cyan-500/20 shadow-lg shadow-cyan-500/10 overflow-hidden"
     >
@@ -27,17 +27,17 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import { useI18n } from '@/composables/useI18n'
 
 const { t } = useI18n()
 
-const faqItems = ref([
+const processItems = computed(() => [
   {
-    item: t('shipping.routes.countries.menu1.item1'),
+    item: t('shipping.routes.countries.menu1.item4'),
     content: [
-        t('shipping.routes.countries.menu1.content1.row1'),
-        t('shipping.routes.countries.menu1.content1.row2'),
+        t('shipping.routes.countries.menu1.content1.row8'),
+        t('shipping.routes.countries.menu1.content1.row9'),
         t('shipping.routes.countries.menu1.content1.row3'),
         t('shipping.routes.countries.menu1.content1.row4'),
         t('shipping.routes.countries.menu1.content1.row5'),
@@ -46,7 +46,7 @@ const faqItems = ref([
     ]
   },
   {
-    item: t('shipping.routes.countries.menu1.item2'),
+    item: t('shipping.routes.countries.menu1.item5'),
     content: [
         t('shipping.routes.countries.menu1.content2.row1'),
         t('shipping.routes.countries.menu1.content2.row2'),
@@ -68,7 +68,7 @@ const faqItems = ref([
   }
 ])
 
-const openFaqs = ref(Array(faqItems.value.length).fill(false))
+const openFaqs = ref(Array(processItems.value.length).fill(false))
 
 const toggleFaq = (index) => {
   openFaqs.value[index] = !openFaqs.value[index]

@@ -23,11 +23,12 @@
 
       <!-- 服務項目 -->
       <button
+        to="/shipping"
         @click="scrollToServices"
         class="flex flex-col items-center justify-center space-y-1 transition-colors duration-200 text-gray-500 dark:text-gray-400"
       >
         <Truck :size="20" />
-        <span class="text-xs font-medium">{{ t('nav.services') }}</span>
+        <span class="text-xs font-medium">{{ t('nav.shipping') }}</span>
       </button>
 
       <!-- 購物車 -->

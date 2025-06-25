@@ -52,12 +52,6 @@
                 {{ t('hero.description') }}
               </p>
             </div>
-            <!-- 公告 -->
-            <div class="flex-shrink-0 w-full lg:w-96">
-              <div class="bg-white/5 border border-white/10 rounded-lg p-6 text-gray-200">
-                <Announcement />
-              </div>
-            </div>
           </div>
 
 
@@ -91,7 +85,6 @@ import { Truck, Zap, Shield, Cpu, ChevronDown } from 'lucide-vue-next';
 import { useI18n } from '@/composables/useI18n';
 import { ref, onMounted } from "vue";
 import { getAboutUsReasons } from "@/apis/CMSAPI";
-import Announcement from "@/components/News/Announcement.vue";
 
 const { t } = useI18n();
 

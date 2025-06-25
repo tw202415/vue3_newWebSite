@@ -218,11 +218,6 @@
       </div>
     </div>
   </div>
-
-
-
-
-
     
   </div>
 </template>
@@ -231,7 +226,6 @@
 import { ref, onMounted, computed } from 'vue'
 import { useI18n } from '@/composables/useI18n'
 import { getCalculatorNotice,calculateShippingFee  } from '@/apis/CMSAPI'
-
 
 const { t } = useI18n()
 const feeResult = ref(null)
@@ -338,7 +332,7 @@ onMounted(() => {
   fetchShippingFee()
 })
 
-const faqItems = ref([
+const faqItems = computed(() => [
   {
     item: t('shipping.routes.countries.menu2.item1'),
     content: [

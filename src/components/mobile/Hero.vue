@@ -1,5 +1,5 @@
 <template>
-  <section id="home" class="relative min-h-screen overflow-hidden bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 flex items-center pt-16">
+  <section id="home" class="relative min-h-screen overflow-hidden bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
     <!-- Animated Background -->
     <div class="absolute inset-0">
       <!-- Gradient Mesh -->
@@ -8,7 +8,7 @@
       <!-- Floating Particles -->
       <div class="absolute inset-0">
         <div
-          v-for="i in 30"
+          v-for="i in 50"
           :key="i"
           class="absolute w-1 h-1 bg-white/30 rounded-full animate-float"
           :style="{
@@ -21,117 +21,101 @@
       </div>
 
       <!-- Grid Pattern -->
-      <div class="absolute inset-0 opacity-5">
+      <div class="absolute inset-0 opacity-10">
         <div class="grid-pattern"></div>
       </div>
     </div>
 
-    <div class="relative px-4 sm:px-6 py-12 w-full">
-      <div class="text-center animate-fade-in-up">
-        <!-- Badge -->
-        <div class="inline-flex items-center px-3 py-2 rounded-full bg-gradient-to-r from-blue-500/20 to-purple-500/20 border border-blue-500/30 backdrop-blur-sm mb-6">
-          <Zap :size="14" class="text-blue-400 mr-2" />
-          <span class="text-blue-300 text-xs font-medium">AI驅動智能集運</span>
-        </div>
-
-        <!-- Mobile Holographic Display -->
-        <div class="mb-8 animate-fade-in-scale">
-          <div class="relative bg-gradient-to-br from-blue-500/10 to-purple-500/10 backdrop-blur-xl rounded-2xl p-6 mx-auto max-w-sm border border-blue-500/20 shadow-2xl">
-            <!-- Header -->
-            <div class="flex items-center justify-between mb-4">
-              <div class="flex items-center space-x-1">
-                <div class="w-2 h-2 bg-red-400 rounded-full"></div>
-                <div class="w-2 h-2 bg-yellow-400 rounded-full"></div>
-                <div class="w-2 h-2 bg-green-400 rounded-full"></div>
-              </div>
-              <div class="text-blue-300 text-xs">AI Dashboard</div>
-            </div>
-
-            <!-- 3D Truck Animation -->
-            <div class="relative h-32 flex items-center justify-center mb-4">
-              <div class="relative transform-gpu animate-float-3d">
-                <Truck :size="80" class="text-blue-400 drop-shadow-2xl" />
-                <!-- Glow Effect -->
-                <div class="absolute inset-0 bg-blue-400/20 blur-xl rounded-full scale-150"></div>
-              </div>
-              
-              <!-- Floating Elements -->
-              <div class="absolute top-2 left-2 bg-green-400/20 text-green-300 px-2 py-1 rounded text-xs font-medium animate-pulse">
-                即時
-              </div>
-              <div class="absolute bottom-2 right-2 bg-purple-400/20 text-purple-300 px-2 py-1 rounded text-xs font-medium animate-pulse" style="animation-delay: 0.5s;">
-                AI
-              </div>
-            </div>
-
-            <!-- Progress Bar -->
-            <div>
-              <div class="flex justify-between text-xs text-gray-300 mb-2">
-                <span>運送進度</span>
-                <span>87%</span>
-              </div>
-              <div class="w-full bg-gray-700 rounded-full h-1.5">
-                <div class="bg-gradient-to-r from-blue-500 to-purple-500 h-1.5 rounded-full animate-progress" style="width: 87%"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 min-h-screen flex items-center">
+      <div class="items-center w-full">
         <!-- Content -->
-        <h1 class="text-4xl sm:text-5xl font-bold mb-4 leading-tight">
-          <span class="bg-gradient-to-r from-white via-blue-100 to-purple-100 bg-clip-text text-transparent">
-            {{ t('hero.title') }}
-          </span>
-        </h1>
-        
-        <p class="text-lg text-blue-300 font-semibold mb-3 animate-glow">
-          {{ t('hero.subtitle') }}
-        </p>
-        
-        <p class="text-gray-300 mb-8 px-4 leading-relaxed">
-          {{ t('hero.description') }}
-        </p>
+        <div class="animate-fade-in-up">
+          <!-- Badge -->
+          <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-8">
+            <div class="flex-1">
+              <div class="inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-blue-500/20 to-purple-500/20 border border-blue-500/30 backdrop-blur-sm mb-6">
+                <Zap :size="16" class="text-blue-400 mr-2" />
+                <span class="text-blue-300 text-sm font-medium">AI驅動的智能集運</span>
+              </div>
 
-        <!-- Stats -->
-        <div class="grid grid-cols-3 gap-4 mb-8 max-w-sm mx-auto">
-          <div class="text-center">
-            <div class="text-xl font-bold text-white mb-1">99.9%</div>
-            <div class="text-xs text-gray-400">準時率</div>
+              <h1 class="text-6xl lg:text-7xl font-bold mb-6 leading-tight">
+                <span class="bg-gradient-to-r from-white via-blue-100 to-purple-100 bg-clip-text text-transparent">
+                  {{ t('hero.title') }}
+                </span>
+              </h1>
+              
+              <p class="text-xl text-blue-300 font-semibold mb-4 animate-glow">
+                {{ t('hero.subtitle') }}
+              </p>
+              
+              <p class="text-lg text-gray-300 mb-8 leading-relaxed max-w-xl">
+                {{ t('hero.description') }}
+              </p>
+            </div>
           </div>
-          <div class="text-center">
-            <div class="text-xl font-bold text-white mb-1">24H</div>
-            <div class="text-xs text-gray-400">極速</div>
+
+          <!-- REASON TO CHOOSE US -->
+          <h1 class="text-6xl lg:text-6xl font-bold mb-6 leading-tight flex items-center justify-center">REASON TO CHOOSE US</h1>
+          <div class="gap-6 mb-8 flex items-center justify-center">
+          <ul class="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-24 p-0 m-0 list-none leading-tight">
+            <li class="rea-circel" v-for="(reason, index) in reasons" :key="index">
+              <div class="text-center">
+                <div class="text-sm text-gray-400">{{ reason.label }}</div>
+                <div class="text-2xl font-bold text-white mb-1">{{ formatNumber(reason.value) }}</div>
+                <div class="text-sm text-gray-400">{{ reason.unit }}</div>
+              </div>
+            </li>
+          </ul>
           </div>
-          <div class="text-center">
-            <div class="text-xl font-bold text-white mb-1">50+</div>
-            <div class="text-xs text-gray-400">國家</div>
-          </div>
-        </div>
-        
-        <div class="space-y-3 px-4">
-          <button class="group relative w-full px-6 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg">
-            <span class="relative z-10">{{ t('hero.cta.primary') }}</span>
-            <div class="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-          </button>
-          <button class="w-full border-2 border-blue-500/50 text-blue-300 hover:text-white px-6 py-4 rounded-xl font-semibold text-lg transition-all duration-300 backdrop-blur-sm hover:bg-blue-500/20">
-            {{ t('hero.cta.secondary') }}
-          </button>
         </div>
       </div>
     </div>
 
     <!-- Scroll Indicator -->
     <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-      <ChevronDown :size="20" class="text-white/60" />
+      <ChevronDown :size="24" class="text-white/60" />
     </div>
   </section>
 </template>
 
 <script setup lang="ts">
-import { Truck, Zap, ChevronDown } from 'lucide-vue-next';
+import { Truck, Zap, Shield, Cpu, ChevronDown } from 'lucide-vue-next';
 import { useI18n } from '@/composables/useI18n';
+import { ref, onMounted } from "vue";
+import { getAboutUsReasons } from "@/apis/CMSAPI";
 
 const { t } = useI18n();
+
+const reasons = ref([])
+
+const reasonMeta = [
+  { label: "至今成立", unit: "年" },
+  { label: "累積會員", unit: "人" },
+  { label: "每天快遞", unit: "件" },
+  { label: "到貨時間", unit: "天" },
+  { label: "全球集貨站", unit: "個" }
+]
+
+// 加入格式化：有些值是字串（像 "3-5"）就不要加千分位
+const formatNumber = (val) => {
+  const num = Number(val)
+  return isNaN(num) ? val : num.toLocaleString("en-US")
+}
+
+onMounted(async () => {
+  try {
+    const data = await getAboutUsReasons()
+    const keys = ["reason1", "reason2", "reason3", "reason4", "reason5"]
+    const values = keys.map(k => data[k] ?? 0)
+
+    reasons.value = reasonMeta.map((meta, index) => ({
+      ...meta,
+      value: values[index]
+    }))
+  } catch (err) {
+    console.error("取得 reason 資料失敗：", err.message)
+  }
+})
 </script>
 
 <style scoped>

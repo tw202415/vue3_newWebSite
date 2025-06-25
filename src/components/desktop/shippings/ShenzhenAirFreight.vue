@@ -1,18 +1,12 @@
 <template>
   <div class="min-h-screen bg-gray-900">
-    <!-- 使用標準 Header -->
-    <ResponsiveComponent
-      :desktop-component="DesktopHeader"
-      :mobile-component="MobileHeader"
-    />
-
     <!-- 主內容區 -->
     <div class="flex h-screen pt-16">
       <!-- 左側科技感菜單 -->
       <div class="w-64 bg-gray-800 border-r border-cyan-500/20">
         <div class="p-4 border-b border-cyan-500/20">
           <h2 class="text-xl font-mono font-bold text-cyan-400 tracking-wider">
-            {{ t('shipping.routes.countries.shanghai') }}
+            {{ t('shipping.routes.countries.shenzhen') }}
           </h2>
         </div>
         <nav class="mt-4">
@@ -46,49 +40,64 @@
         <main class="p-6">
           <div v-show="activeTab === 'process'">
             <!-- 集运流程内容 -->
-            <ProcessSection />
+            <ResponsiveComponent
+              :desktop-component="DesktopProcessSection"
+              :mobile-component="MobileProcessSection"
+            />
           </div>
           
           <div v-show="activeTab === 'pricing'">
             <!-- 运费说明内容 -->
-            <PricingSection />
+            <ResponsiveComponent
+              :desktop-component="DesktopPricingSection"
+              :mobile-component="MobilePricingSection"
+            />
           </div>
           
           <div v-show="activeTab === 'timeline'">
             <!-- 运送时间内容 -->
-            <TimelineSection />
+            <ResponsiveComponent
+              :desktop-component="DesktopTimelineSection"
+              :mobile-component="MobileTimelineSection"
+            />
           </div>
           
           <div v-show="activeTab === 'faq'">
             <!-- 常见问题内容 -->
-            <FaqSection />
+            <ResponsiveComponent
+              :desktop-component="DesktopFaqSection"
+              :mobile-component="MobileFaqSection"
+            />
           </div>
         </main>
       </div>
     </div>
     
-    <!-- 頁腳 -->
-    <Footer class="mt-auto" />
   </div>
 </template>
 
 <script setup>
-import ResponsiveComponent from '@/components/shared/ResponsiveComponent.vue'
-import DesktopHeader from '@/components/desktop/Header.vue'
-import MobileHeader from '@/components/mobile/Header.vue'
-import Footer from '@/components/shared/Footer.vue'
 import { ref, computed } from 'vue'
 import { useI18n } from '@/composables/useI18n'
-import ProcessSection from '@/shippings/ProcessSection.vue'
-import PricingSection from '@/shippings/PricingSection.vue'
-import TimelineSection from '@/shippings/TimelineSection.vue'
-import FaqSection from '@/shippings/FaqSection.vue'
+import ResponsiveComponent from '@/components/shared/ResponsiveComponent.vue'
+
+//桌面
+import DesktopProcessSection from '@/components/desktop/shippings/shenzhenAirFreight/ProcessSection.vue'
+import DesktopPricingSection from '@/components/desktop/shippings/shenzhenAirFreight/PricingSection.vue'
+import DesktopTimelineSection from '@/components/desktop/shippings/shenzhenAirFreight/TimelineSection.vue'
+import DesktopFaqSection from '@/components/desktop/shippings/shenzhenAirFreight/FaqSection.vue'
+
+//手機
+import MobileProcessSection from '@/components/mobile/shippings/shenzhenAirFreight/ProcessSection.vue'
+import MobilePricingSection from '@/components/mobile/shippings/shenzhenAirFreight/PricingSection.vue'
+import MobileTimelineSection from '@/components/mobile/shippings/shenzhenAirFreight/TimelineSection.vue'
+import MobileFaqSection from '@/components/mobile/shippings/shenzhenAirFreight/FaqSection.vue'
 
 const { t } = useI18n()
 
-const activeTab = ref('process') // 默认激活第一个标签
+const activeTab = ref('process')
 
-const menus = ref([
+const menus = computed(() => [
   { id: 'process', title: t('shipping.routes.menu1') },
   { id: 'pricing', title: t('shipping.routes.menu2') },
   { id: 'timeline', title: t('shipping.routes.menu3') },
