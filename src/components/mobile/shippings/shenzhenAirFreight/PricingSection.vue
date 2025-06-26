@@ -45,7 +45,7 @@
         <p class="mt-2 text-gray-300"> 
           {{ t('shipping.routes.countries.menu2.example') }} : {{ t('shipping.routes.countries.menu2.exampleContent') }}
         </p>
-        <p class="text-cyan-400 mt-2">{{ t('shipping.routes.countries.menu2.content1.row') }}</p>
+        <p class="text-cyan-400 mt-2">{{ t('shipping.routes.notice') }}</p>
         <p class="mt-2 text-gray-400" v-for="(i, idx) in item.content">
             {{ idx + 1 }}.{{ i }}
         </p>
@@ -104,7 +104,7 @@
         <p class="mt-2 text-gray-300"> 
           {{ t('shipping.routes.countries.menu2.example') }} : {{ t('shipping.routes.countries.menu2.exampleContent2') }}
         </p>
-        <p class="text-cyan-400 mt-2">{{ t('shipping.routes.countries.menu2.content1.row') }}</p>
+        <p class="text-cyan-400 mt-2">{{ t('shipping.routes.notice') }}</p>
         <p class="mt-2 text-gray-400" v-for="(i, idx) in item.content">
             {{ idx + 1 }}.{{ i }}
         </p>
@@ -162,7 +162,7 @@
         <p class="mt-2 text-gray-300"> 
           {{ t('shipping.routes.countries.menu2.example') }} : {{ t('shipping.routes.countries.menu2.exampleContent4') }}
         </p>
-        <p class="text-cyan-400 mt-2">{{ t('shipping.routes.countries.menu2.content2.row') }}</p>
+        <p class="text-cyan-400 mt-2">{{ t('shipping.routes.notice') }}</p>
         <p class="mt-2 text-gray-400" v-for="(i, idx) in item.content">
             {{ idx + 1 }}.{{ i }}
         </p>
@@ -170,14 +170,14 @@
 
       <div v-if="index === 3" v-show="openFaqs[index]" class="p-6 pt-0 border-t border-cyan-500/20">
         <h2 class="text-cyan-400 font-bold mt-2">{{ t(`shipping.routes.countries.menu2.subtitle4`) }}</h2>
-        <p class="text-cyan-400 mt-2">{{ t('shipping.routes.countries.menu2.content3.row') }}</p>
+        <p class="text-cyan-400 mt-2">{{ t('shipping.routes.notice') }}</p>
         <p class="mt-2 text-gray-400" v-for="(i, idx) in item.content">
             {{ idx + 1 }}.{{ i }}
         </p>
       </div>
 
       <div v-if="index === 4" v-show="openFaqs[index]" class="p-6 pt-0 border-t border-cyan-500/20">
-        <p class="text-cyan-400 mt-2">{{ t('shipping.routes.countries.menu2.content4.row') }}</p>
+        <p class="text-cyan-400 mt-2">{{ t('shipping.routes.notice') }}</p>
         <p class="mt-2 text-gray-400" v-for="(i, idx) in item.content">
             {{ idx + 1 }}.{{ i }}
         </p>
@@ -187,7 +187,7 @@
         <p class="mt-2 text-gray-300"> 
           {{ t('shipping.routes.countries.menu2.example') }} : {{ t('shipping.routes.countries.menu2.exampleContent2') }}
         </p>
-        <p class="text-cyan-400 mt-2">{{ t('shipping.routes.countries.menu2.content1.row') }}</p>
+        <p class="text-cyan-400 mt-2">{{ t('shipping.routes.notice') }}</p>
         <p class="mt-2 text-gray-400" v-for="(i, idx) in item.content">
             {{ idx + 1 }}.{{ i }}
           <div v-if="idx === 4" class="overflow-x-auto">

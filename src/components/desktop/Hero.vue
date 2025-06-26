@@ -54,8 +54,6 @@
             </div>
           </div>
 
-
-
           <!-- REASON TO CHOOSE US -->
           <h1 class="text-6xl lg:text-6xl font-bold mb-6 leading-tight flex items-center justify-center">REASON TO CHOOSE US</h1>
           <div class="gap-6 mb-8 flex items-center justify-center">
@@ -118,13 +116,6 @@ onMounted(async () => {
     console.error("取得 reason 資料失敗：", err.message)
   }
 })
-
-
-
-
-
-
-
 </script>
 
 <style scoped>
