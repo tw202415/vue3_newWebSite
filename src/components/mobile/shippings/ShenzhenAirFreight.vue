@@ -1,85 +1,73 @@
 <template>
-  <div class="min-h-screen bg-gray-900">
-    <!-- 主內容區 -->
-    <div class="flex h-screen pt-16">
-      <!-- 左側科技感菜單 -->
-      <div class="w-64 bg-gray-800 border-r border-cyan-500/20">
-        <div class="p-4 border-b border-cyan-500/20">
-          <h2 class="text-xl font-mono font-bold text-cyan-400 tracking-wider">
-            {{ t('shipping.routes.countries.shenzhen') }}
-          </h2>
-        </div>
-        <nav class="mt-4">
-          <button
-            v-for="(menu, index) in menus"
-            :key="index"
-            @click="activeTab = menu.id"
-            class="w-full text-left px-4 py-3 font-medium text-gray-300 hover:text-cyan-400 hover:bg-gray-700/50 transition-all duration-300 border-l-4 border-transparent"
-            :class="{
-              '!border-cyan-400 bg-gray-700/70 text-white': activeTab === menu.id
-            }"
-          >
-            <span class="flex items-center">
-              <span class="w-2 h-2 bg-cyan-400 rounded-full mr-3"></span>
-              {{ menu.title }}
-            </span>
-          </button>
-        </nav>
-      </div>
+  <div class="min-h-screen bg-gray-900 pb-20 safe-area-pb">
+    <!-- 頂部導航 -->
+    <MobileHeader 
+      :title="t('shipping.routes.countries.shenzhen')"
+      class="sticky top-0 z-50"
+    />
 
-      <!-- 右側內容區 -->
-      <div class="flex-1 overflow-auto bg-gradient-to-br from-gray-900 to-gray-800">
-        <!-- 顶部标题 -->
-        <header class="bg-gray-800/80 backdrop-blur-sm p-6 border-b border-cyan-500/20">
-          <h1 class="text-2xl font-bold text-cyan-400 font-mono tracking-wider">
-            {{ currentTitle }}
-          </h1>
-        </header>
-
-        <!-- 内容切换区 -->
-        <main class="p-6">
-          <div v-show="activeTab === 'process'">
-            <!-- 集运流程内容 -->
-            <ResponsiveComponent
-              :desktop-component="DesktopProcessSection"
-              :mobile-component="MobileProcessSection"
-            />
-          </div>
-          
-          <div v-show="activeTab === 'pricing'">
-            <!-- 运费说明内容 -->
-            <ResponsiveComponent
-              :desktop-component="DesktopPricingSection"
-              :mobile-component="MobilePricingSection"
-            />
-          </div>
-          
-          <div v-show="activeTab === 'timeline'">
-            <!-- 运送时间内容 -->
-            <ResponsiveComponent
-              :desktop-component="DesktopTimelineSection"
-              :mobile-component="MobileTimelineSection"
-            />
-          </div>
-          
-          <div v-show="activeTab === 'faq'">
-            <!-- 常见问题内容 -->
-            <ResponsiveComponent
-              :desktop-component="DesktopFaqSection"
-              :mobile-component="MobileFaqSection"
-            />
-          </div>
-        </main>
+    <!-- 標籤導航 -->
+    <div class="sticky top-14 z-40 bg-gray-800 border-b border-cyan-500/20 px-4">
+      <div class="flex overflow-x-auto scrollbar-hide space-x-2 py-2">
+        <button
+          v-for="menu in menus"
+          :key="menu.id"
+          @click="activeTab = menu.id"
+          class="px-4 py-2 rounded-lg text-sm font-medium whitespace-nowrap transition-colors"
+          :class="{
+            'bg-cyan-400/10 text-cyan-400': activeTab === menu.id,
+            'text-gray-300 hover:bg-gray-700/50': activeTab !== menu.id
+          }"
+        >
+          {{ menu.title }}
+        </button>
       </div>
     </div>
-    
+
+    <!-- 內容區 -->
+    <div class="p-4">
+      <div v-show="activeTab === 'process'">
+        <!-- 集運流程 -->
+        <ResponsiveComponent
+          :desktop-component="DesktopProcessSection"
+          :mobile-component="MobileProcessSection"
+        />
+      </div>
+      
+      <div v-show="activeTab === 'pricing'">
+        <!-- 運費說明 -->
+        <ResponsiveComponent
+          :desktop-component="DesktopPricingSection"
+          :mobile-component="MobilePricingSection"
+        />
+      </div>
+      
+      <div v-show="activeTab === 'timeline'">
+        <!-- 運送時間 -->
+        <ResponsiveComponent
+          :desktop-component="DesktopTimelineSection"
+          :mobile-component="MobileTimelineSection"
+        />
+      </div>
+      
+      <div v-show="activeTab === 'faq'">
+        <!-- 常見問題 -->
+        <ResponsiveComponent
+          :desktop-component="DesktopFaqSection"
+          :mobile-component="MobileFaqSection"
+        />
+      </div>
+    </div>
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref, computed } from 'vue'
 import { useI18n } from '@/composables/useI18n'
+import MobileHeader from '@/components/mobile/Header.vue'
 import ResponsiveComponent from '@/components/shared/ResponsiveComponent.vue'
+
+const { t } = useI18n()
 
 //桌面
 import DesktopProcessSection from '@/components/desktop/shippings/shenzhenAirFreight/ProcessSection.vue'
@@ -93,9 +81,7 @@ import MobilePricingSection from '@/components/mobile/shippings/shenzhenAirFreig
 import MobileTimelineSection from '@/components/mobile/shippings/shenzhenAirFreight/TimelineSection.vue'
 import MobileFaqSection from '@/components/mobile/shippings/shenzhenAirFreight/FaqSection.vue'
 
-const { t } = useI18n()
-
-const activeTab = ref('process')
+const activeTab = ref('process') // 默认激活第一个标签
 
 const menus = computed(() => [
   { id: 'process', title: t('shipping.routes.menu1') },
@@ -109,3 +95,19 @@ const currentTitle = computed(() => {
   return menu ? menu.title : ''
 })
 </script>
+
+<style scoped>
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.safe-area-pb {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+</style>

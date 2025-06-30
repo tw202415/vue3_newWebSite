@@ -39,7 +39,7 @@
         <!-- 内容切换区 -->
         <main class="p-6">
           <div v-show="activeTab === 'process'">
-            <!-- 集运流程内容 -->
+            <!-- 集運流程 -->
             <ResponsiveComponent
               :desktop-component="DesktopProcessSection"
               :mobile-component="MobileProcessSection"
@@ -47,7 +47,7 @@
           </div>
           
           <div v-show="activeTab === 'pricing'">
-            <!-- 运费说明内容 -->
+            <!-- 運費說明 -->
             <ResponsiveComponent
               :desktop-component="DesktopPricingSection"
               :mobile-component="MobilePricingSection"
@@ -55,7 +55,7 @@
           </div>
           
           <div v-show="activeTab === 'timeline'">
-            <!-- 运送时间内容 -->
+            <!-- 運送時間 -->
             <ResponsiveComponent
               :desktop-component="DesktopTimelineSection"
               :mobile-component="MobileTimelineSection"
@@ -63,7 +63,7 @@
           </div>
           
           <div v-show="activeTab === 'faq'">
-            <!-- 常见问题内容 -->
+            <!-- 常見問題 -->
             <ResponsiveComponent
               :desktop-component="DesktopFaqSection"
               :mobile-component="MobileFaqSection"

@@ -7,7 +7,7 @@
     />
 
     <!-- 標籤導航 -->
-    <div class="sticky top-16 z-40 bg-gray-800 border-b border-cyan-500/20 px-4">
+    <div class="sticky top-14 z-40 bg-gray-800 border-b border-cyan-500/20 px-4">
       <div class="flex overflow-x-auto scrollbar-hide space-x-2 py-2">
         <button
           v-for="menu in menus"

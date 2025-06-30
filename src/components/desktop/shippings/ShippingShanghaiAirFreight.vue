@@ -1,7 +1,7 @@
 <template>
-  <div class="min-h-screen bg-gray-900">
+  <div class="min-h-screen bg-gray-900 pb-20 safe-area-pb">
     <!-- 主內容區 -->
-    <div class="flex h-screen pt-16">
+    <div class="flex overflow-x-auto h-screen pt-16">
       <!-- 左側科技感菜單 -->
       <div class="w-64 bg-gray-800 border-r border-cyan-500/20">
         <div class="p-4 border-b border-cyan-500/20">
@@ -72,7 +72,6 @@
         </main>
       </div>
     </div>
-    
   </div>
 </template>
 

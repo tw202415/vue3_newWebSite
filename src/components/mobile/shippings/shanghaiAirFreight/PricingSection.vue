@@ -42,7 +42,7 @@
             </table>
           </div>
           <p class="mt-2 text-gray-300"> 
-            {{ t('shipping.routes.countries.menu2.example') }} : {{ t('shipping.routes.countries.menu2.exampleContent') }}
+            {{ t('shipping.routes.countries.menu2.example') }} : {{ exampleCalc(0, 0, 1, 'Coin') }}
           </p>
           <p class="text-cyan-400 mt-2">{{ t('shipping.routes.notice') }}</p>
           <p class="mt-2 text-gray-400" v-for="(i, idx) in item.content">
@@ -75,7 +75,7 @@
             </table>
           </div>
           <p class="mt-2 text-gray-300"> 
-            {{ t('shipping.routes.countries.menu2.example') }} : {{ t('shipping.routes.countries.menu2.exampleContent') }}
+            {{ t('shipping.routes.countries.menu2.example') }} : {{ exampleCalc(0, 0, 1, 'Coin') }}
           </p>
           <h2 class="text-cyan-400 font-bold mt-10">{{ t(`shipping.routes.countries.menu2.subtitle2`) }}</h2>
           <div class="overflow-x-auto">
@@ -101,7 +101,7 @@
             </table>
           </div>        
           <p class="mt-2 text-gray-300"> 
-            {{ t('shipping.routes.countries.menu2.example') }} : {{ t('shipping.routes.countries.menu2.exampleContent2') }}
+            {{ t('shipping.routes.countries.menu2.example') }} : {{ exampleCalc(0, 1, 6, 'Coin') }}
           </p>
           <p class="text-cyan-400 mt-2">{{ t('shipping.routes.notice') }}</p>
           <p class="mt-2 text-gray-400" v-for="(i, idx) in item.content">
@@ -134,7 +134,7 @@
             </table>
           </div>
           <p class="mt-2 text-gray-300"> 
-            {{ t('shipping.routes.countries.menu2.example') }} : {{ t('shipping.routes.countries.menu2.exampleContent3') }}
+            {{ t('shipping.routes.countries.menu2.example') }} : {{ exampleCalc(0, 2, 58, 'Coin') }} {{ t('shipping.routes.countries.menu2.payType1') }}
           </p>
           <div class="overflow-x-auto">
             <table class="w-full border-collapse">
@@ -159,7 +159,7 @@
             </table>
           </div>        
           <p class="mt-2 text-gray-300"> 
-            {{ t('shipping.routes.countries.menu2.example') }} : {{ t('shipping.routes.countries.menu2.exampleContent4') }}
+            {{ t('shipping.routes.countries.menu2.example') }} : {{ exampleCalc(0, 2, 58, 'CreditCard') }} {{ t('shipping.routes.countries.menu2.payType2') }}
           </p>
           <p class="text-cyan-400 mt-2">{{ t('shipping.routes.notice') }}</p>
           <p class="mt-2 text-gray-400" v-for="(i, idx) in item.content">
@@ -183,9 +183,6 @@
         </div>
 
         <div v-if="index === 5" v-show="openFaqs[index]" class="p-6 pt-0 border-t border-cyan-500/20">
-          <p class="mt-2 text-gray-300"> 
-            {{ t('shipping.routes.countries.menu2.example') }} : {{ t('shipping.routes.countries.menu2.exampleContent2') }}
-          </p>
           <p class="text-cyan-400 mt-2">{{ t('shipping.routes.notice') }}</p>
           <p class="mt-2 text-gray-400" v-for="(i, idx) in item.content">
               {{ idx + 1 }}.{{ i }}
@@ -245,6 +242,7 @@
         </div>             
       </div>
     </div>
+    
     <!-- 附加服務 -->
     <h2 class="text-xl font-bold text-cyan-400 mb-4">{{ t('shipping.routes.countries.menu2.title3') }}</h2>
     <div class="space-y-4">
@@ -288,7 +286,7 @@
             </table>
           </div>
           <p class="mt-2 text-gray-300"> 
-            {{ t('shipping.routes.countries.menu2.example') }} : {{ t('shipping.routes.countries.menu2.exampleContent5') }}
+            {{ t('shipping.routes.countries.menu2.example') }} : {{ t('shipping.routes.countries.menu2.exampleContent') }}
           </p>
           <p class="text-cyan-400 mt-2">{{ t('shipping.routes.notice') }}</p>
           <p class="mt-2 text-gray-400" v-for="(i, idx) in item.content">
@@ -347,7 +345,7 @@
             </table>
           </div>
           <p class="mt-2 text-gray-300"> 
-            {{ t('shipping.routes.countries.menu2.example') }} : {{ t('shipping.routes.countries.menu2.exampleContent6') }}
+            {{ t('shipping.routes.countries.menu2.example') }} : {{ t('shipping.routes.countries.menu2.exampleContent6') }}{{ t('shipping.routes.countries.menu2.webRate') }}{{  t('shipping.routes.countries.menu2.payType1') }}
           </p>
           <p class="text-cyan-400 mt-2">{{ t('shipping.routes.notice') }}</p>
           <p class="mt-2 text-gray-400" v-for="(i, idx) in item.content">
@@ -379,7 +377,7 @@
             </table>
           </div>
           <p class="mt-2 text-gray-300"> 
-            {{ t('shipping.routes.countries.menu2.example') }} : {{ t('shipping.routes.countries.menu2.exampleContent7') }}
+            {{ t('shipping.routes.countries.menu2.example') }} : {{ t('shipping.routes.countries.menu2.exampleContent7') }}{{ t('shipping.routes.countries.menu2.webRate') }}{{  t('shipping.routes.countries.menu2.payType1') }}
           </p>
           <p class="text-cyan-400 mt-2">{{ t('shipping.routes.notice') }}</p>
           <p class="mt-2 text-gray-400" v-for="(i, idx) in item.content">
@@ -603,6 +601,31 @@ const fetchShippingFee = async () => {
 onMounted(() => {
   fetchShippingFee()
 })
+
+// 範例計算
+function exampleCalc(warehouse, method, weight, feesByPayment) {
+  let firstPrice = 0
+  let secondPrice = 0
+  if (weight === 1) {
+    firstPrice = feeResult.value?.warehouses?.[warehouse]?.methods?.[method]?.feesByPayment?.Coin?.cost
+    secondPrice = feeResult2.value?.warehouses?.[warehouse]?.methods?.[method]?.feesByPayment?.Coin?.cost - firstPrice
+    return t(`shipping.routes.countries.menu2.exampleContent`) + `${firstPrice}+${secondPrice}+${secondPrice}=${firstPrice + secondPrice + secondPrice}` + t(`shipping.routes.countries.menu2.payType1`)
+  } else if (weight === 5) {
+    firstPrice = feeResult3.value?.warehouses?.[warehouse]?.methods?.[method]?.feesByPayment?.Coin?.cost / 5
+    secondPrice = feeResult3.value?.warehouses?.[warehouse]?.methods?.[method]?.feesByPayment?.Coin?.cost - firstPrice
+    return t(`shipping.routes.countries.menu2.exampleContent`) + `${firstPrice}+${secondPrice}+${secondPrice}=${firstPrice + secondPrice + secondPrice}` + t(`shipping.routes.countries.menu2.payType1`)
+  } else if (weight === 6) {
+    firstPrice = feeResult4.value?.warehouses?.[warehouse]?.methods?.[method]?.feesByPayment?.Coin?.cost / 6
+    return t(`shipping.routes.countries.menu2.exampleContent2`) + `${firstPrice}*6=${firstPrice*6}` + t(`shipping.routes.countries.menu2.payType1`)
+  } else if (weight === 58 && feesByPayment === 'Coin') {
+    firstPrice = feeResult5.value?.warehouses?.[warehouse]?.methods?.[method]?.feesByPayment?.Coin?.cost / 50
+    return t(`shipping.routes.countries.menu2.exampleContent3`) + `${firstPrice}*58=${firstPrice*58}`
+  } else if (weight === 58 && feesByPayment === 'CreditCard') {
+    firstPrice = feeResult5.value?.warehouses?.[warehouse]?.methods?.[method]?.feesByPayment?.CreditCard?.cost / 50
+    return t(`shipping.routes.countries.menu2.exampleContent3`) + `${firstPrice}*58=${firstPrice*58}`
+  }
+
+}
 
 // 多種運費計價方案(普貨、不能有電池、粉末、液體)
 const items = computed(() => [

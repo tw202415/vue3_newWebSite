@@ -36,13 +36,13 @@ const processItems = computed(() => [
   {
     item: t('shipping.routes.countries.menu1.item4'),
     content: [
-        t('shipping.routes.countries.menu1.content1.row8'),
-        t('shipping.routes.countries.menu1.content1.row9'),
-        t('shipping.routes.countries.menu1.content1.row3'),
-        t('shipping.routes.countries.menu1.content1.row4'),
-        t('shipping.routes.countries.menu1.content1.row5'),
-        t('shipping.routes.countries.menu1.content1.row6'),
-        t('shipping.routes.countries.menu1.content1.row7'),
+        t('shipping.routes.countries.menu1.content4.row1'),
+        t('shipping.routes.countries.menu1.content4.row2'),
+        t('shipping.routes.countries.menu1.content4.row3'),
+        t('shipping.routes.countries.menu1.content4.row4'),
+        t('shipping.routes.countries.menu1.content4.row5'),
+        t('shipping.routes.countries.menu1.content4.row6'),
+        t('shipping.routes.countries.menu1.content4.row7'),
     ]
   },
   {

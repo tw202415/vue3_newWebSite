@@ -8,6 +8,7 @@ import Home from '@/pages/Home.vue';
 import ShoppingMall from '@/pages/ShoppingMall.vue';
 import CountryShop from '@/pages/CountryShop.vue';
 import Cart from '@/pages/Cart.vue';
+import ITT from '@/pages/services/ITT.vue';
 import ShanghaiAirFreight from '@/pages/shippings/ShanghaiAirFreight.vue';
 import ShenzhenAirFreight from '@/pages/shippings/ShenzhenAirFreight.vue';
 
@@ -16,6 +17,7 @@ const routes = [
   { path: '/shopping', name: 'ShoppingMall', component: ShoppingMall },
   { path: '/shop/:country', name: 'CountryShop', component: CountryShop, props: true },
   { path: '/cart', name: 'Cart', component: Cart },
+  { path: '/itt', name: 'ITT', component: ITT },
   { path: '/shanghai', name: 'ShanghaiAirFreight', component: ShanghaiAirFreight},
   { path: '/shenzhen', name: 'ShenzhenAirFreight', component: ShenzhenAirFreight},
 ];

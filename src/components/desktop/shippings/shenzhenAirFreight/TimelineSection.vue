@@ -1,7 +1,5 @@
 <template>
   <div class="space-y-6">
-    <h2 class="text-xl font-bold text-cyan-400 mb-4">{{ t('shipping.routes.countries.menu2.title') }}</h2>
-    
       <div class="space-y-4">
     <div 
       v-for="(item, index) in items"
@@ -23,7 +21,7 @@
         <div v-show="openFaqs[index]" class="p-6 pt-0 border-t border-cyan-500/20">
           <div class="overflow-x-auto">
             <h2 class="text-gray-200 font-bold mt-2">{{ t(`shipping.routes.countries.menu3.subtitle1`) }}</h2>
-            <h2 class="text-gray-200 font-bold mt-2">{{ t(`shipping.routes.countries.menu3.text1`) }} 15:30 {{ t(`shipping.routes.countries.menu3.text2`) }}</h2>
+            <h2 class="text-gray-200 font-bold mt-2">{{ t(`shipping.routes.countries.menu3.text6`) }} 15:30 {{ t(`shipping.routes.countries.menu3.text2`) }}</h2>
             <table class="w-full border-collapse">
               <thead>
                 <tr class="bg-gray-800/70 text-gray-300">
@@ -47,7 +45,7 @@
         <div v-show="openFaqs[index]" class="p-6 pt-0 border-t border-cyan-500/20">
           <div class="overflow-x-auto">
             <h2 class="text-gray-200 font-bold mt-2">{{ t(`shipping.routes.countries.menu3.subtitle1`) }}</h2>
-            <h2 class="text-gray-200 font-bold mt-2">{{ t(`shipping.routes.countries.menu3.text1`) }} 15:30 {{ t(`shipping.routes.countries.menu3.text3`) }}</h2>
+            <h2 class="text-gray-200 font-bold mt-2">{{ t(`shipping.routes.countries.menu3.text6`) }} 15:30 {{ t(`shipping.routes.countries.menu3.text3`) }}</h2>
             <table class="w-full border-collapse">
               <thead>
                 <tr class="bg-gray-800/70 text-gray-300">
@@ -90,7 +88,7 @@
       <div v-if="index === 1">
         <div v-show="openFaqs[index]" class="p-6 pt-0 border-t border-cyan-500/20">
           <div class="overflow-x-auto">
-            <h2 class="text-gray-200 font-bold mt-2">{{ t(`shipping.routes.countries.menu3.text4`) }} 15:30 {{ t(`shipping.routes.countries.menu3.text2`) }}</h2>
+            <h2 class="text-gray-200 font-bold mt-2">{{ t(`shipping.routes.countries.menu3.text4`) }}</h2>
           </div>
           <p class="mt-2 text-gray-400">{{ t(`shipping.routes.countries.menu3.text5`) }}</p>
         </div>
@@ -120,7 +118,7 @@ const items = computed(() => [
     ]
   },
   {
-    item: t('shipping.routes.countries.menu3.item2'),
+    item: t('shipping.routes.countries.menu3.item3'),
     content: [
         
     ]
