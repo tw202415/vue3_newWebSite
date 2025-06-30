@@ -72,7 +72,7 @@ const socialLinks = [
 ];
 
 const quickLinks = [
-  { key: 'service1.title', href: '/ITT' },
+  { key: 'service1.title', href: '/itt' },
   { key: 'service2.title', href: '#tracking' },
   { key: 'service3.title', href: '#faq' },
   { key: 'service4.title', href: '#services' },
