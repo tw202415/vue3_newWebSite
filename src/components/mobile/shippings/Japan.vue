@@ -70,18 +70,18 @@ import ResponsiveComponent from '@/components/shared/ResponsiveComponent.vue'
 const { t } = useI18n()
 
 //桌面
-import DesktopProcessSection from '@/components/desktop/shippings/Japan/ProcessSection.vue'
-import DesktopPricingSection from '@/components/desktop/shippings/Japan/PricingSection.vue'
-import DesktopTimelineSection from '@/components/desktop/shippings/Japan/TimelineSection.vue'
-import DesktopFaqSection from '@/components/desktop/shippings/Japan/FaqSection.vue'
+import DesktopProcessSection from '@/components/desktop/shippings/Japan1/ProcessSection.vue'
+import DesktopPricingSection from '@/components/desktop/shippings/Japan1/PricingSection.vue'
+import DesktopTimelineSection from '@/components/desktop/shippings/Japan1/TimelineSection.vue'
+import DesktopFaqSection from '@/components/desktop/shippings/Japan1/FaqSection.vue'
 
 //手機
-import MobileProcessSection from '@/components/mobile/shippings/Japan/ProcessSection.vue'
-import MobilePricingSection from '@/components/mobile/shippings/Japan/PricingSection.vue'
-import MobileTimelineSection from '@/components/mobile/shippings/Japan/TimelineSection.vue'
-import MobileFaqSection from '@/components/mobile/shippings/Japan/FaqSection.vue'
+import MobileProcessSection from '@/components/mobile/shippings/Japan1/ProcessSection.vue'
+import MobilePricingSection from '@/components/mobile/shippings/Japan1/PricingSection.vue'
+import MobileTimelineSection from '@/components/mobile/shippings/Japan1/TimelineSection.vue'
+import MobileFaqSection from '@/components/mobile/shippings/Japan1/FaqSection.vue'
 
-const activeTab = ref('process') // 默认激活第一个标签
+const activeTab = ref('process')
 
 const menus = computed(() => [
   { id: 'process', title: t('shipping.routes.menu1') },
