@@ -72,7 +72,7 @@
               {{ idx + 1 }}.{{ i }}
           </p>
           <p class="text-cyan-400 mt-2 font-bold">{{ t('shipping.routes.countries.menu3.subtitle2') }}</p>
-          <p class="mt-2 text-gray-400">{{ t('shipping.routes.notice') }}</p>
+          <p class="mt-2 text-gray-200 font-bold">{{ t('shipping.routes.countries.menu3.subtitle6') }}</p>
           <ul class="mt-2 text-gray-400 flex flex-wrap gap-4">
             <li v-for="n in 6" :key="n" class="flex items-center gap-2">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-cyan-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -90,7 +90,7 @@
       <div v-if="index === 1">
         <div v-show="openFaqs[index]" class="p-6 pt-0 border-t border-cyan-500/20">
           <div class="overflow-x-auto">
-            <h2 class="text-gray-200 font-bold mt-2">{{ t(`shipping.routes.countries.menu3.text4`) }} 15:30 {{ t(`shipping.routes.countries.menu3.text2`) }}</h2>
+            <h2 class="text-gray-200 font-bold mt-2">{{ t(`shipping.routes.countries.menu3.text4`) }}</h2>
           </div>
           <p class="mt-2 text-gray-400">{{ t(`shipping.routes.countries.menu3.text5`) }}</p>
         </div>

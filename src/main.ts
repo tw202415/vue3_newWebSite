@@ -11,6 +11,8 @@ import Cart from '@/pages/Cart.vue';
 import ITT from '@/pages/services/ITT.vue';
 import ShanghaiAirFreight from '@/pages/shippings/ShanghaiAirFreight.vue';
 import ShenzhenAirFreight from '@/pages/shippings/ShenzhenAirFreight.vue';
+import ShenzhenSeaExpress from '@/pages/shippings/ShenzhenSeaExpress.vue';
+import Japan from '@/pages/shippings/Japan.vue';
 
 const routes = [
   { path: '/', name: 'Home', component: Home },
@@ -18,8 +20,10 @@ const routes = [
   { path: '/shop/:country', name: 'CountryShop', component: CountryShop, props: true },
   { path: '/cart', name: 'Cart', component: Cart },
   { path: '/itt', name: 'ITT', component: ITT },
-  { path: '/shanghai', name: 'ShanghaiAirFreight', component: ShanghaiAirFreight},
-  { path: '/shenzhen', name: 'ShenzhenAirFreight', component: ShenzhenAirFreight},
+  { path: '/shanghaiAirFreight', name: 'ShanghaiAirFreight', component: ShanghaiAirFreight},
+  { path: '/shenzhenAirFreight', name: 'ShenzhenAirFreight', component: ShenzhenAirFreight},
+  { path: '/shenzhenSeaExpress', name: 'ShenzhenSeaExpress', component: ShenzhenSeaExpress},
+  { path: '/japan', name: 'Japan', component: Japan},
 ];
 
 const router = createRouter({

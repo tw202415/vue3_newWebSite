@@ -1,5 +1,5 @@
 <template>
-  <div class="fixed bottom-0 left-0 right-0 z-50 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700 safe-area-pb">
+  <div class="fixed bottom-0 left-0 right-0 z-50 bg-white  border-t border-gray-200  safe-area-pb">
     <div class="grid grid-cols-5 h-16">
       <!-- 首頁 -->
       <router-link
@@ -60,11 +60,11 @@
     <!-- 更多選單 -->
     <div
       v-if="showMoreMenu"
-      class="absolute bottom-16 right-0 w-48 bg-white dark:bg-gray-800 rounded-tl-lg shadow-lg border border-gray-200 dark:border-gray-700"
+      class="absolute bottom-16 right-0 w-48 bg-white dark:bg-gray-800 rounded-tl-lg shadow-lg border border-gray-200 "
     >
       <div class="py-2">
         <!-- 會員登入/用戶資訊 -->
-        <div v-if="!isAuthenticated" class="px-4 py-3 border-b border-gray-200 dark:border-gray-700">
+        <div v-if="!isAuthenticated" class="px-4 py-3 border-b border-gray-200 ">
           <button
             @click="showAuthModal = true; showMoreMenu = false"
             class="w-full bg-primary-600 hover:bg-primary-700 text-white py-2 px-4 rounded-lg font-medium transition-colors duration-200"
@@ -72,7 +72,7 @@
             {{ t('auth.login.title') }}
           </button>
         </div>
-        <div v-else class="px-4 py-3 border-b border-gray-200 dark:border-gray-700">
+        <div v-else class="px-4 py-3 border-b border-gray-200 ">
           <div class="flex items-center space-x-3">
             <img
               :src="currentUser?.avatar"
@@ -93,13 +93,13 @@
         <!-- 功能選項 -->
         <button
           @click="scrollToContact"
-          class="w-full px-4 py-3 text-left hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200 flex items-center space-x-3"
+          class="w-full px-4 py-3 text-left hover:bg-gray-100  transition-colors duration-200 flex items-center space-x-3"
         >
           <MessageCircle :size="18" />
           <span>{{ t('nav.contact') }}</span>
         </button>
         <button
-          class="w-full px-4 py-3 text-left hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200 flex items-center space-x-3"
+          class="w-full px-4 py-3 text-left hover:bg-gray-100  transition-colors duration-200 flex items-center space-x-3"
         >
           <Calculator :size="18" />
           <span>{{ t('nav.quote') }}</span>
@@ -107,15 +107,15 @@
         
         <!-- 會員功能 -->
         <div v-if="isAuthenticated">
-          <div class="border-t border-gray-200 dark:border-gray-700 my-2"></div>
+          <div class="border-t border-gray-200  my-2"></div>
           <button
-            class="w-full px-4 py-3 text-left hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200 flex items-center space-x-3"
+            class="w-full px-4 py-3 text-left hover:bg-gray-100  transition-colors duration-200 flex items-center space-x-3"
           >
             <User :size="18" />
             <span>個人資料</span>
           </button>
           <button
-            class="w-full px-4 py-3 text-left hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200 flex items-center space-x-3"
+            class="w-full px-4 py-3 text-left hover:bg-gray-100  transition-colors duration-200 flex items-center space-x-3"
           >
             <Package :size="18" />
             <span>我的訂單</span>
@@ -123,14 +123,14 @@
           <button
             v-if="!currentUser?.isVip"
             @click="upgradeToVip; showMoreMenu = false"
-            class="w-full px-4 py-3 text-left hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200 flex items-center space-x-3 text-yellow-600 dark:text-yellow-400"
+            class="w-full px-4 py-3 text-left hover:bg-gray-100  transition-colors duration-200 flex items-center space-x-3 text-yellow-600 dark:text-yellow-400"
           >
             <Crown :size="18" />
             <span>升級VIP</span>
           </button>
           <button
             @click="handleLogout"
-            class="w-full px-4 py-3 text-left hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200 flex items-center space-x-3 text-red-600 dark:text-red-400"
+            class="w-full px-4 py-3 text-left hover:bg-gray-100  transition-colors duration-200 flex items-center space-x-3 text-red-600 dark:text-red-400"
           >
             <LogOut :size="18" />
             <span>登出</span>
@@ -138,13 +138,13 @@
         </div>
         
         <!-- 設定選項 -->
-        <div class="border-t border-gray-200 dark:border-gray-700 my-2"></div>
+        <div class="border-t border-gray-200  my-2"></div>
         <div class="px-4 py-2 flex items-center justify-between">
-          <span class="text-sm text-gray-600 dark:text-gray-300">主題</span>
-          <ThemeToggle />
+          <span class="text-sm text-gray-600 ">主題</span>
+          
         </div>
         <div class="px-4 py-2 flex items-center justify-between">
-          <span class="text-sm text-gray-600 dark:text-gray-300">語言</span>
+          <span class="text-sm text-gray-600 ">語言</span>
           <LanguageToggle />
         </div>
       </div>
@@ -181,7 +181,6 @@ import {
 import { useI18n } from '@/composables/useI18n'
 import { useCart } from '@/composables/useCart'
 import { useAuth } from '@/composables/useAuth'
-import ThemeToggle from '@/components/shared/ThemeToggle.vue'
 import LanguageToggle from '@/components/shared/LanguageToggle.vue'
 import AuthModal from '@/components/shared/AuthModal.vue'
 

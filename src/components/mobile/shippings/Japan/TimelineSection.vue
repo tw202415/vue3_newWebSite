@@ -1,6 +1,6 @@
 <template>
   <div class="space-y-6">
-      <div class="space-y-4">
+    <div class="space-y-4">
     <div 
       v-for="(item, index) in items"
       :key="index"
@@ -21,7 +21,7 @@
         <div v-show="openFaqs[index]" class="p-6 pt-0 border-t border-cyan-500/20">
           <div class="overflow-x-auto">
             <h2 class="text-gray-200 font-bold mt-2">{{ t(`shipping.routes.countries.menu3.subtitle1`) }}</h2>
-            <h2 class="text-gray-200 font-bold mt-2">{{ t(`shipping.routes.countries.menu3.text6`) }} 15:30 {{ t(`shipping.routes.countries.menu3.text2`) }}</h2>
+            <h2 class="text-gray-200 font-bold mt-2">{{ t(`shipping.routes.countries.menu3.text10`) }} 14:00 {{ t(`shipping.routes.countries.menu3.text2`) }}</h2>
             <table class="w-full border-collapse">
               <thead>
                 <tr class="bg-gray-800/70 text-gray-300">
@@ -45,7 +45,7 @@
         <div v-show="openFaqs[index]" class="p-6 pt-0 border-t border-cyan-500/20">
           <div class="overflow-x-auto">
             <h2 class="text-gray-200 font-bold mt-2">{{ t(`shipping.routes.countries.menu3.subtitle1`) }}</h2>
-            <h2 class="text-gray-200 font-bold mt-2">{{ t(`shipping.routes.countries.menu3.text6`) }} 15:30 {{ t(`shipping.routes.countries.menu3.text3`) }}</h2>
+            <h2 class="text-gray-200 font-bold mt-2">{{ t(`shipping.routes.countries.menu3.text10`) }} 14:00 {{ t(`shipping.routes.countries.menu3.text3`) }}</h2>
             <table class="w-full border-collapse">
               <thead>
                 <tr class="bg-gray-800/70 text-gray-300">
@@ -90,7 +90,7 @@
           <div class="overflow-x-auto">
             <h2 class="text-gray-200 font-bold mt-2">{{ t(`shipping.routes.countries.menu3.text4`) }}</h2>
           </div>
-          <p class="mt-2 text-gray-400">{{ t(`shipping.routes.countries.menu3.text5`) }}</p>
+          <p class="mt-2 text-gray-400">{{ t(`shipping.routes.countries.menu3.text11`) }}</p>
         </div>
       </div>
     </div>
@@ -111,14 +111,12 @@ const items = computed(() => [
   {
     item: t('shipping.routes.countries.menu3.item1'),
     content: [
-      t('shipping.routes.countries.menu3.content1.row1'),
-      t('shipping.routes.countries.menu3.content1.row2'),
-      t('shipping.routes.countries.menu3.content1.row3'),
-      t('shipping.routes.countries.menu3.content1.row4'),
+      t('shipping.routes.countries.menu3.content3.row1'),
+      t('shipping.routes.countries.menu3.content3.row2'),
     ]
   },
   {
-    item: t('shipping.routes.countries.menu3.item3'),
+    item: t('shipping.routes.countries.menu3.item4'),
     content: [
         
     ]
@@ -148,11 +146,11 @@ const dateItems = ref([
   },
   {
     dateStr: t('shipping.routes.countries.menu3.saturday'),
-    dateEnd: t('shipping.routes.countries.menu3.monday')
+    dateEnd: t('shipping.routes.countries.menu3.wednesday')
   },
   {
     dateStr: t('shipping.routes.countries.menu3.sunday'),
-    dateEnd: t('shipping.routes.countries.menu3.tuesday')
+    dateEnd: t('shipping.routes.countries.menu3.wednesday')
   }
 ])
 
@@ -171,15 +169,15 @@ const dateItems2 = ref([
   },
   {
     dateStr: t('shipping.routes.countries.menu3.thursday'),
-    dateEnd: t('shipping.routes.countries.menu3.sunday')
-  },
-  {
-    dateStr: t('shipping.routes.countries.menu3.friday'),
     dateEnd: t('shipping.routes.countries.menu3.monday')
   },
   {
+    dateStr: t('shipping.routes.countries.menu3.friday'),
+    dateEnd: t('shipping.routes.countries.menu3.wednesday')
+  },
+  {
     dateStr: t('shipping.routes.countries.menu3.saturday'),
-    dateEnd: t('shipping.routes.countries.menu3.tuesday')
+    dateEnd: t('shipping.routes.countries.menu3.wednesday')
   },
   {
     dateStr: t('shipping.routes.countries.menu3.sunday'),

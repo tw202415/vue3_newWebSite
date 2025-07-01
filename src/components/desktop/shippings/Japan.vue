@@ -1,12 +1,12 @@
 <template>
-  <div class="min-h-screen bg-gray-900">
+  <div class="min-h-screen bg-gray-900 pb-20 safe-area-pb">
     <!-- 主內容區 -->
-    <div class="flex h-screen pt-16">
+    <div class="flex overflow-x-auto h-screen pt-16">
       <!-- 左側科技感菜單 -->
       <div class="w-64 bg-gray-800 border-r border-cyan-500/20">
         <div class="p-4 border-b border-cyan-500/20">
           <h2 class="text-xl font-mono font-bold text-cyan-400 tracking-wider">
-            {{ t('shipping.routes.countries.shenzhenAirFreight') }}
+            {{ t('shipping.routes.countries.japan') }}
           </h2>
         </div>
         <nav class="mt-4">
@@ -29,14 +29,13 @@
 
       <!-- 右側內容區 -->
       <div class="flex-1 overflow-auto bg-gradient-to-br from-gray-900 to-gray-800">
-        <!-- 顶部标题 -->
+        <!-- 頂部標題 -->
         <header class="bg-gray-800/80 backdrop-blur-sm p-6 border-b border-cyan-500/20">
           <h1 class="text-2xl font-bold text-cyan-400 font-mono tracking-wider">
             {{ currentTitle }}
           </h1>
         </header>
 
-        <!-- 内容切换区 -->
         <main class="p-6">
           <div v-show="activeTab === 'process'">
             <!-- 集運流程 -->
@@ -72,7 +71,6 @@
         </main>
       </div>
     </div>
-    
   </div>
 </template>
 
@@ -82,16 +80,16 @@ import { useI18n } from '@/composables/useI18n'
 import ResponsiveComponent from '@/components/shared/ResponsiveComponent.vue'
 
 //桌面
-import DesktopProcessSection from '@/components/desktop/shippings/shenzhenAirFreight/ProcessSection.vue'
-import DesktopPricingSection from '@/components/desktop/shippings/shenzhenAirFreight/PricingSection.vue'
-import DesktopTimelineSection from '@/components/desktop/shippings/shenzhenAirFreight/TimelineSection.vue'
-import DesktopFaqSection from '@/components/desktop/shippings/shenzhenAirFreight/FaqSection.vue'
+import DesktopProcessSection from '@/components/desktop/shippings/japan/ProcessSection.vue'
+import DesktopPricingSection from '@/components/desktop/shippings/japan/PricingSection.vue'
+import DesktopTimelineSection from '@/components/desktop/shippings/japan/TimelineSection.vue'
+import DesktopFaqSection from '@/components/desktop/shippings/japan/FaqSection.vue'
 
 //手機
-import MobileProcessSection from '@/components/mobile/shippings/shenzhenAirFreight/ProcessSection.vue'
-import MobilePricingSection from '@/components/mobile/shippings/shenzhenAirFreight/PricingSection.vue'
-import MobileTimelineSection from '@/components/mobile/shippings/shenzhenAirFreight/TimelineSection.vue'
-import MobileFaqSection from '@/components/mobile/shippings/shenzhenAirFreight/FaqSection.vue'
+import MobileProcessSection from '@/components/mobile/shippings/japan/ProcessSection.vue'
+import MobilePricingSection from '@/components/mobile/shippings/japan/PricingSection.vue'
+import MobileTimelineSection from '@/components/mobile/shippings/japan/TimelineSection.vue'
+import MobileFaqSection from '@/components/mobile/shippings/japan/FaqSection.vue'
 
 const { t } = useI18n()
 

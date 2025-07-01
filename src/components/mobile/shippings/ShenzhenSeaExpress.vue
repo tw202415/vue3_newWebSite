@@ -2,7 +2,7 @@
   <div class="min-h-screen bg-gray-900 pb-20 safe-area-pb">
     <!-- 頂部導航 -->
     <MobileHeader 
-      :title="t('shipping.routes.countries.shanghaiAirFreight')"
+      :title="t('shipping.routes.countries.shenzhenSeaExpress')"
       class="sticky top-0 z-50"
     />
 
@@ -70,18 +70,18 @@ import ResponsiveComponent from '@/components/shared/ResponsiveComponent.vue'
 const { t } = useI18n()
 
 //桌面
-import DesktopProcessSection from '@/components/desktop/shippings/shanghaiAirFreight/ProcessSection.vue'
-import DesktopPricingSection from '@/components/desktop/shippings/shanghaiAirFreight/PricingSection.vue'
-import DesktopTimelineSection from '@/components/desktop/shippings/shanghaiAirFreight/TimelineSection.vue'
-import DesktopFaqSection from '@/components/desktop/shippings/shanghaiAirFreight/FaqSection.vue'
+import DesktopProcessSection from '@/components/desktop/shippings/shenzhenSeaExpress/ProcessSection.vue'
+import DesktopPricingSection from '@/components/desktop/shippings/shenzhenSeaExpress/PricingSection.vue'
+import DesktopTimelineSection from '@/components/desktop/shippings/shenzhenSeaExpress/TimelineSection.vue'
+import DesktopFaqSection from '@/components/desktop/shippings/shenzhenSeaExpress/FaqSection.vue'
 
 //手機
-import MobileProcessSection from '@/components/mobile/shippings/shanghaiAirFreight/ProcessSection.vue'
-import MobilePricingSection from '@/components/mobile/shippings/shanghaiAirFreight/PricingSection.vue'
-import MobileTimelineSection from '@/components/mobile/shippings/shanghaiAirFreight/TimelineSection.vue'
-import MobileFaqSection from '@/components/mobile/shippings/shanghaiAirFreight/FaqSection.vue'
+import MobileProcessSection from '@/components/mobile/shippings/shenzhenSeaExpress/ProcessSection.vue'
+import MobilePricingSection from '@/components/mobile/shippings/shenzhenSeaExpress/PricingSection.vue'
+import MobileTimelineSection from '@/components/mobile/shippings/shenzhenSeaExpress/TimelineSection.vue'
+import MobileFaqSection from '@/components/mobile/shippings/shenzhenSeaExpress/FaqSection.vue'
 
-const activeTab = ref('process') // 默认激活第一个标签
+const activeTab = ref('process') //
 
 const menus = computed(() => [
   { id: 'process', title: t('shipping.routes.menu1') },

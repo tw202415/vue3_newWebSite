@@ -52,7 +52,6 @@
               {{ cartItemsCount }}
             </span>
           </router-link>
-          <ThemeToggle />
           <LanguageToggle />
           
           <!-- User Menu or Login Button -->
@@ -79,7 +78,6 @@ import { Truck, ShoppingCart } from 'lucide-vue-next';
 import { useI18n } from '@/composables/useI18n';
 import { useCart } from '@/composables/useCart';
 import { useAuth } from '@/composables/useAuth';
-import ThemeToggle from '@/components/shared/ThemeToggle.vue';
 import LanguageToggle from '@/components/shared/LanguageToggle.vue';
 import UserMenu from '@/components/shared/UserMenu.vue';
 import AuthModal from '@/components/shared/AuthModal.vue';

@@ -6,7 +6,7 @@
       <div class="w-64 bg-gray-800 border-r border-cyan-500/20">
         <div class="p-4 border-b border-cyan-500/20">
           <h2 class="text-xl font-mono font-bold text-cyan-400 tracking-wider">
-            {{ t('shipping.routes.countries.shenzhenAirFreight') }}
+            {{ t('shipping.routes.countries.shenzhenSeaExpress') }}
           </h2>
         </div>
         <nav class="mt-4">
@@ -82,16 +82,16 @@ import { useI18n } from '@/composables/useI18n'
 import ResponsiveComponent from '@/components/shared/ResponsiveComponent.vue'
 
 //桌面
-import DesktopProcessSection from '@/components/desktop/shippings/shenzhenAirFreight/ProcessSection.vue'
-import DesktopPricingSection from '@/components/desktop/shippings/shenzhenAirFreight/PricingSection.vue'
-import DesktopTimelineSection from '@/components/desktop/shippings/shenzhenAirFreight/TimelineSection.vue'
-import DesktopFaqSection from '@/components/desktop/shippings/shenzhenAirFreight/FaqSection.vue'
+import DesktopProcessSection from '@/components/desktop/shippings/shenzhenSeaExpress/ProcessSection.vue'
+import DesktopPricingSection from '@/components/desktop/shippings/shenzhenSeaExpress/PricingSection.vue'
+import DesktopTimelineSection from '@/components/desktop/shippings/shenzhenSeaExpress/TimelineSection.vue'
+import DesktopFaqSection from '@/components/desktop/shippings/shenzhenSeaExpress/FaqSection.vue'
 
 //手機
-import MobileProcessSection from '@/components/mobile/shippings/shenzhenAirFreight/ProcessSection.vue'
-import MobilePricingSection from '@/components/mobile/shippings/shenzhenAirFreight/PricingSection.vue'
-import MobileTimelineSection from '@/components/mobile/shippings/shenzhenAirFreight/TimelineSection.vue'
-import MobileFaqSection from '@/components/mobile/shippings/shenzhenAirFreight/FaqSection.vue'
+import MobileProcessSection from '@/components/mobile/shippings/shenzhenSeaExpress/ProcessSection.vue'
+import MobilePricingSection from '@/components/mobile/shippings/shenzhenSeaExpress/PricingSection.vue'
+import MobileTimelineSection from '@/components/mobile/shippings/shenzhenSeaExpress/TimelineSection.vue'
+import MobileFaqSection from '@/components/mobile/shippings/shenzhenSeaExpress/FaqSection.vue'
 
 const { t } = useI18n()
 

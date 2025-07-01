@@ -6,7 +6,7 @@
       <div class="w-64 bg-gray-800 border-r border-cyan-500/20">
         <div class="p-4 border-b border-cyan-500/20">
           <h2 class="text-xl font-mono font-bold text-cyan-400 tracking-wider">
-            {{ t('shipping.routes.countries.shanghai') }}
+            {{ t('shipping.routes.countries.shanghaiAirFreight') }}
           </h2>
         </div>
         <nav class="mt-4">
@@ -29,17 +29,16 @@
 
       <!-- 右側內容區 -->
       <div class="flex-1 overflow-auto bg-gradient-to-br from-gray-900 to-gray-800">
-        <!-- 顶部标题 -->
+        <!-- 頂部標題 -->
         <header class="bg-gray-800/80 backdrop-blur-sm p-6 border-b border-cyan-500/20">
           <h1 class="text-2xl font-bold text-cyan-400 font-mono tracking-wider">
             {{ currentTitle }}
           </h1>
         </header>
 
-        <!-- 内容切换区 -->
         <main class="p-6">
           <div v-show="activeTab === 'process'">
-            <!-- 集运流程内容 -->
+            <!-- 集運流程 -->
             <ResponsiveComponent
               :desktop-component="DesktopProcessSection"
               :mobile-component="MobileProcessSection"
@@ -47,7 +46,7 @@
           </div>
           
           <div v-show="activeTab === 'pricing'">
-            <!-- 运费说明内容 -->
+            <!-- 運費說明 -->
             <ResponsiveComponent
               :desktop-component="DesktopPricingSection"
               :mobile-component="MobilePricingSection"
@@ -55,7 +54,7 @@
           </div>
           
           <div v-show="activeTab === 'timeline'">
-            <!-- 运送时间内容 -->
+            <!-- 運送時間 -->
             <ResponsiveComponent
               :desktop-component="DesktopTimelineSection"
               :mobile-component="MobileTimelineSection"
@@ -63,7 +62,7 @@
           </div>
           
           <div v-show="activeTab === 'faq'">
-            <!-- 常见问题内容 -->
+            <!-- 常見問題 -->
             <ResponsiveComponent
               :desktop-component="DesktopFaqSection"
               :mobile-component="MobileFaqSection"

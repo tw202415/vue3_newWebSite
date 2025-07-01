@@ -70,16 +70,16 @@ import ResponsiveComponent from '@/components/shared/ResponsiveComponent.vue'
 const { t } = useI18n()
 
 //桌面
-import DesktopProcessSection from '@/components/desktop/shippings/shanghaiAirFreight/ProcessSection.vue'
-import DesktopPricingSection from '@/components/desktop/shippings/shanghaiAirFreight/PricingSection.vue'
-import DesktopTimelineSection from '@/components/desktop/shippings/shanghaiAirFreight/TimelineSection.vue'
-import DesktopFaqSection from '@/components/desktop/shippings/shanghaiAirFreight/FaqSection.vue'
+import DesktopProcessSection from '@/components/desktop/shippings/japan/ProcessSection.vue'
+import DesktopPricingSection from '@/components/desktop/shippings/japan/PricingSection.vue'
+import DesktopTimelineSection from '@/components/desktop/shippings/japan/TimelineSection.vue'
+import DesktopFaqSection from '@/components/desktop/shippings/japan/FaqSection.vue'
 
 //手機
-import MobileProcessSection from '@/components/mobile/shippings/shanghaiAirFreight/ProcessSection.vue'
-import MobilePricingSection from '@/components/mobile/shippings/shanghaiAirFreight/PricingSection.vue'
-import MobileTimelineSection from '@/components/mobile/shippings/shanghaiAirFreight/TimelineSection.vue'
-import MobileFaqSection from '@/components/mobile/shippings/shanghaiAirFreight/FaqSection.vue'
+import MobileProcessSection from '@/components/mobile/shippings/japan/ProcessSection.vue'
+import MobilePricingSection from '@/components/mobile/shippings/japan/PricingSection.vue'
+import MobileTimelineSection from '@/components/mobile/shippings/japan/TimelineSection.vue'
+import MobileFaqSection from '@/components/mobile/shippings/japan/FaqSection.vue'
 
 const activeTab = ref('process') // 默认激活第一个标签
 

@@ -2,7 +2,7 @@
   <div class="min-h-screen bg-gray-900 pb-20 safe-area-pb">
     <!-- 頂部導航 -->
     <MobileHeader 
-      :title="t('shipping.routes.countries.shenzhen')"
+      :title="t('shipping.routes.countries.shenzhenAirFreight')"
       class="sticky top-0 z-50"
     />
 

@@ -1,16 +1,16 @@
 <template>
-  <div id="app" class="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
+  <div id="app" class="min-h-screen bg-white">
     <router-view />
   </div>
 </template>
 
 <script setup lang="ts">
 import { onMounted } from 'vue';
-import { useTheme } from '@/composables/useTheme';
+
 import { useI18n } from '@/composables/useI18n';
 
 // Initialize composables
-useTheme();
+
 const { initLanguage } = useI18n();
 
 onMounted(() => {
