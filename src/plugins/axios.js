@@ -2,7 +2,7 @@
 import axios from 'axios'
 
 const instance = axios.create({
-  baseURL: '/api', // 可依情境使用環境變數
+  baseURL: 'http://192.168.20.43:7289/api', // 可依情境使用環境變數
   headers: {
     'Content-Type': 'application/json'
   },
