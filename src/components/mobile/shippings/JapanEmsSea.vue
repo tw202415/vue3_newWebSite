@@ -10,7 +10,7 @@
     <div class="sticky top-14 z-40 bg-gray-800 border-b border-cyan-500/20 px-4">
       <div class="flex overflow-x-auto scrollbar-hide space-x-2 py-2">
         <button
-          v-for="menu in menus"
+          v-for="menu in menus.slice(0, 2)"
           :key="menu.id"
           @click="activeTab = menu.id"
           class="px-4 py-2 rounded-lg text-sm font-medium whitespace-nowrap transition-colors"
@@ -41,22 +41,6 @@
           :mobile-component="MobilePricingSection"
         />
       </div>
-      
-      <div v-show="activeTab === 'timeline'">
-        <!-- 運送時間 -->
-        <ResponsiveComponent
-          :desktop-component="DesktopTimelineSection"
-          :mobile-component="MobileTimelineSection"
-        />
-      </div>
-      
-      <div v-show="activeTab === 'faq'">
-        <!-- 常見問題 -->
-        <ResponsiveComponent
-          :desktop-component="DesktopFaqSection"
-          :mobile-component="MobileFaqSection"
-        />
-      </div>
     </div>
   </div>
 </template>
@@ -70,16 +54,12 @@ import ResponsiveComponent from '@/components/shared/ResponsiveComponent.vue'
 const { t } = useI18n()
 
 //桌面
-import DesktopProcessSection from '@/components/desktop/shippings/Japan/ProcessSection.vue'
-import DesktopPricingSection from '@/components/desktop/shippings/Japan/PricingSection.vue'
-import DesktopTimelineSection from '@/components/desktop/shippings/Japan/TimelineSection.vue'
-import DesktopFaqSection from '@/components/desktop/shippings/Japan/FaqSection.vue'
+import DesktopProcessSection from '@/components/desktop/shippings/JapanEmsSea/ProcessSection.vue'
+import DesktopPricingSection from '@/components/desktop/shippings/JapanEmsSea/PricingSection.vue'
 
 //手機
-import MobileProcessSection from '@/components/mobile/shippings/Japan/ProcessSection.vue'
-import MobilePricingSection from '@/components/mobile/shippings/Japan/PricingSection.vue'
-import MobileTimelineSection from '@/components/mobile/shippings/Japan/TimelineSection.vue'
-import MobileFaqSection from '@/components/mobile/shippings/Japan/FaqSection.vue'
+import MobileProcessSection from '@/components/mobile/shippings/JapanEmsSea/ProcessSection.vue'
+import MobilePricingSection from '@/components/mobile/shippings/JapanEmsSea/PricingSection.vue'
 
 const activeTab = ref('process')
 

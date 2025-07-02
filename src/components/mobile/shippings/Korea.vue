@@ -2,7 +2,7 @@
   <div class="min-h-screen bg-gray-900 pb-20 safe-area-pb">
     <!-- 頂部導航 -->
     <MobileHeader 
-      :title="t('shipping.routes.countries.japan')"
+      :title="t('shipping.routes.countries.korea')"
       class="sticky top-0 z-50"
     />
 
@@ -70,16 +70,16 @@ import ResponsiveComponent from '@/components/shared/ResponsiveComponent.vue'
 const { t } = useI18n()
 
 //桌面
-import DesktopProcessSection from '@/components/desktop/shippings/Japan/ProcessSection.vue'
-import DesktopPricingSection from '@/components/desktop/shippings/Japan/PricingSection.vue'
-import DesktopTimelineSection from '@/components/desktop/shippings/Japan/TimelineSection.vue'
-import DesktopFaqSection from '@/components/desktop/shippings/Japan/FaqSection.vue'
+import DesktopProcessSection from '@/components/desktop/shippings/Korea/ProcessSection.vue'
+import DesktopPricingSection from '@/components/desktop/shippings/Korea/PricingSection.vue'
+import DesktopTimelineSection from '@/components/desktop/shippings/Korea/TimelineSection.vue'
+import DesktopFaqSection from '@/components/desktop/shippings/Korea/FaqSection.vue'
 
 //手機
-import MobileProcessSection from '@/components/mobile/shippings/Japan/ProcessSection.vue'
-import MobilePricingSection from '@/components/mobile/shippings/Japan/PricingSection.vue'
-import MobileTimelineSection from '@/components/mobile/shippings/Japan/TimelineSection.vue'
-import MobileFaqSection from '@/components/mobile/shippings/Japan/FaqSection.vue'
+import MobileProcessSection from '@/components/mobile/shippings/Korea/ProcessSection.vue'
+import MobilePricingSection from '@/components/mobile/shippings/Korea/PricingSection.vue'
+import MobileTimelineSection from '@/components/mobile/shippings/Korea/TimelineSection.vue'
+import MobileFaqSection from '@/components/mobile/shippings/Korea/FaqSection.vue'
 
 const activeTab = ref('process')
 

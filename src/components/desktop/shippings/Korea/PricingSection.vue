@@ -216,10 +216,6 @@
         </div>
 
         <div v-if="index === 1" v-show="openFaqs3[index]" class="p-6 pt-0 border-t border-cyan-500/20">
-          <p class="text-cyan-400 mt-2">{{ t('shipping.routes.notice2') }}</p>
-          <p class="mt-2 text-gray-400" v-for="(i, idx) in item.content">
-              <span v-if="idx <= 3">{{ idx + 1 }}.{{ i }}</span>
-          </p> 
           <div class="overflow-x-auto">
             <table class="w-full border-collapse">
               <thead>
@@ -272,7 +268,7 @@
             </table>
           </div>
           <p class="mt-2 text-gray-300"> 
-            {{ t('shipping.routes.countries.menu2.example') }} : {{ t('shipping.routes.countries.menu2.exampleContent13') }}{{ t('shipping.routes.countries.menu2.webRate') }}{{  t('shipping.routes.countries.menu2.payType1') }}
+            {{ t('shipping.routes.countries.menu2.example') }} : {{ t('shipping.routes.countries.menu2.exampleContent15') }}{{ t('shipping.routes.countries.menu2.webRate') }}{{  t('shipping.routes.countries.menu2.payType1') }}
           </p>
           <p class="text-cyan-400 mt-2">{{ t('shipping.routes.notice') }}</p>
           <p class="mt-2 text-gray-400" v-for="(i, idx) in item.content">
@@ -398,12 +394,13 @@ const feeResult2 = ref(null)
 const feeResult3 = ref(null)
 const feeResult4 = ref(null)
 const feeResult5 = ref(null)
+const countryId = ref(3)
 
 const fetchShippingFee = async () => {
   try {
     // 1kg
     const payload = {
-      countryId: 2,
+      countryId: countryId.value,
       actualWeight: "1",
       length: "1",
       width: "1",
@@ -412,7 +409,7 @@ const fetchShippingFee = async () => {
 
     // 2kg
     const payload2 = {
-      countryId: 2,
+      countryId: countryId.value,
       actualWeight: "2",
       length: "1",
       width: "1",
@@ -421,7 +418,7 @@ const fetchShippingFee = async () => {
 
     // 50kg
     const payload3 = {
-      countryId: 2,
+      countryId: countryId.value,
       actualWeight: "50",
       length: "1",
       width: "1",
@@ -430,7 +427,7 @@ const fetchShippingFee = async () => {
 
     // 101kg
     const payload4 = {
-      countryId: 2,
+      countryId: countryId.value,
       actualWeight: "101",
       length: "1",
       width: "1",
@@ -439,7 +436,7 @@ const fetchShippingFee = async () => {
 
     // 151kg
     const payload5 = {
-      countryId: 2,
+      countryId: countryId.value,
       actualWeight: "151",
       length: "1",
       width: "1",
@@ -477,7 +474,7 @@ function exampleCalc(warehouse, method, weight, feesByPayment) {
   let secondPrice = 0
   firstPrice = feeResult.value?.warehouses?.[warehouse]?.methods?.[method]?.feesByPayment?.Coin?.cost
   secondPrice = feeResult2.value?.warehouses?.[warehouse]?.methods?.[method]?.feesByPayment?.Coin?.cost - firstPrice
-  return t(`shipping.routes.countries.menu2.exampleContent11`) + `${firstPrice}+${secondPrice}+${secondPrice}+(5-3)*196=${firstPrice + secondPrice + secondPrice + (5-3)*196}` + t(`shipping.routes.countries.menu2.payType1`)
+  return t(`shipping.routes.countries.menu2.exampleContent11`) + `${firstPrice}+${secondPrice}+${secondPrice}+(5-3)*181=${firstPrice + secondPrice + secondPrice + (5-3)*181}` + t(`shipping.routes.countries.menu2.payType1`)
 }
 
 // 多種運費計價方案
@@ -524,10 +521,10 @@ const items2 = computed(() => [
   {
     item: t('shipping.routes.countries.menu2.item7'),
     content: [
-        t('shipping.routes.countries.menu2.content20.row1'),
-        t('shipping.routes.countries.menu2.content20.row2'),
-        t('shipping.routes.countries.menu2.content20.row3'),
-        t('shipping.routes.countries.menu2.content20.row4'),
+        t('shipping.routes.countries.menu2.content6.row1'),
+        t('shipping.routes.countries.menu2.content6.row2'),
+        t('shipping.routes.countries.menu2.content6.row3'),
+        t('shipping.routes.countries.menu2.content6.row4'),
     ]
   },
   {
@@ -555,7 +552,7 @@ const items3 = computed(() => [
     ]
   },
   {
-    item: t('shipping.routes.countries.menu2.item17'),
+    item: t('shipping.routes.countries.menu2.item18'),
     content: [
         t('shipping.routes.countries.menu2.content22.row1'),
         t('shipping.routes.countries.menu2.content22.row2'),
@@ -610,8 +607,6 @@ const items3 = computed(() => [
   },
 ])
 
-
-
 const openFaqs = ref(Array(items.value.length).fill(false))
 const openFaqs2 = ref(Array(items2.value.length).fill(false))
 const openFaqs3 = ref(Array(items3.value.length).fill(false))
@@ -641,7 +636,7 @@ const pricingItems = computed(() => [
     {
     currency: t('shipping.routes.countries.menu2.twdCharge4'),
     weight: t('shipping.routes.countries.menu2.volumetricCharge'),
-    price: 'NTD 196'
+    price: 'NTD 181'
   },
 ])
 
@@ -659,7 +654,7 @@ const pricingItems2 = computed(() => [
     {
     currency: t('shipping.routes.countries.menu2.twdCharge4'),
     weight: t('shipping.routes.countries.menu2.volumetricCharge'),
-    price: 'NTD 200'
+    price: 'NTD 184'
   },
 ])
 
@@ -668,17 +663,17 @@ const pricingItems3 = computed(() => [
   {
     currency: t('shipping.routes.countries.menu2.twdCharge1'),
     weight: '50-100kg',
-    price: 'NTD ' + feeResult3.value?.warehouses?.[0]?.methods?.[3]?.feesByPayment?.Coin?.cost / 50
+    price: 'NTD ' + feeResult3.value?.warehouses?.[0]?.methods?.[1]?.feesByPayment?.Coin?.cost / 50
   },
   {
     currency: '',
     weight: '101-150kg',
-    price: 'NTD ' + feeResult4.value?.warehouses?.[0]?.methods?.[3]?.feesByPayment?.Coin?.cost / 101
+    price: 'NTD ' + feeResult4.value?.warehouses?.[0]?.methods?.[1]?.feesByPayment?.Coin?.cost / 101
   },
   {
     currency: '',
     weight: t('shipping.routes.countries.menu2.over151KG'),
-    price: 'NTD ' + feeResult5.value?.warehouses?.[0]?.methods?.[3]?.feesByPayment?.Coin?.cost / 151
+    price: 'NTD ' + feeResult5.value?.warehouses?.[0]?.methods?.[1]?.feesByPayment?.Coin?.cost / 151
   }
 ])
 
@@ -686,17 +681,17 @@ const pricingItems4 = computed(() => [
   {
     currency: t('shipping.routes.countries.menu2.twdCharge2'),
     weight: '50-100kg',
-    price: 'NTD ' + feeResult3.value?.warehouses?.[0]?.methods?.[3]?.feesByPayment?.CreditCard?.cost / 50
+    price: 'NTD ' + feeResult3.value?.warehouses?.[0]?.methods?.[1]?.feesByPayment?.CreditCard?.cost / 50
   },
   {
     currency: '',
     weight: '101-150kg',
-    price: 'NTD ' + feeResult4.value?.warehouses?.[0]?.methods?.[3]?.feesByPayment?.CreditCard?.cost / 101
+    price: 'NTD ' + feeResult4.value?.warehouses?.[0]?.methods?.[1]?.feesByPayment?.CreditCard?.cost / 101
   },
   {
     currency: '',
     weight: t('shipping.routes.countries.menu2.over151KG'),
-    price: 'NTD ' + feeResult5.value?.warehouses?.[0]?.methods?.[3]?.feesByPayment?.CreditCard?.cost / 151
+    price: 'NTD ' + feeResult5.value?.warehouses?.[0]?.methods?.[1]?.feesByPayment?.CreditCard?.cost / 151
   }
 ])
 
@@ -709,31 +704,31 @@ const pricingItems5 = computed(() => [
   }
 ])
 
-// 轉寄日本境內
+// 轉寄韓國境內
 const pricingItems6 = computed(() => [
   {
-    currency: t('shipping.routes.countries.menu2.jpyCharge1'),
+    currency: t('shipping.routes.countries.menu2.krwCharge1'),
     weight: t('shipping.routes.countries.menu2.under5KG'),
-    price: 'JPY 250',
+    price: 'KRW 2500',
   },
   {
     currency: '',
     weight: t('shipping.routes.countries.menu2.over6KG'),
-    price: 'JPY 50',
+    price: 'KRW 500',
   }
 ])
 
 // 代墊運費
 const pricingItems9 = computed(() => [
   {
-    currency: t('shipping.routes.countries.menu2.jpyCharge2'),
+    currency: t('shipping.routes.countries.menu2.krwCharge2'),
     behalf: t('shipping.routes.countries.menu2.cod'),
     price: t('shipping.routes.countries.menu2.serviceFee'),
   },
   {
     currency: '',
     behalf: t('shipping.routes.countries.menu2.actualCost'),
-    price: 'JPY 300',
+    price: 'KRW 3000',
   }
 ])
 
@@ -756,14 +751,14 @@ const pricingItems12 = computed(() => [
 // 存倉時間
 const pricingItems13 = computed(() => [
   {
-    currency: t('shipping.routes.countries.menu2.twdCharge1'),
+    currency: t('shipping.routes.countries.menu2.krwCharge2'),
     time: t('shipping.routes.countries.menu2.free20'),
     storeFee: t('shipping.routes.countries.menu2.free'),
   },
   {
     currency: '',
     time: t('shipping.routes.countries.menu2.over20'),
-    storeFee: '50JPY',
+    storeFee: '500KRW',
   }
 ])
 </script>

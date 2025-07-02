@@ -17,7 +17,6 @@
           @click="closeModal"
           class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors duration-200"
         >
-          <X :size="24" />
         </button>
       </div>
 
@@ -141,7 +140,6 @@
 
 <script setup lang="ts">
 import { ref, reactive } from 'vue';
-import { X } from 'lucide-vue-next';
 import { useI18n } from '@/composables/useI18n';
 import { useAuth } from '@/composables/useAuth';
 

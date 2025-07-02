@@ -77,7 +77,6 @@
             @click="closeModal"
             class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full bg-gray-800/50 hover:bg-gray-700/50 text-gray-400 hover:text-white transition-colors"
           >
-            <X :size="18" />
           </button>
 
           <!-- Modal 標題 -->

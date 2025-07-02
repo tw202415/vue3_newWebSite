@@ -13,6 +13,9 @@ import ShanghaiAirFreight from '@/pages/shippings/ShanghaiAirFreight.vue';
 import ShenzhenAirFreight from '@/pages/shippings/ShenzhenAirFreight.vue';
 import ShenzhenSeaExpress from '@/pages/shippings/ShenzhenSeaExpress.vue';
 import Japan from '@/pages/shippings/Japan.vue';
+import Korea from '@/pages/shippings/Korea.vue';
+import JapanEmsAir from '@/pages/shippings/JapanEmsAir.vue';
+import JapanEmsSea from '@/pages/shippings/JapanEmsSea.vue';
 
 const routes = [
   { path: '/', name: 'Home', component: Home },
@@ -24,6 +27,9 @@ const routes = [
   { path: '/shenzhenAirFreight', name: 'ShenzhenAirFreight', component: ShenzhenAirFreight},
   { path: '/shenzhenSeaExpress', name: 'ShenzhenSeaExpress', component: ShenzhenSeaExpress},
   { path: '/japan', name: 'Japan', component: Japan},
+  { path: '/korea', name: 'Korea', component: Korea},
+  { path: '/japanEmsAir', name: 'JapanEmsAir', component: JapanEmsAir},
+  { path: '/japanEmsSea', name: 'JapanEmsSea', component: JapanEmsSea},
 ];
 
 const router = createRouter({

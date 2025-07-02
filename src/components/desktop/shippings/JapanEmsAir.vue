@@ -6,12 +6,12 @@
       <div class="w-64 bg-gray-800 border-r border-cyan-500/20">
         <div class="p-4 border-b border-cyan-500/20">
           <h2 class="text-xl font-mono font-bold text-cyan-400 tracking-wider">
-            {{ t('shipping.routes.countries.japan') }}
+            {{ t('shipping.routes.countries.japanEmsAir') }}
           </h2>
         </div>
         <nav class="mt-4">
           <button
-            v-for="(menu, index) in menus"
+            v-for="(menu, index) in menus.slice(0, 2)"
             :key="index"
             @click="activeTab = menu.id"
             class="w-full text-left px-4 py-3 font-medium text-gray-300 hover:text-cyan-400 hover:bg-gray-700/50 transition-all duration-300 border-l-4 border-transparent"
@@ -52,22 +52,6 @@
               :mobile-component="MobilePricingSection"
             />
           </div>
-          
-          <div v-show="activeTab === 'timeline'">
-            <!-- 運送時間 -->
-            <ResponsiveComponent
-              :desktop-component="DesktopTimelineSection"
-              :mobile-component="MobileTimelineSection"
-            />
-          </div>
-          
-          <div v-show="activeTab === 'faq'">
-            <!-- 常見問題 -->
-            <ResponsiveComponent
-              :desktop-component="DesktopFaqSection"
-              :mobile-component="MobileFaqSection"
-            />
-          </div>
         </main>
       </div>
     </div>
@@ -80,16 +64,12 @@ import { useI18n } from '@/composables/useI18n'
 import ResponsiveComponent from '@/components/shared/ResponsiveComponent.vue'
 
 //桌面
-import DesktopProcessSection from '@/components/desktop/shippings/Japan/ProcessSection.vue'
-import DesktopPricingSection from '@/components/desktop/shippings/Japan/PricingSection.vue'
-import DesktopTimelineSection from '@/components/desktop/shippings/Japan/TimelineSection.vue'
-import DesktopFaqSection from '@/components/desktop/shippings/Japan/FaqSection.vue'
+import DesktopProcessSection from '@/components/desktop/shippings/JapanEmsAir/ProcessSection.vue'
+import DesktopPricingSection from '@/components/desktop/shippings/JapanEmsAir/PricingSection.vue'
 
 //手機
-import MobileProcessSection from '@/components/mobile/shippings/Japan/ProcessSection.vue'
-import MobilePricingSection from '@/components/mobile/shippings/Japan/PricingSection.vue'
-import MobileTimelineSection from '@/components/mobile/shippings/Japan/TimelineSection.vue'
-import MobileFaqSection from '@/components/mobile/shippings/Japan/FaqSection.vue'
+import MobileProcessSection from '@/components/mobile/shippings/JapanEmsAir/ProcessSection.vue'
+import MobilePricingSection from '@/components/mobile/shippings/JapanEmsAir/PricingSection.vue'
 
 const { t } = useI18n()
 

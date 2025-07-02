@@ -6,7 +6,7 @@
       <div class="w-64 bg-gray-800 border-r border-cyan-500/20">
         <div class="p-4 border-b border-cyan-500/20">
           <h2 class="text-xl font-mono font-bold text-cyan-400 tracking-wider">
-            {{ t('shipping.routes.countries.japan') }}
+            {{ t('shipping.routes.countries.korea') }}
           </h2>
         </div>
         <nav class="mt-4">
@@ -80,16 +80,16 @@ import { useI18n } from '@/composables/useI18n'
 import ResponsiveComponent from '@/components/shared/ResponsiveComponent.vue'
 
 //桌面
-import DesktopProcessSection from '@/components/desktop/shippings/Japan/ProcessSection.vue'
-import DesktopPricingSection from '@/components/desktop/shippings/Japan/PricingSection.vue'
-import DesktopTimelineSection from '@/components/desktop/shippings/Japan/TimelineSection.vue'
-import DesktopFaqSection from '@/components/desktop/shippings/Japan/FaqSection.vue'
+import DesktopProcessSection from '@/components/desktop/shippings/Korea/ProcessSection.vue'
+import DesktopPricingSection from '@/components/desktop/shippings/Korea/PricingSection.vue'
+import DesktopTimelineSection from '@/components/desktop/shippings/Korea/TimelineSection.vue'
+import DesktopFaqSection from '@/components/desktop/shippings/Korea/FaqSection.vue'
 
 //手機
-import MobileProcessSection from '@/components/mobile/shippings/Japan/ProcessSection.vue'
-import MobilePricingSection from '@/components/mobile/shippings/Japan/PricingSection.vue'
-import MobileTimelineSection from '@/components/mobile/shippings/Japan/TimelineSection.vue'
-import MobileFaqSection from '@/components/mobile/shippings/Japan/FaqSection.vue'
+import MobileProcessSection from '@/components/mobile/shippings/Korea/ProcessSection.vue'
+import MobilePricingSection from '@/components/mobile/shippings/Korea/PricingSection.vue'
+import MobileTimelineSection from '@/components/mobile/shippings/Korea/TimelineSection.vue'
+import MobileFaqSection from '@/components/mobile/shippings/Korea/FaqSection.vue'
 
 const { t } = useI18n()
 
