@@ -122,7 +122,6 @@ const countryInfo = computed(() => {
   const countries = {
     japan: { name: '日本', flag: '🇯🇵', currency: 'JPY' },
     korea: { name: '韓國', flag: '🇰🇷', currency: 'KRW' },
-    usa: { name: '美國', flag: '🇺🇸', currency: 'USD' },
     germany: { name: '德國', flag: '🇩🇪', currency: 'EUR' }
   };
   return countries[props.country as keyof typeof countries] || countries.japan;

@@ -143,10 +143,10 @@ const countries = [
   { code: 'shenzhen2', name: '中國', flag: '🇨🇳'},
   { code: 'japan', name: '日本', flag: '🇯🇵'},
   { code: 'korea', name: '韓國', flag: '🇰🇷'},
-  { code: 'japan2', name: '日本', flag: '🇯🇵'},
-  { code: 'japan3', name: '日本', flag: '🇯🇵'},
-  { code: 'usa', name: '美國', flag: '🇺🇸'},
-  { code: 'usa2', name: '美國', flag: '🇺🇸'},
+  { code: 'japanEmsAir', name: '日本', flag: '🇯🇵'},
+  { code: 'japanEmsSea', name: '日本', flag: '🇯🇵'},
+  { code: 'la', name: '美國', flag: '🇺🇸'},
+  { code: 'portland', name: '美國', flag: '🇺🇸'},
   { code: 'germany', name: '德國', flag: '🇩🇪'},
 ];
 

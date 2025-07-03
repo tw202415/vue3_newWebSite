@@ -157,7 +157,7 @@
           </p>
           <p class="text-cyan-400 mt-2">{{ t('shipping.routes.notice') }}</p>
           <p class="mt-2 text-gray-400" v-for="(i, idx) in item.content">
-              {{ idx }}.{{ i }}
+              {{ idx + 1 }}.{{ i }}
           </p>
         </div>
         
@@ -253,7 +253,7 @@
           </span>
         </button>                 
         <div v-if="index === 0" v-show="openFaqs4[index]" class="p-6 pt-0 border-t border-cyan-500/20">
-            <h2 class="text-cyan-400 font-bold mt-2">{{ t('shipping.routes.countries.menu2.subtitle6') }}</h2>
+            <h2 class="text-cyan-400 font-bold mt-2">{{ t('shipping.routes.countries.menu2.subtitle8') }}</h2>
         </div>
 
       </div>
@@ -355,48 +355,21 @@ const toggleFaq4 = (index) => {
 
 // 日本官方EMS空運運費表
 const pricingItems = computed(() => [
-  { weight: '0.5', jpyFee: '1450' },
-  { weight: '0.6', jpyFee: '1600' },
-  { weight: '0.7', jpyFee: '1750' },
-  { weight: '0.8', jpyFee: '1900' },
-  { weight: '0.9', jpyFee: '2050' },
-  { weight: '1', jpyFee: '2200' },
-  { weight: '1.25', jpyFee: '2500' },
-  { weight: '1.5', jpyFee: '2800' },
-  { weight: '1.75', jpyFee: '3100' },
-  { weight: '2', jpyFee: '3400' },
-  { weight: '2.5', jpyFee: '3900' },
-  { weight: '3', jpyFee: '4400' },
-  { weight: '3.5', jpyFee: '4900' },
-  { weight: '4', jpyFee: '5400' },
-  { weight: '4.5', jpyFee: '5900' },
-  { weight: '5', jpyFee: '6400' },
-  { weight: '5.5', jpyFee: '6900' },
-  { weight: '6', jpyFee: '7400' },
-  { weight: '7', jpyFee: '8200' },
-  { weight: '8', jpyFee: '9000' },
-  { weight: '9', jpyFee: '9800' },
-  { weight: '10', jpyFee: '10600' },
-  { weight: '11', jpyFee: '11400' },
-  { weight: '12', jpyFee: '12200' },
-  { weight: '13', jpyFee: '13000' },
-  { weight: '14', jpyFee: '13800' },
-  { weight: '15', jpyFee: '14600' },
-  { weight: '16', jpyFee: '15400' },
-  { weight: '17', jpyFee: '16200' },
-  { weight: '18', jpyFee: '17000' },
-  { weight: '19', jpyFee: '17800' },
-  { weight: '20', jpyFee: '18600' },
-  { weight: '21', jpyFee: '19400' },
-  { weight: '22', jpyFee: '20200' },
-  { weight: '23', jpyFee: '21000' },
-  { weight: '24', jpyFee: '21800' },
-  { weight: '25', jpyFee: '22600' },
-  { weight: '26', jpyFee: '23400' },
-  { weight: '27', jpyFee: '24200' },
-  { weight: '28', jpyFee: '25000' },
-  { weight: '29', jpyFee: '25800' },
-  { weight: '30', jpyFee: '26600' },
+  { weight: '1', jpyFee: '1800' },  { weight: '2', jpyFee: '2200' },
+  { weight: '3', jpyFee: '2600' },  { weight: '4', jpyFee: '3000' },
+  { weight: '5', jpyFee: '3400' },  { weight: '6', jpyFee: '3800' },
+  { weight: '7', jpyFee: '4200' },  { weight: '8', jpyFee: '4600' },
+  { weight: '9', jpyFee: '5000' },  { weight: '10', jpyFee: '5400' },
+  { weight: '11', jpyFee: '5800' },  { weight: '12', jpyFee: '6200' },
+  { weight: '13', jpyFee: '6600' },  { weight: '14', jpyFee: '7000' },
+  { weight: '15', jpyFee: '7400' },  { weight: '16', jpyFee: '7800' },
+  { weight: '17', jpyFee: '8200' },  { weight: '18', jpyFee: '8600' },
+  { weight: '19', jpyFee: '9000' },  { weight: '20', jpyFee: '9400' },
+  { weight: '21', jpyFee: '9800' },  { weight: '22', jpyFee: '10200' },
+  { weight: '23', jpyFee: '10600' },  { weight: '24', jpyFee: '11000' },
+  { weight: '25', jpyFee: '11400' },  { weight: '26', jpyFee: '11800' },
+  { weight: '27', jpyFee: '12200' },  { weight: '28', jpyFee: '12600' },
+  { weight: '29', jpyFee: '13000' },  { weight: '30', jpyFee: '13400' },
 ])
 
 // 代收包裹
@@ -412,7 +385,7 @@ const pricingItems2 = computed(() => [
 const pricingItems3 = computed(() => [
   {
     currency: t('shipping.routes.countries.menu2.jpyCharge2'),
-    weight: t('shipping.routes.countries.menu2.mergePackage'),
+    weight: t('shipping.routes.countries.menu2.mergePackage2'),
     packingFee: t('shipping.routes.countries.menu2.every100JPY'),
   },
 ])

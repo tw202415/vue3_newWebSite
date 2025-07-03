@@ -6,7 +6,7 @@
       <div class="w-64 bg-gray-800 border-r border-cyan-500/20">
         <div class="p-4 border-b border-cyan-500/20">
           <h2 class="text-xl font-mono font-bold text-cyan-400 tracking-wider">
-            {{ t('shipping.routes.countries.japanEmsSea') }}
+            {{ t('shipping.routes.countries.la') }}
           </h2>
         </div>
         <nav class="mt-4">
@@ -52,6 +52,14 @@
               :mobile-component="MobilePricingSection"
             />
           </div>
+          
+          <div v-show="activeTab === 'timeline'">
+            <!-- 運送時間 -->
+            <ResponsiveComponent
+              :desktop-component="DesktopTimelineSection"
+              :mobile-component="MobileTimelineSection"
+            />
+          </div>
         </main>
       </div>
     </div>
@@ -64,20 +72,23 @@ import { useI18n } from '@/composables/useI18n'
 import ResponsiveComponent from '@/components/shared/ResponsiveComponent.vue'
 
 //桌面
-import DesktopProcessSection from '@/components/desktop/shippings/JapanEmsSea/ProcessSection.vue'
-import DesktopPricingSection from '@/components/desktop/shippings/JapanEmsSea/PricingSection.vue'
+import DesktopProcessSection from '@/components/desktop/shippings/LA/ProcessSection.vue'
+import DesktopPricingSection from '@/components/desktop/shippings/LA/PricingSection.vue'
+import DesktopTimelineSection from '@/components/desktop/shippings/LA/TimelineSection.vue'
 
 //手機
-import MobileProcessSection from '@/components/mobile/shippings/JapanEmsSea/ProcessSection.vue'
-import MobilePricingSection from '@/components/mobile/shippings/JapanEmsSea/PricingSection.vue'
+import MobileProcessSection from '@/components/mobile/shippings/LA/ProcessSection.vue'
+import MobilePricingSection from '@/components/mobile/shippings/LA/PricingSection.vue'
+import MobileTimelineSection from '@/components/mobile/shippings/LA/TimelineSection.vue'
 
 const { t } = useI18n()
 
 const activeTab = ref('process')
 
 const menus = computed(() => [
-  { id: 'process', title: t('shipping.routes.menu5') },
+  { id: 'process', title: t('shipping.routes.menu1') },
   { id: 'pricing', title: t('shipping.routes.menu2') },
+  { id: 'timeline', title: t('shipping.routes.menu3') },
 ])
 
 const currentTitle = computed(() => {

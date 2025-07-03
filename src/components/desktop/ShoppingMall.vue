@@ -73,7 +73,6 @@ const { t } = useI18n();
 const countries = [
   { code: 'japan', name: '日本', flag: '🇯🇵' },
   { code: 'korea', name: '韓國', flag: '🇰🇷' },
-  { code: 'usa', name: '美國', flag: '🇺🇸' },
   { code: 'germany', name: '德國', flag: '🇩🇪' }
 ];
 

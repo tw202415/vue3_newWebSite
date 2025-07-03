@@ -34,15 +34,15 @@ const { t } = useI18n()
 
 const processItems = computed(() => [
   {
-    item: t('shipping.routes.countries.menu1.item11'),
+    item: t('shipping.routes.countries.menu1.item14'),
     content: [
-        t('shipping.routes.countries.menu1.content10.row1'),
-        t('shipping.routes.countries.menu1.content10.row2'),
-        t('shipping.routes.countries.menu1.content10.row3'),
-        t('shipping.routes.countries.menu1.content10.row4'),
-        t('shipping.routes.countries.menu1.content10.row5'),
-        t('shipping.routes.countries.menu1.content10.row6'),
-        t('shipping.routes.countries.menu1.content10.row7'),
+        t('shipping.routes.countries.menu1.content12.row1'),
+        t('shipping.routes.countries.menu1.content12.row2'),
+        t('shipping.routes.countries.menu1.content12.row3'),
+        t('shipping.routes.countries.menu1.content12.row4'),
+        t('shipping.routes.countries.menu1.content12.row5'),
+        t('shipping.routes.countries.menu1.content12.row6'),
+        t('shipping.routes.countries.menu1.content12.row7'),
     ]
   },
   {

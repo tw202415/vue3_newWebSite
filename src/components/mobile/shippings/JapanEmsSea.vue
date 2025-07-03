@@ -10,7 +10,7 @@
     <div class="sticky top-14 z-40 bg-gray-800 border-b border-cyan-500/20 px-4">
       <div class="flex overflow-x-auto scrollbar-hide space-x-2 py-2">
         <button
-          v-for="menu in menus.slice(0, 2)"
+          v-for="menu in menus"
           :key="menu.id"
           @click="activeTab = menu.id"
           class="px-4 py-2 rounded-lg text-sm font-medium whitespace-nowrap transition-colors"
@@ -64,10 +64,8 @@ import MobilePricingSection from '@/components/mobile/shippings/JapanEmsSea/Pric
 const activeTab = ref('process')
 
 const menus = computed(() => [
-  { id: 'process', title: t('shipping.routes.menu1') },
+  { id: 'process', title: t('shipping.routes.menu5') },
   { id: 'pricing', title: t('shipping.routes.menu2') },
-  { id: 'timeline', title: t('shipping.routes.menu3') },
-  { id: 'faq', title: t('shipping.routes.menu4') }
 ])
 
 const currentTitle = computed(() => {

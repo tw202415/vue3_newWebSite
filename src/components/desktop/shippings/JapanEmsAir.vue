@@ -11,7 +11,7 @@
         </div>
         <nav class="mt-4">
           <button
-            v-for="(menu, index) in menus.slice(0, 2)"
+            v-for="(menu, index) in menus"
             :key="index"
             @click="activeTab = menu.id"
             class="w-full text-left px-4 py-3 font-medium text-gray-300 hover:text-cyan-400 hover:bg-gray-700/50 transition-all duration-300 border-l-4 border-transparent"
@@ -76,10 +76,8 @@ const { t } = useI18n()
 const activeTab = ref('process')
 
 const menus = computed(() => [
-  { id: 'process', title: t('shipping.routes.menu1') },
+  { id: 'process', title: t('shipping.routes.menu5') },
   { id: 'pricing', title: t('shipping.routes.menu2') },
-  { id: 'timeline', title: t('shipping.routes.menu3') },
-  { id: 'faq', title: t('shipping.routes.menu4') }
 ])
 
 const currentTitle = computed(() => {

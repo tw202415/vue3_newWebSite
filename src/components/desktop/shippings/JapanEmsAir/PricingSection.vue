@@ -157,7 +157,7 @@
           </p>
           <p class="text-cyan-400 mt-2">{{ t('shipping.routes.notice') }}</p>
           <p class="mt-2 text-gray-400" v-for="(i, idx) in item.content">
-              {{ idx }}.{{ i }}
+              {{ idx + 1 }}.{{ i }}
           </p>
         </div>
         

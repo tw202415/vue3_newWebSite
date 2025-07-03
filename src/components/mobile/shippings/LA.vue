@@ -2,7 +2,7 @@
   <div class="min-h-screen bg-gray-900 pb-20 safe-area-pb">
     <!-- 頂部導航 -->
     <MobileHeader 
-      :title="t('shipping.routes.countries.japan')"
+      :title="t('shipping.routes.countries.shanghaiAirFreight')"
       class="sticky top-0 z-50"
     />
 
@@ -41,6 +41,14 @@
           :mobile-component="MobilePricingSection"
         />
       </div>
+      
+      <div v-show="activeTab === 'timeline'">
+        <!-- 運送時間 -->
+        <ResponsiveComponent
+          :desktop-component="DesktopTimelineSection"
+          :mobile-component="MobileTimelineSection"
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -54,18 +62,21 @@ import ResponsiveComponent from '@/components/shared/ResponsiveComponent.vue'
 const { t } = useI18n()
 
 //桌面
-import DesktopProcessSection from '@/components/desktop/shippings/JapanEmsAir/ProcessSection.vue'
-import DesktopPricingSection from '@/components/desktop/shippings/JapanEmsAir/PricingSection.vue'
+import DesktopProcessSection from '@/components/desktop/shippings/LA/ProcessSection.vue'
+import DesktopPricingSection from '@/components/desktop/shippings/LA/PricingSection.vue'
+import DesktopTimelineSection from '@/components/desktop/shippings/LA/TimelineSection.vue'
 
 //手機
-import MobileProcessSection from '@/components/mobile/shippings/JapanEmsAir/ProcessSection.vue'
-import MobilePricingSection from '@/components/mobile/shippings/JapanEmsAir/PricingSection.vue'
+import MobileProcessSection from '@/components/mobile/shippings/LA/ProcessSection.vue'
+import MobilePricingSection from '@/components/mobile/shippings/LA/PricingSection.vue'
+import MobileTimelineSection from '@/components/mobile/shippings/LA/TimelineSection.vue'
 
 const activeTab = ref('process')
 
 const menus = computed(() => [
-  { id: 'process', title: t('shipping.routes.menu5') },
+  { id: 'process', title: t('shipping.routes.menu1') },
   { id: 'pricing', title: t('shipping.routes.menu2') },
+  { id: 'timeline', title: t('shipping.routes.menu3') },
 ])
 
 const currentTitle = computed(() => {
