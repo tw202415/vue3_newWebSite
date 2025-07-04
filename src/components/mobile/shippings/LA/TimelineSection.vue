@@ -1,7 +1,5 @@
 <template>
   <div class="space-y-6">
-    <h2 class="text-xl font-bold text-cyan-400 mb-4">{{ t('shipping.routes.countries.menu2.title') }}</h2>
-    
       <div class="space-y-4">
     <div 
       v-for="(item, index) in items"
@@ -22,51 +20,10 @@
       <div v-if="index === 0">
         <div v-show="openFaqs[index]" class="p-6 pt-0 border-t border-cyan-500/20">
           <div class="overflow-x-auto">
-            <h2 class="text-gray-200 font-bold mt-2">{{ t(`shipping.routes.countries.menu3.subtitle1`) }}</h2>
-            <h2 class="text-gray-200 font-bold mt-2">{{ t(`shipping.routes.countries.menu3.text1`) }} 15:30 {{ t(`shipping.routes.countries.menu3.text2`) }}</h2>
-            <table class="w-full border-collapse">
-              <thead>
-                <tr class="bg-gray-800/70 text-gray-300">
-                  <th class="p-4 text-left border-b border-cyan-500/20">{{ t('shipping.routes.countries.menu3.shipping') }}</th>
-                  <th class="p-4 text-left border-b border-cyan-500/20">{{ t('shipping.routes.countries.menu3.arrival') }}</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr 
-                  v-for="(item, index) in dateItems"
-                  :key="index"
-                  class="border-b border-cyan-500/10 hover:bg-gray-800/30"
-                >
-                  <td class="p-4 text-gray-300">{{ item.dateStr }}</td>
-                  <td class="p-4 text-gray-400">{{ item.dateEnd }}</td>
-                </tr>
-              </tbody>
-            </table>
+            <h2 class="text-cyan-400 font-bold mt-2">{{ t(`shipping.routes.countries.menu3.subtitle7`) }}</h2>
           </div>
         </div>
         <div v-show="openFaqs[index]" class="p-6 pt-0 border-t border-cyan-500/20">
-          <div class="overflow-x-auto">
-            <h2 class="text-gray-200 font-bold mt-2">{{ t(`shipping.routes.countries.menu3.subtitle1`) }}</h2>
-            <h2 class="text-gray-200 font-bold mt-2">{{ t(`shipping.routes.countries.menu3.text1`) }} 15:30 {{ t(`shipping.routes.countries.menu3.text3`) }}</h2>
-            <table class="w-full border-collapse">
-              <thead>
-                <tr class="bg-gray-800/70 text-gray-300">
-                  <th class="p-4 text-left border-b border-cyan-500/20">{{ t('shipping.routes.countries.menu3.shipping') }}</th>
-                  <th class="p-4 text-left border-b border-cyan-500/20">{{ t('shipping.routes.countries.menu3.arrival') }}</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr 
-                  v-for="(item, index) in dateItems"
-                  :key="index"
-                  class="border-b border-cyan-500/10 hover:bg-gray-800/30"
-                >
-                  <td class="p-4 text-gray-300">{{ item.dateStr }}</td>
-                  <td class="p-4 text-gray-400">{{ item.dateEnd }}</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
           <p class="text-cyan-400 mt-2">{{ t('shipping.routes.notice') }}</p>
           <p class="mt-2 text-gray-400" v-for="(i, idx) in item.content">
               {{ idx + 1 }}.{{ i }}
@@ -92,7 +49,7 @@
           <div class="overflow-x-auto">
             <h2 class="text-gray-200 font-bold mt-2">{{ t(`shipping.routes.countries.menu3.text4`) }}</h2>
           </div>
-          <p class="mt-2 text-gray-400">{{ t(`shipping.routes.countries.menu3.text5`) }}</p>
+          <p class="mt-2 text-gray-400">{{ t(`shipping.routes.countries.menu3.text14`) }}</p>
         </div>
       </div>
     </div>
@@ -106,46 +63,30 @@ import { ref, onMounted, computed } from 'vue'
 import { useI18n } from '@/composables/useI18n'
 
 const { t } = useI18n()
-onMounted(() => {})
+onMounted(() => {
+})
 
 const items = computed(() => [
   {
     item: t('shipping.routes.countries.menu3.item1'),
     content: [
-      t('shipping.routes.countries.menu3.content1.row1'),
-      t('shipping.routes.countries.menu3.content1.row2'),
-      t('shipping.routes.countries.menu3.content1.row3'),
-      t('shipping.routes.countries.menu3.content1.row4'),
+      t('shipping.routes.countries.menu3.content4.row1'),
+      t('shipping.routes.countries.menu3.content4.row2'),
+      t('shipping.routes.countries.menu3.content4.row3'),
     ]
   },
   {
-    item: t('shipping.routes.countries.menu3.item2'),
-    content: []
+    item: t('shipping.routes.countries.menu3.item6'),
+    content: [
+        
+    ]
   }
 ])
 
-const dateItems = computed(() => [
-  { dateStr: t('shipping.routes.countries.menu3.monday'), dateEnd: t('shipping.routes.countries.menu3.wednesday') },
-  { dateStr: t('shipping.routes.countries.menu3.tuesday'), dateEnd: t('shipping.routes.countries.menu3.thursday') },
-  { dateStr: t('shipping.routes.countries.menu3.wednesday'), dateEnd: t('shipping.routes.countries.menu3.friday') },
-  { dateStr: t('shipping.routes.countries.menu3.thursday'), dateEnd: t('shipping.routes.countries.menu3.saturday') },
-  { dateStr: t('shipping.routes.countries.menu3.friday'), dateEnd: t('shipping.routes.countries.menu3.monday') },
-  { dateStr: t('shipping.routes.countries.menu3.saturday'), dateEnd: t('shipping.routes.countries.menu3.monday') },
-  { dateStr: t('shipping.routes.countries.menu3.sunday'), dateEnd: t('shipping.routes.countries.menu3.tuesday') }
-])
-
-const dateItems2 = computed(() => [
-  { dateStr: t('shipping.routes.countries.menu3.monday'), dateEnd: t('shipping.routes.countries.menu3.thursday') },
-  { dateStr: t('shipping.routes.countries.menu3.tuesday'), dateEnd: t('shipping.routes.countries.menu3.friday') },
-  { dateStr: t('shipping.routes.countries.menu3.wednesday'), dateEnd: t('shipping.routes.countries.menu3.saturday') },
-  { dateStr: t('shipping.routes.countries.menu3.thursday'), dateEnd: t('shipping.routes.countries.menu3.sunday') },
-  { dateStr: t('shipping.routes.countries.menu3.friday'), dateEnd: t('shipping.routes.countries.menu3.monday') },
-  { dateStr: t('shipping.routes.countries.menu3.saturday'), dateEnd: t('shipping.routes.countries.menu3.tuesday') },
-  { dateStr: t('shipping.routes.countries.menu3.sunday'), dateEnd: t('shipping.routes.countries.menu3.wednesday') }
-])
-
 const openFaqs = ref(Array(items.value.length).fill(false))
+
 const toggleFaq = (index) => {
   openFaqs.value[index] = !openFaqs.value[index]
 }
+
 </script>

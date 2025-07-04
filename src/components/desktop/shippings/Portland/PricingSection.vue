@@ -66,7 +66,7 @@
             </table>
           </div>
           <p class="mt-2 text-gray-300"> 
-            {{ t('shipping.routes.countries.menu2.example') }} : {{ exampleCalc(0, 0, 1, 'Coin') }}
+            {{ t('shipping.routes.countries.menu2.example') }} : {{ exampleCalc(1, 0, 1, 'Coin') }}
           </p>
           <p class="text-cyan-400 mt-2">{{ t('shipping.routes.notice') }}</p>
           <p class="mt-2 text-gray-400" v-for="(i, idx) in item.content">
@@ -474,7 +474,7 @@ function exampleCalc(warehouse, method, weight, feesByPayment) {
   let secondPrice = 0
   firstPrice = feeResult.value?.warehouses?.[warehouse]?.methods?.[method]?.feesByPayment?.Coin?.cost
   secondPrice = feeResult2.value?.warehouses?.[warehouse]?.methods?.[method]?.feesByPayment?.Coin?.cost - firstPrice
-  return t(`shipping.routes.countries.menu2.exampleContent11`) + `${firstPrice}+${secondPrice}+${secondPrice}+(5-3)*107=${firstPrice + secondPrice + secondPrice + (5-3)*107}` + t(`shipping.routes.countries.menu2.payType1`)
+  return t(`shipping.routes.countries.menu2.exampleContent11`) + `${firstPrice}+${secondPrice}+${secondPrice}+(5-3)*114=${firstPrice + secondPrice + secondPrice + (5-3)*114}` + t(`shipping.routes.countries.menu2.payType1`)
 }
 
 // 多種運費計價方案
@@ -482,26 +482,26 @@ const items = computed(() => [
   {
     item: t('shipping.routes.countries.menu2.item1'),
     content: [
-        t('shipping.routes.countries.menu2.content18.row1'),
-        t('shipping.routes.countries.menu2.content18.row2'),
-        t('shipping.routes.countries.menu2.content18.row3'),
-        t('shipping.routes.countries.menu2.content18.row4'),
-        t('shipping.routes.countries.menu2.content18.row5'),
-        t('shipping.routes.countries.menu2.content18.row6'),
-        t('shipping.routes.countries.menu2.content18.row7')
+        t('shipping.routes.countries.menu2.content32.row1'),
+        t('shipping.routes.countries.menu2.content32.row2'),
+        t('shipping.routes.countries.menu2.content32.row3'),
+        t('shipping.routes.countries.menu2.content32.row4'),
+        t('shipping.routes.countries.menu2.content32.row5'),
+        t('shipping.routes.countries.menu2.content32.row6'),
+        t('shipping.routes.countries.menu2.content32.row7')
     ]
   },
   {
     item: t('shipping.routes.countries.menu2.item3'),
     content: [
-        t('shipping.routes.countries.menu2.content29.row1'),
-        t('shipping.routes.countries.menu2.content29.row2'),
-        t('shipping.routes.countries.menu2.content29.row3'),
-        t('shipping.routes.countries.menu2.content29.row4'),
-        t('shipping.routes.countries.menu2.content29.row5'),
-        t('shipping.routes.countries.menu2.content29.row6'),
-        t('shipping.routes.countries.menu2.content29.row7'),
-        t('shipping.routes.countries.menu2.content29.row8')
+        t('shipping.routes.countries.menu2.content33.row1'),
+        t('shipping.routes.countries.menu2.content33.row2'),
+        t('shipping.routes.countries.menu2.content33.row3'),
+        t('shipping.routes.countries.menu2.content33.row4'),
+        t('shipping.routes.countries.menu2.content33.row5'),
+        t('shipping.routes.countries.menu2.content33.row6'),
+        t('shipping.routes.countries.menu2.content33.row7'),
+        t('shipping.routes.countries.menu2.content33.row8')
     ]
   },
   {
@@ -622,17 +622,17 @@ const pricingItems = computed(() => [
   {
     currency: t('shipping.routes.countries.menu2.twdCharge5'),
     weight: t('shipping.routes.countries.menu2.firstLb'),
-    price: 'NTD ' + feeResult.value?.warehouses?.[0]?.methods?.[0]?.feesByPayment?.Coin?.cost
+    price: 'NTD ' + feeResult.value?.warehouses?.[1]?.methods?.[0]?.feesByPayment?.Coin?.cost
   },
   {
     currency: '',
     weight: t('shipping.routes.countries.menu2.secondLb'),
-    price: 'NTD ' + (feeResult2.value?.warehouses?.[0]?.methods?.[0]?.feesByPayment?.Coin?.cost - feeResult.value?.warehouses?.[0]?.methods?.[0]?.feesByPayment?.Coin?.cost)
+    price: 'NTD ' + (feeResult2.value?.warehouses?.[1]?.methods?.[0]?.feesByPayment?.Coin?.cost - feeResult.value?.warehouses?.[1]?.methods?.[0]?.feesByPayment?.Coin?.cost)
   },
     {
     currency: t('shipping.routes.countries.menu2.twdCharge6'),
     weight: t('shipping.routes.countries.menu2.volumetricCharge'),
-    price: 'NTD 107'
+    price: 'NTD 114'
   },
 ])
 
@@ -640,17 +640,17 @@ const pricingItems2 = computed(() => [
   {
     currency: t('shipping.routes.countries.menu2.twdCharge5'),
     weight: t('shipping.routes.countries.menu2.firstLb'),
-    price: 'NTD ' + feeResult.value?.warehouses?.[0]?.methods?.[0]?.feesByPayment?.CreditCard?.cost
+    price: 'NTD ' + feeResult.value?.warehouses?.[1]?.methods?.[0]?.feesByPayment?.CreditCard?.cost
   },
   {
     currency: '',
     weight: t('shipping.routes.countries.menu2.secondLb'),
-    price: 'NTD ' + (feeResult2.value?.warehouses?.[0]?.methods?.[0]?.feesByPayment?.CreditCard?.cost - feeResult.value?.warehouses?.[0]?.methods?.[0]?.feesByPayment?.CreditCard?.cost)
+    price: 'NTD ' + (feeResult2.value?.warehouses?.[1]?.methods?.[0]?.feesByPayment?.CreditCard?.cost - feeResult.value?.warehouses?.[1]?.methods?.[0]?.feesByPayment?.CreditCard?.cost)
   },
     {
     currency: t('shipping.routes.countries.menu2.twdCharge6'),
     weight: t('shipping.routes.countries.menu2.volumetricCharge'),
-    price: 'NTD 110'
+    price: 'NTD 117'
   },
 ])
 
@@ -659,17 +659,17 @@ const pricingItems3 = computed(() => [
   {
     currency: t('shipping.routes.countries.menu2.twdCharge1'),
     weight: '110lb-220lb',
-    price: 'NTD ' + feeResult3.value?.warehouses?.[0]?.methods?.[1]?.feesByPayment?.Coin?.cost / 110
+    price: 'NTD ' + feeResult3.value?.warehouses?.[1]?.methods?.[1]?.feesByPayment?.Coin?.cost / 110
   },
   {
     currency: '',
     weight: '221lb-330lb',
-    price: 'NTD ' + feeResult4.value?.warehouses?.[0]?.methods?.[1]?.feesByPayment?.Coin?.cost / 221
+    price: 'NTD ' + feeResult4.value?.warehouses?.[1]?.methods?.[1]?.feesByPayment?.Coin?.cost / 221
   },
   {
     currency: '',
     weight: t('shipping.routes.countries.menu2.over331lb'),
-    price: 'NTD ' + feeResult5.value?.warehouses?.[0]?.methods?.[1]?.feesByPayment?.Coin?.cost / 331
+    price: 'NTD ' + feeResult5.value?.warehouses?.[1]?.methods?.[1]?.feesByPayment?.Coin?.cost / 331
   }
 ])
 
@@ -677,17 +677,17 @@ const pricingItems4 = computed(() => [
   {
     currency: t('shipping.routes.countries.menu2.twdCharge2'),
     weight: '110lb-220lb',
-    price: 'NTD ' + feeResult3.value?.warehouses?.[0]?.methods?.[1]?.feesByPayment?.CreditCard?.cost / 110
+    price: 'NTD ' + feeResult3.value?.warehouses?.[1]?.methods?.[1]?.feesByPayment?.CreditCard?.cost / 110
   },
   {
     currency: '',
     weight: '221lb-330lb',
-    price: 'NTD ' + feeResult4.value?.warehouses?.[0]?.methods?.[1]?.feesByPayment?.CreditCard?.cost / 221
+    price: 'NTD ' + feeResult4.value?.warehouses?.[1]?.methods?.[1]?.feesByPayment?.CreditCard?.cost / 221
   },
   {
     currency: '',
     weight: t('shipping.routes.countries.menu2.over331lb'),
-    price: 'NTD ' + feeResult5.value?.warehouses?.[0]?.methods?.[1]?.feesByPayment?.CreditCard?.cost / 331
+    price: 'NTD ' + feeResult5.value?.warehouses?.[1]?.methods?.[1]?.feesByPayment?.CreditCard?.cost / 331
   }
 ])
 

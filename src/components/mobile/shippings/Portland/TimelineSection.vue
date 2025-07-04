@@ -20,7 +20,7 @@
       <div v-if="index === 0">
         <div v-show="openFaqs[index]" class="p-6 pt-0 border-t border-cyan-500/20">
           <div class="overflow-x-auto">
-            <h2 class="text-cyan-400 font-bold mt-2">{{ t(`shipping.routes.countries.menu3.subtitle7`) }}</h2>
+            <h2 class="text-cyan-400 font-bold mt-2">{{ t(`shipping.routes.countries.menu3.subtitle8`) }}</h2>
           </div>
         </div>
         <div v-show="openFaqs[index]" class="p-6 pt-0 border-t border-cyan-500/20">
@@ -70,13 +70,13 @@ const items = computed(() => [
   {
     item: t('shipping.routes.countries.menu3.item1'),
     content: [
-      t('shipping.routes.countries.menu3.content4.row1'),
-      t('shipping.routes.countries.menu3.content4.row2'),
-      t('shipping.routes.countries.menu3.content4.row3'),
+      t('shipping.routes.countries.menu3.content5.row1'),
+      t('shipping.routes.countries.menu3.content5.row2'),
+      t('shipping.routes.countries.menu3.content5.row3'),
     ]
   },
   {
-    item: t('shipping.routes.countries.menu3.item6'),
+    item: t('shipping.routes.countries.menu3.item7'),
     content: [
         
     ]

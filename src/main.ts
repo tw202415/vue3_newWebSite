@@ -17,6 +17,7 @@ import Korea from '@/pages/shippings/Korea.vue';
 import JapanEmsAir from '@/pages/shippings/JapanEmsAir.vue';
 import JapanEmsSea from '@/pages/shippings/JapanEmsSea.vue';
 import LA from '@/pages/shippings/LA.vue';
+import Portland from '@/pages/shippings/Portland.vue';
 
 const routes = [
   { path: '/', name: 'Home', component: Home },
@@ -32,6 +33,7 @@ const routes = [
   { path: '/japanEmsAir', name: 'JapanEmsAir', component: JapanEmsAir},
   { path: '/japanEmsSea', name: 'JapanEmsSea', component: JapanEmsSea},
   { path: '/la', name: 'LA', component: LA},
+  { path: '/portland', name: 'Portland', component: Portland},
 ];
 
 const router = createRouter({

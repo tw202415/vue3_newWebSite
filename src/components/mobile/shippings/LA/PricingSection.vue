@@ -20,6 +20,7 @@
         </button>                 
         <div v-if="index === 0" v-show="openFaqs[index]" class="p-6 pt-0 border-t border-cyan-500/20">
           <div class="overflow-x-auto">
+            <h2 class="text-cyan-400 font-bold mt-2">{{ t('shipping.routes.countries.menu2.item7') }} :</h2>
             <table class="w-full border-collapse">
               <thead>
                 <tr class="bg-gray-800/70 text-gray-300">
@@ -41,18 +42,8 @@
               </tbody>
             </table>
           </div>
-          <p class="mt-2 text-gray-300"> 
-            {{ t('shipping.routes.countries.menu2.example') }} : {{ exampleCalc(0, 0, 1, 'Coin') }}
-          </p>
-          <p class="text-cyan-400 mt-2">{{ t('shipping.routes.notice') }}</p>
-          <p class="mt-2 text-gray-400" v-for="(i, idx) in item.content">
-              {{ idx + 1 }}.{{ i }}
-          </p>
-        </div>
-
-        <div v-if="index === 1" v-show="openFaqs[index]" class="p-6 pt-0 border-t border-cyan-500/20">
-          <h2 class="text-cyan-400 font-bold mt-2">{{ t(`shipping.routes.countries.menu2.subtitle1`) }}</h2>
           <div class="overflow-x-auto">
+            <h2 class="text-cyan-400 font-bold mt-2">{{ t('shipping.routes.countries.menu2.item8') }} :</h2>
             <table class="w-full border-collapse">
               <thead>
                 <tr class="bg-gray-800/70 text-gray-300">
@@ -77,7 +68,14 @@
           <p class="mt-2 text-gray-300"> 
             {{ t('shipping.routes.countries.menu2.example') }} : {{ exampleCalc(0, 0, 1, 'Coin') }}
           </p>
-          <h2 class="text-cyan-400 font-bold mt-10">{{ t(`shipping.routes.countries.menu2.subtitle2`) }}</h2>
+          <p class="text-cyan-400 mt-2">{{ t('shipping.routes.notice') }}</p>
+          <p class="mt-2 text-gray-400" v-for="(i, idx) in item.content">
+              {{ idx + 1 }}.{{ i }}
+          </p>
+        </div>
+
+        <div v-if="index === 1" v-show="openFaqs[index]" class="p-6 pt-0 border-t border-cyan-500/20">
+          <h2 class="text-cyan-400 font-bold mt-2">{{ t(`shipping.routes.countries.menu2.subtitle9`) }}</h2>
           <div class="overflow-x-auto">
             <table class="w-full border-collapse">
               <thead>
@@ -99,18 +97,7 @@
                 </tr>
               </tbody>
             </table>
-          </div>        
-          <p class="mt-2 text-gray-300"> 
-            {{ t('shipping.routes.countries.menu2.example') }} : {{ exampleCalc(0, 1, 6, 'Coin') }}
-          </p>
-          <p class="text-cyan-400 mt-2">{{ t('shipping.routes.notice') }}</p>
-          <p class="mt-2 text-gray-400" v-for="(i, idx) in item.content">
-              {{ idx + 1 }}.{{ i }}
-          </p>
-        </div>
-
-        <div v-if="index === 2" v-show="openFaqs[index]" class="p-6 pt-0 border-t border-cyan-500/20">
-          <h2 class="text-cyan-400 font-bold mt-2">{{ t(`shipping.routes.countries.menu2.subtitle3`) }}</h2>
+          </div>
           <div class="overflow-x-auto">
             <table class="w-full border-collapse">
               <thead>
@@ -133,83 +120,17 @@
               </tbody>
             </table>
           </div>
-          <p class="mt-2 text-gray-300"> 
-            {{ t('shipping.routes.countries.menu2.example') }} : {{ exampleCalc(0, 2, 58, 'Coin') }} {{ t('shipping.routes.countries.menu2.payType1') }}
-          </p>
-          <div class="overflow-x-auto">
-            <table class="w-full border-collapse">
-              <thead>
-                <tr class="bg-gray-800/70 text-gray-300">
-                  <th class="p-4 text-left border-b border-cyan-500/20">{{ t('shipping.routes.countries.menu2.currency') }}</th>
-                  <th class="p-4 text-left border-b border-cyan-500/20">{{ t('shipping.routes.countries.menu2.weight') }}</th>
-                  <th class="p-4 text-left border-b border-cyan-500/20">{{ t('shipping.routes.countries.menu2.unitPrice') }}</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr 
-                  v-for="(item, index) in pricingItems5"
-                  :key="index"
-                  class="border-b border-cyan-500/10 hover:bg-gray-800/30"
-                >
-                  <td class="p-4 text-gray-300">{{ item.currency }}</td>
-                  <td class="p-4 text-gray-400">{{ item.weight }}</td>
-                  <td class="p-4 text-cyan-400 font-medium">{{ item.price }}</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>        
-          <p class="mt-2 text-gray-300"> 
-            {{ t('shipping.routes.countries.menu2.example') }} : {{ exampleCalc(0, 2, 58, 'CreditCard') }} {{ t('shipping.routes.countries.menu2.payType2') }}
-          </p>
           <p class="text-cyan-400 mt-2">{{ t('shipping.routes.notice') }}</p>
           <p class="mt-2 text-gray-400" v-for="(i, idx) in item.content">
               {{ idx + 1 }}.{{ i }}
           </p>
         </div>
 
-        <div v-if="index === 3" v-show="openFaqs[index]" class="p-6 pt-0 border-t border-cyan-500/20">
-          <h2 class="text-cyan-400 font-bold mt-2">{{ t(`shipping.routes.countries.menu2.subtitle4`) }}</h2>
+        <div v-if="index === 2" v-show="openFaqs[index]" class="p-6 pt-0 border-t border-cyan-500/20">
+          <h2 class="text-cyan-400 font-bold mt-2">{{ t(`shipping.routes.countries.menu2.subtitle10`) }}</h2>
           <p class="text-cyan-400 mt-2">{{ t('shipping.routes.notice') }}</p>
           <p class="mt-2 text-gray-400" v-for="(i, idx) in item.content">
               {{ idx + 1 }}.{{ i }}
-          </p>
-        </div>
-
-        <div v-if="index === 4" v-show="openFaqs[index]" class="p-6 pt-0 border-t border-cyan-500/20">
-          <p class="text-cyan-400 mt-2">{{ t('shipping.routes.notice') }}</p>
-          <p class="mt-2 text-gray-400" v-for="(i, idx) in item.content">
-              {{ idx + 1 }}.{{ i }}
-          </p>
-        </div>
-
-        <div v-if="index === 5" v-show="openFaqs[index]" class="p-6 pt-0 border-t border-cyan-500/20">
-          <p class="text-cyan-400 mt-2">{{ t('shipping.routes.notice') }}</p>
-          <p class="mt-2 text-gray-400" v-for="(i, idx) in item.content">
-              {{ idx + 1 }}.{{ i }}
-            <div v-if="idx === 4" class="overflow-x-auto">
-            <table class="w-full border-collapse">
-              <thead>
-                <tr class="bg-gray-800/70 text-gray-300">
-                  <th class="p-4 text-left border-b border-cyan-500/20">{{ t('shipping.routes.countries.menu2.single') }}</th>
-                  <th class="p-4 text-left border-b border-cyan-500/20">{{ t('shipping.routes.countries.menu2.customsFee') }}</th>
-                  <th class="p-4 text-left border-b border-cyan-500/20">{{ t('shipping.routes.countries.menu2.warehouseFee') }}</th>
-                  <th class="p-4 text-left border-b border-cyan-500/20">{{ t('shipping.routes.countries.menu2.duty') }}</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr 
-                  v-for="(item, index) in pricingItems6"
-                  :key="index"
-                  class="border-b border-cyan-500/10 hover:bg-gray-800/30"
-                >
-                  <td class="p-4 text-gray-300">{{ item.single }}</td>
-                  <td class="p-4 text-gray-400">{{ item.customsFee }}</td>
-                  <td class="p-4 text-gray-300">{{ item.warehouseFee }}</td>
-                  <td class="p-4 text-gray-300">{{ item.duty }}</td>
-                </tr>
-              </tbody>
-            </table>
-          </div> 
           </p>
         </div>
       </div>
@@ -268,30 +189,33 @@
               <thead>
                 <tr class="bg-gray-800/70 text-gray-300">
                   <th class="p-4 text-left border-b border-cyan-500/20">{{ t('shipping.routes.countries.menu2.currency') }}</th>
-                  <th class="p-4 text-left border-b border-cyan-500/20">{{ t('shipping.routes.countries.menu2.weight') }}</th>
-                  <th class="p-4 text-left border-b border-cyan-500/20">{{ t('shipping.routes.countries.menu2.unitPrice') }}</th>
+                  <th class="p-4 text-left border-b border-cyan-500/20">{{ t('shipping.routes.countries.menu2.explain') }}</th>
+                  <th class="p-4 text-left border-b border-cyan-500/20">{{ t('shipping.routes.countries.menu2.packagingFee') }}</th>
                 </tr>
               </thead>
               <tbody>
                 <tr 
-                  v-for="(item, index) in pricingItems7"
+                  v-for="(item, index) in pricingItems5"
                   :key="index"
                   class="border-b border-cyan-500/10 hover:bg-gray-800/30"
                 >
                   <td class="p-4 text-gray-300">{{ item.currency }}</td>
-                  <td class="p-4 text-gray-400">{{ item.weight }}</td>
-                  <td class="p-4 text-cyan-400 font-medium">{{ item.price }}</td>
+                  <td class="p-4 text-gray-400">{{ item.explain }}</td>
+                  <td class="p-4 text-gray-400">{{ item.packagingFee }}</td>
                 </tr>
               </tbody>
             </table>
           </div>
           <p class="mt-2 text-gray-300"> 
-            {{ t('shipping.routes.countries.menu2.example') }} : {{ t('shipping.routes.countries.menu2.exampleContent') }}
+            {{ t('shipping.routes.countries.menu2.example') }} : {{ t('shipping.routes.countries.menu2.exampleContent12') }}
           </p>
           <p class="text-cyan-400 mt-2">{{ t('shipping.routes.notice') }}</p>
           <p class="mt-2 text-gray-400" v-for="(i, idx) in item.content">
-            <span v-if="idx < 3">{{ idx + 1 }}.{{ i }}</span>
+            <span>{{ idx + 1 }}.{{ i }}</span>
           </p>
+        </div>
+
+        <div v-if="index === 1" v-show="openFaqs3[index]" class="p-6 pt-0 border-t border-cyan-500/20">
           <div class="overflow-x-auto">
             <table class="w-full border-collapse">
               <thead>
@@ -303,7 +227,7 @@
               </thead>
               <tbody>
                 <tr 
-                  v-for="(item, index) in pricingItems8"
+                  v-for="(item, index) in pricingItems6"
                   :key="index"
                   class="border-b border-cyan-500/10 hover:bg-gray-800/30"
                 >
@@ -316,18 +240,17 @@
           </div>
           <p class="text-cyan-400 mt-2">{{ t('shipping.routes.notice') }}</p>
           <p class="mt-2 text-gray-400" v-for="(i, idx) in item.content">
-            <span v-if="idx > 2">{{ idx - 2 }}.{{ i }}</span>
+            {{ idx + 1 }}.{{ i }}
           </p>
         </div>
-
-        <div v-if="index === 1" v-show="openFaqs3[index]" class="p-6 pt-0 border-t border-cyan-500/20">
-          <h2 class="text-cyan-400 font-bold mt-2">{{ t(`shipping.routes.countries.menu2.subtitle1`) }}</h2>
+        
+        <div v-if="index === 2" v-show="openFaqs3[index]" class="p-6 pt-0 border-t border-cyan-500/20">
           <div class="overflow-x-auto">
             <table class="w-full border-collapse">
               <thead>
                 <tr class="bg-gray-800/70 text-gray-300">
                   <th class="p-4 text-left border-b border-cyan-500/20">{{ t('shipping.routes.countries.menu2.currency') }}</th>
-                  <th class="p-4 text-left border-b border-cyan-500/20">{{ t('shipping.routes.countries.menu2.weight') }}</th>
+                  <th class="p-4 text-left border-b border-cyan-500/20">{{ t('shipping.routes.countries.menu2.behalf') }}</th>
                   <th class="p-4 text-left border-b border-cyan-500/20">{{ t('shipping.routes.countries.menu2.unitPrice') }}</th>
                 </tr>
               </thead>
@@ -345,39 +268,7 @@
             </table>
           </div>
           <p class="mt-2 text-gray-300"> 
-            {{ t('shipping.routes.countries.menu2.example') }} : {{ t('shipping.routes.countries.menu2.exampleContent6') }}{{ t('shipping.routes.countries.menu2.webRate') }}{{  t('shipping.routes.countries.menu2.payType1') }}
-          </p>
-          <p class="text-cyan-400 mt-2">{{ t('shipping.routes.notice') }}</p>
-          <p class="mt-2 text-gray-400" v-for="(i, idx) in item.content">
-              {{ idx + 1 }}.{{ i }}
-          </p>
-        </div>
-        
-        <div v-if="index === 2" v-show="openFaqs3[index]" class="p-6 pt-0 border-t border-cyan-500/20">
-          <div class="overflow-x-auto">
-            <table class="w-full border-collapse">
-              <thead>
-                <tr class="bg-gray-800/70 text-gray-300">
-                  <th class="p-4 text-left border-b border-cyan-500/20">{{ t('shipping.routes.countries.menu2.currency') }}</th>
-                  <th class="p-4 text-left border-b border-cyan-500/20">{{ t('shipping.routes.countries.menu2.behalf') }}</th>
-                  <th class="p-4 text-left border-b border-cyan-500/20">{{ t('shipping.routes.countries.menu2.unitPrice') }}</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr 
-                  v-for="(item, index) in pricingItems10"
-                  :key="index"
-                  class="border-b border-cyan-500/10 hover:bg-gray-800/30"
-                >
-                  <td class="p-4 text-gray-300">{{ item.currency }}</td>
-                  <td class="p-4 text-gray-400">{{ item.behalf }}</td>
-                  <td class="p-4 text-cyan-400 font-medium">{{ item.price }}</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <p class="mt-2 text-gray-300"> 
-            {{ t('shipping.routes.countries.menu2.example') }} : {{ t('shipping.routes.countries.menu2.exampleContent7') }}{{ t('shipping.routes.countries.menu2.webRate') }}{{  t('shipping.routes.countries.menu2.payType1') }}
+            {{ t('shipping.routes.countries.menu2.example') }} : {{ t('shipping.routes.countries.menu2.exampleContent20') }}{{ t('shipping.routes.countries.menu2.webRate') }}{{  t('shipping.routes.countries.menu2.payType1') }}
           </p>
           <p class="text-cyan-400 mt-2">{{ t('shipping.routes.notice') }}</p>
           <p class="mt-2 text-gray-400" v-for="(i, idx) in item.content">
@@ -476,7 +367,7 @@
             </table>
           </div>
           <p class="mt-2 text-gray-300"> 
-            {{ t('shipping.routes.countries.menu2.example') }} : {{ t('shipping.routes.countries.menu2.exampleContent8') }}
+            {{ t('shipping.routes.countries.menu2.example') }} : {{ t('shipping.routes.countries.menu2.exampleContent21') }}
           </p>
           <p class="text-cyan-400 mt-2">{{ t('shipping.routes.notice') }}</p>
           <p class="mt-2 text-gray-400" v-for="(i, idx) in item.content">
@@ -503,69 +394,50 @@ const feeResult2 = ref(null)
 const feeResult3 = ref(null)
 const feeResult4 = ref(null)
 const feeResult5 = ref(null)
-const feeResult6 = ref(null)
-const feeResult7 = ref(null)
+const countryId = ref(4)
 
 const fetchShippingFee = async () => {
   try {
-    // 1kg
+    // 1lb
     const payload = {
-      countryId: 1,
+      countryId: countryId.value,
       actualWeight: "1",
       length: "1",
       width: "1",
       height: "1"
     }
 
-    // 2kg
+    // 2lb
     const payload2 = {
-      countryId: 1,
+      countryId: countryId.value,
       actualWeight: "2",
       length: "1",
       width: "1",
       height: "1"
     }
 
-    // 5kg
+    // 110lb
     const payload3 = {
-      countryId: 1,
-      actualWeight: "5",
+      countryId: countryId.value,
+      actualWeight: "110",
       length: "1",
       width: "1",
       height: "1"
     }
 
-    // 6kg
+    // 221lb
     const payload4 = {
-      countryId: 1,
-      actualWeight: "6",
+      countryId: countryId.value,
+      actualWeight: "221",
       length: "1",
       width: "1",
       height: "1"
     }
 
-    // 50kg
+    // 331lb
     const payload5 = {
-      countryId: 1,
-      actualWeight: "50",
-      length: "1",
-      width: "1",
-      height: "1"
-    }
-
-    // 101kg
-    const payload6 = {
-      countryId: 1,
-      actualWeight: "101",
-      length: "1",
-      width: "1",
-      height: "1"
-    }
-
-    // 151kg
-    const payload7 = {
-      countryId: 1,
-      actualWeight: "151",
+      countryId: countryId.value,
+      actualWeight: "331",
       length: "1",
       width: "1",
       height: "1"
@@ -575,8 +447,6 @@ const fetchShippingFee = async () => {
     const res3 = await calculateShippingFee(payload3)
     const res4 = await calculateShippingFee(payload4)
     const res5 = await calculateShippingFee(payload5)
-    const res6 = await calculateShippingFee(payload6)
-    const res7 = await calculateShippingFee(payload7)
 
 
     feeResult.value = res
@@ -584,15 +454,11 @@ const fetchShippingFee = async () => {
     feeResult3.value = res3
     feeResult4.value = res4
     feeResult5.value = res5
-    feeResult6.value = res6
-    feeResult7.value = res7
     console.log('✅ 成功接收到 feeResult:', feeResult.value)
     console.log('✅ 成功接收到 feeResult:', feeResult2.value)
     console.log('✅ 成功接收到 feeResult:', feeResult3.value)
     console.log('✅ 成功接收到 feeResult:', feeResult4.value)
     console.log('✅ 成功接收到 feeResult:', feeResult5.value)
-    console.log('✅ 成功接收到 feeResult:', feeResult6.value)
-    console.log('✅ 成功接收到 feeResult:', feeResult7.value)
   } catch (error) {
     console.error('🔥 API 錯誤:', error)
   }
@@ -606,93 +472,46 @@ onMounted(() => {
 function exampleCalc(warehouse, method, weight, feesByPayment) {
   let firstPrice = 0
   let secondPrice = 0
-  if (weight === 1) {
-    firstPrice = feeResult.value?.warehouses?.[warehouse]?.methods?.[method]?.feesByPayment?.Coin?.cost
-    secondPrice = feeResult2.value?.warehouses?.[warehouse]?.methods?.[method]?.feesByPayment?.Coin?.cost - firstPrice
-    return t(`shipping.routes.countries.menu2.exampleContent`) + `${firstPrice}+${secondPrice}+${secondPrice}=${firstPrice + secondPrice + secondPrice}` + t(`shipping.routes.countries.menu2.payType1`)
-  } else if (weight === 5) {
-    firstPrice = feeResult3.value?.warehouses?.[warehouse]?.methods?.[method]?.feesByPayment?.Coin?.cost / 5
-    secondPrice = feeResult3.value?.warehouses?.[warehouse]?.methods?.[method]?.feesByPayment?.Coin?.cost - firstPrice
-    return t(`shipping.routes.countries.menu2.exampleContent`) + `${firstPrice}+${secondPrice}+${secondPrice}=${firstPrice + secondPrice + secondPrice}` + t(`shipping.routes.countries.menu2.payType1`)
-  } else if (weight === 6) {
-    firstPrice = feeResult4.value?.warehouses?.[warehouse]?.methods?.[method]?.feesByPayment?.Coin?.cost / 6
-    return t(`shipping.routes.countries.menu2.exampleContent2`) + `${firstPrice}*6=${firstPrice*6}` + t(`shipping.routes.countries.menu2.payType1`)
-  } else if (weight === 58 && feesByPayment === 'Coin') {
-    firstPrice = feeResult5.value?.warehouses?.[warehouse]?.methods?.[method]?.feesByPayment?.Coin?.cost / 50
-    return t(`shipping.routes.countries.menu2.exampleContent3`) + `${firstPrice}*58=${firstPrice*58}`
-  } else if (weight === 58 && feesByPayment === 'CreditCard') {
-    firstPrice = feeResult5.value?.warehouses?.[warehouse]?.methods?.[method]?.feesByPayment?.CreditCard?.cost / 50
-    return t(`shipping.routes.countries.menu2.exampleContent3`) + `${firstPrice}*58=${firstPrice*58}`
-  }
-
+  firstPrice = feeResult.value?.warehouses?.[warehouse]?.methods?.[method]?.feesByPayment?.Coin?.cost
+  secondPrice = feeResult2.value?.warehouses?.[warehouse]?.methods?.[method]?.feesByPayment?.Coin?.cost - firstPrice
+  return t(`shipping.routes.countries.menu2.exampleContent11`) + `${firstPrice}+${secondPrice}+${secondPrice}+(5-3)*107=${firstPrice + secondPrice + secondPrice + (5-3)*107}` + t(`shipping.routes.countries.menu2.payType1`)
 }
 
-// 多種運費計價方案(普貨、不能有電池、粉末、液體)
+// 多種運費計價方案
 const items = computed(() => [
   {
     item: t('shipping.routes.countries.menu2.item1'),
     content: [
-        t('shipping.routes.countries.menu2.content1.row1'),
-        t('shipping.routes.countries.menu2.content1.row2'),
-        t('shipping.routes.countries.menu2.content1.row3'),
-        t('shipping.routes.countries.menu2.content1.row4'),
-        t('shipping.routes.countries.menu2.content1.row5'),
-        t('shipping.routes.countries.menu2.content1.row6')
-    ]
-  },
-  {
-    item: t('shipping.routes.countries.menu2.item2'),
-    content: [
-        t('shipping.routes.countries.menu2.content1.row1'),
-        t('shipping.routes.countries.menu2.content1.row2'),
-        t('shipping.routes.countries.menu2.content1.row3'),
-        t('shipping.routes.countries.menu2.content1.row4'),
-        t('shipping.routes.countries.menu2.content1.row5'),
-        t('shipping.routes.countries.menu2.content1.row6')
+        t('shipping.routes.countries.menu2.content18.row1'),
+        t('shipping.routes.countries.menu2.content18.row2'),
+        t('shipping.routes.countries.menu2.content18.row3'),
+        t('shipping.routes.countries.menu2.content18.row4'),
+        t('shipping.routes.countries.menu2.content18.row5'),
+        t('shipping.routes.countries.menu2.content18.row6'),
+        t('shipping.routes.countries.menu2.content18.row7')
     ]
   },
   {
     item: t('shipping.routes.countries.menu2.item3'),
     content: [
-        t('shipping.routes.countries.menu2.content2.row1'),
-        t('shipping.routes.countries.menu2.content2.row2'),
-        t('shipping.routes.countries.menu2.content2.row3'),
-        t('shipping.routes.countries.menu2.content2.row4'),
-        t('shipping.routes.countries.menu2.content2.row5'),
-        t('shipping.routes.countries.menu2.content2.row6'),
-        t('shipping.routes.countries.menu2.content2.row7')
+        t('shipping.routes.countries.menu2.content29.row1'),
+        t('shipping.routes.countries.menu2.content29.row2'),
+        t('shipping.routes.countries.menu2.content29.row3'),
+        t('shipping.routes.countries.menu2.content29.row4'),
+        t('shipping.routes.countries.menu2.content29.row5'),
+        t('shipping.routes.countries.menu2.content29.row6'),
+        t('shipping.routes.countries.menu2.content29.row7'),
+        t('shipping.routes.countries.menu2.content29.row8')
     ]
   },
   {
     item: t('shipping.routes.countries.menu2.item4'),
     content: [
-        t('shipping.routes.countries.menu2.content3.row1'),
-        t('shipping.routes.countries.menu2.content3.row2'),
-        t('shipping.routes.countries.menu2.content3.row3'),
-        t('shipping.routes.countries.menu2.content3.row4'),
-        t('shipping.routes.countries.menu2.content3.row5'),
-    ]
-  },
-  {
-    item: t('shipping.routes.countries.menu2.item5'),
-    content: [
-        t('shipping.routes.countries.menu2.content4.row1'),
-        t('shipping.routes.countries.menu2.content4.row2'),
-        t('shipping.routes.countries.menu2.content4.row3'),
-        t('shipping.routes.countries.menu2.content4.row4'),
-        t('shipping.routes.countries.menu2.content4.row5'),
-    ]
-  },
-  {
-    item: t('shipping.routes.countries.menu2.item6'),
-    content: [
-        t('shipping.routes.countries.menu2.content5.row1'),
-        t('shipping.routes.countries.menu2.content5.row2'),
-        t('shipping.routes.countries.menu2.content5.row3'),
-        t('shipping.routes.countries.menu2.content5.row4'),
-        t('shipping.routes.countries.menu2.content5.row5'),
-        t('shipping.routes.countries.menu2.content5.row6'),
-        t('shipping.routes.countries.menu2.content5.row7'),
+        t('shipping.routes.countries.menu2.content30.row1'),
+        t('shipping.routes.countries.menu2.content30.row2'),
+        t('shipping.routes.countries.menu2.content30.row3'),
+        t('shipping.routes.countries.menu2.content30.row4'),
+        t('shipping.routes.countries.menu2.content30.row5'),
     ]
   },
 ])
@@ -721,11 +540,20 @@ const items2 = computed(() => [
 // 附加服務
 const items3 = computed(() => [
   {
-    item: t('shipping.routes.countries.menu2.item9'),
+    item: t('shipping.routes.countries.menu2.item16'),
     content: [
-        t('shipping.routes.countries.menu2.content8.row1'),
-        t('shipping.routes.countries.menu2.content8.row2'),
-        t('shipping.routes.countries.menu2.content8.row3'),
+        t('shipping.routes.countries.menu2.content31.row1'),
+        t('shipping.routes.countries.menu2.content31.row2'),
+        t('shipping.routes.countries.menu2.content31.row3'),
+        t('shipping.routes.countries.menu2.content31.row4'),
+        t('shipping.routes.countries.menu2.content31.row5'),
+        t('shipping.routes.countries.menu2.content31.row6'),
+        t('shipping.routes.countries.menu2.content31.row7'),
+    ]
+  },
+  {
+    item: t('shipping.routes.countries.menu2.item25'),
+    content: [
         t('shipping.routes.countries.menu2.content9.row1'),
         t('shipping.routes.countries.menu2.content9.row2'),
         t('shipping.routes.countries.menu2.content9.row3'),
@@ -736,14 +564,6 @@ const items3 = computed(() => [
     content: [
         t('shipping.routes.countries.menu2.content10.row1'),
         t('shipping.routes.countries.menu2.content10.row2'),
-    ]
-  },
-  {
-    item: t('shipping.routes.countries.menu2.item11'),
-    content: [
-        t('shipping.routes.countries.menu2.content11.row1'),
-        t('shipping.routes.countries.menu2.content11.row2'),
-        t('shipping.routes.countries.menu2.content11.row3'),
     ]
   },
   {
@@ -783,8 +603,6 @@ const items3 = computed(() => [
   },
 ])
 
-
-
 const openFaqs = ref(Array(items.value.length).fill(false))
 const openFaqs2 = ref(Array(items2.value.length).fill(false))
 const openFaqs3 = ref(Array(items3.value.length).fill(false))
@@ -798,156 +616,115 @@ const toggleFaq2 = (index) => {
 const toggleFaq3 = (index) => {
   openFaqs3.value[index] = !openFaqs3.value[index]
 }
+
 // 一般集貨
 const pricingItems = computed(() => [
   {
-    currency: t('shipping.routes.countries.menu2.twdCharge1'),
-    weight: t('shipping.routes.countries.menu2.firstKG'),
-    price: 'TWD ' + feeResult.value?.warehouses?.[0]?.methods?.[0]?.feesByPayment?.Coin?.cost
+    currency: t('shipping.routes.countries.menu2.twdCharge5'),
+    weight: t('shipping.routes.countries.menu2.firstLb'),
+    price: 'NTD ' + feeResult.value?.warehouses?.[0]?.methods?.[0]?.feesByPayment?.Coin?.cost
   },
   {
     currency: '',
-    weight: t('shipping.routes.countries.menu2.secondKG'),
-    price: 'TWD ' + (feeResult2.value?.warehouses?.[0]?.methods?.[0]?.feesByPayment?.Coin?.cost - feeResult.value?.warehouses?.[0]?.methods?.[0]?.feesByPayment?.Coin?.cost)
+    weight: t('shipping.routes.countries.menu2.secondLb'),
+    price: 'NTD ' + (feeResult2.value?.warehouses?.[0]?.methods?.[0]?.feesByPayment?.Coin?.cost - feeResult.value?.warehouses?.[0]?.methods?.[0]?.feesByPayment?.Coin?.cost)
   },
     {
-    currency: t('shipping.routes.countries.menu2.twdCharge2'),
-    weight: t('shipping.routes.countries.menu2.firstKG'),
-    price: 'TWD ' + feeResult.value?.warehouses?.[0]?.methods?.[0]?.feesByPayment?.CreditCard?.cost
+    currency: t('shipping.routes.countries.menu2.twdCharge6'),
+    weight: t('shipping.routes.countries.menu2.volumetricCharge'),
+    price: 'NTD 107'
   },
-  {
-    currency: '',
-    weight: t('shipping.routes.countries.menu2.secondKG'),
-    price: 'TWD ' + (feeResult2.value?.warehouses?.[0]?.methods?.[0]?.feesByPayment?.CreditCard?.cost - feeResult.value?.warehouses?.[0]?.methods?.[0]?.feesByPayment?.CreditCard?.cost)
-  }
 ])
 
-// 單件速遞
 const pricingItems2 = computed(() => [
   {
-    currency: t('shipping.routes.countries.menu2.twdCharge1'),
-    weight: t('shipping.routes.countries.menu2.firstKG'),
-    price: 'TWD ' + feeResult.value?.warehouses?.[0]?.methods?.[1]?.feesByPayment?.Coin?.cost
+    currency: t('shipping.routes.countries.menu2.twdCharge5'),
+    weight: t('shipping.routes.countries.menu2.firstLb'),
+    price: 'NTD ' + feeResult.value?.warehouses?.[0]?.methods?.[0]?.feesByPayment?.CreditCard?.cost
   },
   {
     currency: '',
-    weight: t('shipping.routes.countries.menu2.secondKG'),
-    price: 'TWD ' + (feeResult2.value?.warehouses?.[0]?.methods?.[1]?.feesByPayment?.Coin?.cost - feeResult.value?.warehouses?.[0]?.methods?.[1]?.feesByPayment?.Coin?.cost)
-  }
-])
-
-const pricingItems3 = computed(() => [
-  {
-    currency: t('shipping.routes.countries.menu2.twdCharge1'),
-    weight: t('shipping.routes.countries.menu2.firstKG'),
-    price: 'TWD ' + feeResult4.value?.warehouses?.[0]?.methods?.[1]?.feesByPayment?.Coin?.cost / 6
+    weight: t('shipping.routes.countries.menu2.secondLb'),
+    price: 'NTD ' + (feeResult2.value?.warehouses?.[0]?.methods?.[0]?.feesByPayment?.CreditCard?.cost - feeResult.value?.warehouses?.[0]?.methods?.[0]?.feesByPayment?.CreditCard?.cost)
   },
-  {
-    currency: '',
-    weight: t('shipping.routes.countries.menu2.secondKG'),
-    price: 'TWD ' + feeResult4.value?.warehouses?.[0]?.methods?.[1]?.feesByPayment?.Coin?.cost / 6
-  }
+    {
+    currency: t('shipping.routes.countries.menu2.twdCharge6'),
+    weight: t('shipping.routes.countries.menu2.volumetricCharge'),
+    price: 'NTD 110'
+  },
 ])
 
 // 重貨cargo
-const pricingItems4 = computed(() => [
+const pricingItems3 = computed(() => [
   {
     currency: t('shipping.routes.countries.menu2.twdCharge1'),
-    weight: '50-100kg',
-    price: 'TWD ' + feeResult5.value?.warehouses?.[0]?.methods?.[2]?.feesByPayment?.Coin?.cost / 50
+    weight: '110lb-220lb',
+    price: 'NTD ' + feeResult3.value?.warehouses?.[0]?.methods?.[1]?.feesByPayment?.Coin?.cost / 110
   },
   {
     currency: '',
-    weight: '101-150kg',
-    price: 'TWD ' + feeResult6.value?.warehouses?.[0]?.methods?.[2]?.feesByPayment?.Coin?.cost / 101
+    weight: '221lb-330lb',
+    price: 'NTD ' + feeResult4.value?.warehouses?.[0]?.methods?.[1]?.feesByPayment?.Coin?.cost / 221
   },
   {
     currency: '',
-    weight: t('shipping.routes.countries.menu2.over151KG'),
-    price: 'TWD ' + feeResult7.value?.warehouses?.[0]?.methods?.[2]?.feesByPayment?.Coin?.cost / 151
+    weight: t('shipping.routes.countries.menu2.over331lb'),
+    price: 'NTD ' + feeResult5.value?.warehouses?.[0]?.methods?.[1]?.feesByPayment?.Coin?.cost / 331
   }
 ])
 
-const pricingItems5 = computed(() => [
+const pricingItems4 = computed(() => [
   {
     currency: t('shipping.routes.countries.menu2.twdCharge2'),
-    weight: '50-100kg',
-    price: 'TWD ' + feeResult5.value?.warehouses?.[0]?.methods?.[2]?.feesByPayment?.CreditCard?.cost / 50
+    weight: '110lb-220lb',
+    price: 'NTD ' + feeResult3.value?.warehouses?.[0]?.methods?.[1]?.feesByPayment?.CreditCard?.cost / 110
   },
   {
     currency: '',
-    weight: '101-150kg',
-    price: 'TWD ' + feeResult6.value?.warehouses?.[0]?.methods?.[2]?.feesByPayment?.CreditCard?.cost / 101
+    weight: '221lb-330lb',
+    price: 'NTD ' + feeResult4.value?.warehouses?.[0]?.methods?.[1]?.feesByPayment?.CreditCard?.cost / 221
   },
   {
     currency: '',
-    weight: t('shipping.routes.countries.menu2.over151KG'),
-    price: 'TWD ' + feeResult7.value?.warehouses?.[0]?.methods?.[2]?.feesByPayment?.CreditCard?.cost / 151
+    weight: t('shipping.routes.countries.menu2.over331lb'),
+    price: 'NTD ' + feeResult5.value?.warehouses?.[0]?.methods?.[1]?.feesByPayment?.CreditCard?.cost / 331
   }
 ])
 
-// 大型(超重)貨物
+// 拆箱重新打包
+const pricingItems5 = computed(() => [
+  {
+    currency: t('shipping.routes.countries.menu2.twdCharge1'),
+    explain: t('shipping.routes.countries.menu2.forPackage'),
+    packagingFee: t('shipping.routes.countries.menu2.perPackage'),
+  }
+])
+
+// 轉寄美國境內
 const pricingItems6 = computed(() => [
   {
-    single: t('shipping.routes.countries.menu2.price'),
-    customsFee: '1800' + t('shipping.routes.countries.menu2.ntd'),
-    warehouseFee: t('shipping.routes.countries.menu2.according1'),
-    duty: t('shipping.routes.countries.menu2.according2')
-  }
-])
-
-// 轉寄大陸境內
-const pricingItems7 = computed(() => [
-  {
-    currency: t('shipping.routes.countries.menu2.rmbCharge1'),
-    weight: t('shipping.routes.countries.menu2.firstKG'),
-    price: '',
+    currency: t('shipping.routes.countries.menu2.usaCharge1'),
+    weight: t('shipping.routes.countries.menu2.under5Lb'),
+    price: 'USD 2.5',
   },
   {
     currency: '',
-    weight: t('shipping.routes.countries.menu2.secondKG'),
-    price: '',
-  }
-])
-
-const pricingItems8 = computed(() => [
-  {
-    currency: t('shipping.routes.countries.menu2.rmbCharge2'),
-    weight: t('shipping.routes.countries.menu2.under5KG'),
-    price: '',
-  },
-  {
-    currency: '',
-    weight: t('shipping.routes.countries.menu2.over6KG'),
-    price: '',
+    weight: t('shipping.routes.countries.menu2.over6Lb'),
+    price: 'USD 0.5',
   }
 ])
 
 // 代墊運費
 const pricingItems9 = computed(() => [
   {
-    currency: t('shipping.routes.countries.menu2.rmbCharge3'),
+    currency: t('shipping.routes.countries.menu2.usaCharge2'),
     behalf: t('shipping.routes.countries.menu2.cod'),
     price: t('shipping.routes.countries.menu2.serviceFee'),
   },
   {
     currency: '',
     behalf: t('shipping.routes.countries.menu2.actualCost'),
-    price: '',
-  }
-])
-
-// 裝釘木架或木箱
-const pricingItems10 = computed(() => [
-  {
-    currency: t('shipping.routes.countries.menu2.rmbCharge3'),
-    behalf: t('shipping.routes.countries.menu2.wooden'),
-    price: t('shipping.routes.countries.menu2.actualCost'),
-  },
-  {
-    currency: '',
-    behalf: t('shipping.routes.countries.menu2.serviceFee'),
-    price: '',
+    price: 'USD 3',
   }
 ])
 
@@ -970,14 +747,14 @@ const pricingItems12 = computed(() => [
 // 存倉時間
 const pricingItems13 = computed(() => [
   {
-    currency: t('shipping.routes.countries.menu2.twdCharge1'),
+    currency: t('shipping.routes.countries.menu2.usaCharge2'),
     time: t('shipping.routes.countries.menu2.free20'),
     storeFee: t('shipping.routes.countries.menu2.free'),
   },
   {
     currency: '',
     time: t('shipping.routes.countries.menu2.over20'),
-    storeFee: '5NTD',
+    storeFee: '0.45USD',
   }
 ])
 </script>
