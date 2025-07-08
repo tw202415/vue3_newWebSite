@@ -72,11 +72,11 @@ const socialLinks = [
 ];
 
 const quickLinks = [
-  { key: 'service1.title', href: '/itt' },
-  { key: 'service2.title', href: '#tracking' },
-  { key: 'service3.title', href: '#faq' },
-  { key: 'service4.title', href: '#services' },
-  { key: 'service5.title', href: '#services' },
-  { key: 'service6.title', href: '#services' },
+  { key: 'service1', href: '/itt' },
+  { key: 'service2', href: '/privacy' },
+  { key: 'service3', href: '/prohibited' },
+  { key: 'service4', href: '/airBan' },
+  { key: 'service5', href: '/shipCalc' },
+  { key: 'service6', href: '/proxyCalc' },
 ];
 </script>

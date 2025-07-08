@@ -9,6 +9,11 @@ import ShoppingMall from '@/pages/ShoppingMall.vue';
 import CountryShop from '@/pages/CountryShop.vue';
 import Cart from '@/pages/Cart.vue';
 import ITT from '@/pages/services/ITT.vue';
+import Privacy from '@/pages/services/Privacy.vue';
+import Prohibited from '@/pages/services/Prohibited.vue';
+import AirBan from '@/pages/services/AirBan.vue';
+import ShipCalc from '@/pages/services/ShipCalc.vue';
+import ProxyCalc from '@/pages/services/ProxyCalc.vue';
 import ShanghaiAirFreight from '@/pages/shippings/ShanghaiAirFreight.vue';
 import ShenzhenAirFreight from '@/pages/shippings/ShenzhenAirFreight.vue';
 import ShenzhenSeaExpress from '@/pages/shippings/ShenzhenSeaExpress.vue';
@@ -26,6 +31,11 @@ const routes = [
   { path: '/shop/:country', name: 'CountryShop', component: CountryShop, props: true },
   { path: '/cart', name: 'Cart', component: Cart },
   { path: '/itt', name: 'ITT', component: ITT },
+  { path: '/privacy', name: 'Privacy', component: Privacy },
+  { path: '/prohibited', name: 'Prohibited', component: Prohibited },
+  { path: '/airBan', name: 'AirBan', component: AirBan },
+  { path: '/shipCalc', name: 'ShipCalc', component: ShipCalc },
+  { path: '/proxyCalc', name: 'ProxyCalc', component: ProxyCalc },
   { path: '/shanghaiAirFreight', name: 'ShanghaiAirFreight', component: ShanghaiAirFreight},
   { path: '/shenzhenAirFreight', name: 'ShenzhenAirFreight', component: ShenzhenAirFreight},
   { path: '/shenzhenSeaExpress', name: 'ShenzhenSeaExpress', component: ShenzhenSeaExpress},

@@ -1,157 +1,88 @@
 <template>
   <div class="min-h-screen bg-gray-900 pb-20 safe-area-pb">
-    <div class="max-w-md mx-auto px-2 pt-14 pb-6 m-5">
-      <h1 class="text-2xl font-bold text-cyan-400 font-mono tracking-wide text-center w-full">
-        {{ t('footer.links.service1.title') }}
-      </h1>
-      <h2 class="text-lg font-bold text-gray-300 mb-2 font-mono tracking-wide text-left w-full">
-        {{ t('footer.links.service1.content.header') }}
-      </h2>
-      <div 
-        v-for="(item, index) in termsItems"
-        :key="index"
-        class="bg-gray-800/80 rounded-lg border border-cyan-500/20 shadow mb-4 overflow-hidden p-4"
-      >
-        <div class="p-4 pt-2 border-t border-cyan-500/10">
-          <p class="mt-2 font-bold text-base text-gray-200">
-            {{ item.item }}
-          </p>
-          <p v-if="index === 0" class="mt-1 font-bold text-sm text-gray-200">
-            {{ t('footer.links.service1.content.term1.row') }}
-          </p>
-          <div class="mt-1 space-y-1">
-            <div v-for="(i, idx) in item.content" :key="idx">
-              <span class="text-gray-400 text-sm">{{ idx + 1 }}.{{ i.text }}</span>
-              <ul v-if="i.children" class="pl-4 mt-1 list-disc text-cyan-300 text-xs">
-                <li v-for="(detail, dIdx) in i.children" :key="dIdx">{{ detail }}</li>
-              </ul>
+    <!-- 主內容區 -->
+    <div class="flex overflow-x-auto h-screen pt-16">
+      <div class="flex-1 overflow-auto bg-gradient-to-br from-gray-900 to-gray-800">
+        <header class="bg-gray-800/80 backdrop-blur-sm p-6 border-b border-cyan-500/20 flex justify-center items-center">
+          <h1 class="text-4xl font-bold text-cyan-400 font-mono tracking-wider text-center w-full">
+            {{ t('footer.links.service1') }}
+          </h1>
+        </header>
+        <h2 class="text-4xl font-bold text-gray-300 m-4 font-mono tracking-wider text-left flex justify-center items-center">
+          {{ title }}
+        </h2>
+        <h2 class="text-2xl font-bold text-gray-300 m-4 font-mono tracking-wider text-left w-full">
+          {{ termHeader }}
+        </h2>
+        
+        <div 
+            v-for="(item, index) in termContent"
+            :key="index"
+            class="bg-gray-800/50 rounded-lg border border-cyan-500/20 shadow-lg shadow-cyan-500/10 overflow-hidden"
+          >
+            <div class="p-6 pt-0 border-t border-cyan-500/20">
+              <p class="mt-4 font-bold text-xl text-gray-200 group-hover:text-cyan-300 transition-colors">
+                {{ item.title }}
+              </p>
+              <p v-if="index === 0" class="mt-2 font-bold text-lg text-gray-200 group-hover:text-cyan-300 transition-colors">
+                {{ item.terms[index] }}
+              </p>
+              <p class="mt-2 text-gray-400" v-for="(i, idx) in item.terms">
+                <template v-if="i[1] === '.'">
+                  {{ i }}
+                </template>
+                <template v-else>
+                  {{ idx + 1 }}.{{ i }}
+                </template>
+              </p>
             </div>
           </div>
-        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted, watch } from 'vue'
 import { useI18n } from '@/composables/useI18n'
+import { getFooterDetail } from '@/apis/CMSAPI'
 
-const { t } = useI18n()
+const { t, currentLanguage } = useI18n()
+const title = ref()
+const termHeader = ref()
+const termContent = ref()
 
-const termsItems = computed(() => [
-  {
-    item: t('footer.links.service1.content.term1.title'),
-    content: [
-        { text: t('footer.links.service1.content.term1.row1') },
-        { text: t('footer.links.service1.content.term1.row2') },
-        { text: t('footer.links.service1.content.term1.row3') },
-        { text: t('footer.links.service1.content.term1.row4') },
-        { text: t('footer.links.service1.content.term1.row5') },
-        { text: t('footer.links.service1.content.term1.row6') },
-        { text: t('footer.links.service1.content.term1.row7') },
-        { text: t('footer.links.service1.content.term1.row8') },
-    ],
-  },
-  {
-    item: t('footer.links.service1.content.term2.title'),
-    content: [
-        { text: t('footer.links.service1.content.term2.row1') },
-        { text: t('footer.links.service1.content.term2.row2') },
-        { text: t('footer.links.service1.content.term2.row3') },
-        { text: t('footer.links.service1.content.term2.row4') },
-        { text: t('footer.links.service1.content.term2.row5') },
-    ]
-  },
-  {
-    item: t('footer.links.service1.content.term3.title'),
-    content: [
-        { text: t('footer.links.service1.content.term3.row1') },
-        { text: t('footer.links.service1.content.term3.row2') },
-        { text: t('footer.links.service1.content.term3.row3') },
-        { text: t('footer.links.service1.content.term3.row4') },
-        { text: t('footer.links.service1.content.term3.row5') },
-        { text: t('footer.links.service1.content.term3.row6') },
-        { text: t('footer.links.service1.content.term3.row7') },
-        { text: t('footer.links.service1.content.term3.row8') },
-    ]
-  },
-  {
-    item: t('footer.links.service1.content.term4.title'),
-    content: [
-        { text: t('footer.links.service1.content.term4.row1') },
-        { text: t('footer.links.service1.content.term4.row2') },
-        { text: t('footer.links.service1.content.term4.row3') },
-        { text: t('footer.links.service1.content.term4.row4') },
-    ]
-  },
-  {
-    item: t('footer.links.service1.content.term5.title'),
-    content: [
-        { text: t('footer.links.service1.content.term5.row1') },
-        { text: t('footer.links.service1.content.term5.row2') },
-        { text: t('footer.links.service1.content.term5.row3') },
-        { text: t('footer.links.service1.content.term5.row4') },
-        { text: t('footer.links.service1.content.term5.row5') },
-        { 
-          text: t('footer.links.service1.content.term5.row6'),
-          children: [
-            t('footer.links.service1.content.termA.row1'),
-            t('footer.links.service1.content.termA.row2'),
-            t('footer.links.service1.content.termA.row3'),
-            t('footer.links.service1.content.termA.row4'),
-          ]
-        },
-        { text: t('footer.links.service1.content.term5.row7') },
-        { text: t('footer.links.service1.content.term5.row8') },
-        { text: t('footer.links.service1.content.term5.row9') },
-    ]
-  },
-  {
-    item: t('footer.links.service1.content.term6.title'),
-    content: [
-        { text: t('footer.links.service1.content.term6.row1') },
-        { text: t('footer.links.service1.content.term6.row2') },
-        { text: t('footer.links.service1.content.term6.row3') },
-        { text: t('footer.links.service1.content.term6.row4') },
-    ]
-  },
-  {
-    item: t('footer.links.service1.content.term7.title'),
-    content: [
-        { text: t('footer.links.service1.content.term7.row1') },
-        { text: t('footer.links.service1.content.term7.row2') },
-        { text: t('footer.links.service1.content.term7.row3') },
-        { text: t('footer.links.service1.content.term7.row4') },
-        { text: t('footer.links.service1.content.term7.row5') },
-        { text: t('footer.links.service1.content.term7.row6') },
-    ]
-  },
-  {
-    item: t('footer.links.service1.content.term8.title'),
-    content: [
-        { text: t('footer.links.service1.content.term8.row1') },
-        { text: t('footer.links.service1.content.term8.row2') },
-        { text: t('footer.links.service1.content.term8.row3') },
-        { text: t('footer.links.service1.content.term8.row4') },
-        { text: t('footer.links.service1.content.term8.row5') },
-        { text: t('footer.links.service1.content.term8.row6') },
-    ]
-  },
-  {
-    item: t('footer.links.service1.content.term9.title'),
-    content: [
-        { 
-          text: t('footer.links.service1.content.term9.row1'),
-          children: [
-            t('footer.links.service1.content.termB.row1'),
-            t('footer.links.service1.content.termB.row2'),
-          ] 
-        },
-        { text: t('footer.links.service1.content.term9.row2') },
-        { text: t('footer.links.service1.content.term9.row3') },
-    ],
-  },
-])
+// 根據語言自動切換 id
+const getIdByLocale = (currentLanguage) => {
+  if (currentLanguage === 'zh-TW') return 1
+  if (currentLanguage === 'en-US') return 17
+  return 1
+}
 
-</script>
+
+const fetchLinksContent = async (id) => {
+  try {
+    const response = await getFooterDetail(id)
+    const termsData = JSON.parse(response.body)
+
+    title.value = termsData.title
+    termHeader.value = termsData.header
+    termContent.value = termsData.terms
+
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+onMounted(() => {
+  fetchLinksContent(getIdByLocale(currentLanguage.value))
+})
+
+// 監聽語言切換
+watch(currentLanguage, (newLocale) => {
+  fetchLinksContent(getIdByLocale(newLocale))
+})
+
+
+
+</script>{

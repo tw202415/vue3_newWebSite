@@ -5,12 +5,9 @@
       <div class="flex-1 overflow-auto bg-gradient-to-br from-gray-900 to-gray-800">
         <header class="bg-gray-800/80 backdrop-blur-sm p-6 border-b border-cyan-500/20 flex justify-center items-center">
           <h1 class="text-4xl font-bold text-cyan-400 font-mono tracking-wider text-center w-full">
-            {{ t('footer.links.service1') }}
+            {{ t('footer.links.service2') }}
           </h1>
         </header>
-        <h2 class="text-4xl font-bold text-gray-300 m-4 font-mono tracking-wider text-left flex justify-center items-center">
-          {{ title }}
-        </h2>
         <h2 class="text-2xl font-bold text-gray-300 m-4 font-mono tracking-wider text-left w-full">
           {{ termHeader }}
         </h2>
@@ -54,8 +51,8 @@ const termContent = ref()
 
 // 根據語言自動切換 id
 const getIdByLocale = (currentLanguage) => {
-  if (currentLanguage === 'zh-TW') return 1
-  if (currentLanguage === 'en-US') return 17
+  if (currentLanguage === 'zh-TW') return 2
+  if (currentLanguage === 'en-US') return 18
   return 1
 }
 
