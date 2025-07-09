@@ -5,35 +5,33 @@
       <div class="flex-1 overflow-auto bg-gradient-to-br from-gray-900 to-gray-800">
         <header class="bg-gray-800/80 backdrop-blur-sm p-6 border-b border-cyan-500/20 flex justify-center items-center">
           <h1 class="text-4xl font-bold text-cyan-400 font-mono tracking-wider text-center w-full">
-            {{ t('footer.links.service2') }}
+            {{ t('footer.links.service3') }}
           </h1>
         </header>
-        <h2 class="text-2xl font-bold text-gray-300 m-4 font-mono tracking-wider text-left w-full">
-          {{ termHeader }}
-        </h2>
-        
-        <div 
-            v-for="(item, index) in termContent"
-            :key="index"
-            class="bg-gray-800/50 rounded-lg border border-cyan-500/20 shadow-lg shadow-cyan-500/10 overflow-hidden"
-          >
-            <div class="p-6 pt-0 border-t border-cyan-500/20">
-              <p class="mt-4 font-bold text-xl text-gray-200 group-hover:text-cyan-300 transition-colors">
-                {{ item.title }}
-              </p>
-              <p v-if="index === 0" class="mt-2 font-bold text-lg text-gray-200 group-hover:text-cyan-300 transition-colors">
-                {{ item.terms[index] }}
-              </p>
-              <p class="mt-2 text-gray-400" v-for="(i, idx) in item.terms">
-                <template v-if="i[1] === '.'">
-                  {{ i }}
-                </template>
-                <template v-else>
-                  {{ idx + 1 }}.{{ i }}
-                </template>
-              </p>
-            </div>
+        <div class="p-6 pt-0 border-t border-cyan-500/20">
+          <div class="overflow-x-auto">
+            <h2 class="text-cyan-400 font-bold m-3">{{ header }} :</h2>
+            <table class="w-full border-collapse">
+              <thead>
+                <tr class="bg-gray-800/70 text-gray-300">
+                  <th class="p-4 text-center border-b border-cyan-500/20">{{ goods }}</th>
+                  <th class="p-4 text-center border-b border-cyan-500/20">{{ riskLevel }}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr 
+                  v-for="(item, index) in items"
+                  :key="index"
+                  class="border-b border-cyan-500/10 hover:bg-gray-800/30"
+                >
+                  <td class="p-4 text-gray-300 text-center">{{ item.name }}</td>
+                  <td class="p-4 text-gray-400 text-center">{{ item.riskLevel }}</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
+        </div>
+
       </div>
     </div>
   </div>
@@ -45,26 +43,27 @@ import { useI18n } from '@/composables/useI18n'
 import { getFooterDetail } from '@/apis/CMSAPI'
 
 const { t, currentLanguage } = useI18n()
-const title = ref()
-const termHeader = ref()
-const termContent = ref()
+const header = ref()
+const goods = ref()
+const riskLevel = ref()
+const items = ref()
 
 // 根據語言自動切換 id
 const getIdByLocale = (currentLanguage) => {
-  if (currentLanguage === 'zh-TW') return 2
-  if (currentLanguage === 'en-US') return 18
-  return 1
+  if (currentLanguage === 'zh-TW') return 3
+  if (currentLanguage === 'en-US') return 19
+  return 3
 }
 
 
 const fetchLinksContent = async (id) => {
   try {
     const response = await getFooterDetail(id)
-    const termsData = JSON.parse(response.body)
-
-    title.value = termsData.title
-    termHeader.value = termsData.header
-    termContent.value = termsData.terms
+    const data = JSON.parse(response.body)
+    header.value = data.header
+    goods.value = data.goods
+    riskLevel.value = data.riskLevel
+    items.value = data.items
 
   } catch (error) {
     console.error(error)
@@ -79,7 +78,4 @@ onMounted(() => {
 watch(currentLanguage, (newLocale) => {
   fetchLinksContent(getIdByLocale(newLocale))
 })
-
-
-
-</script>{
+</script>

@@ -56,7 +56,7 @@ const termContent = ref()
 const getIdByLocale = (currentLanguage) => {
   if (currentLanguage === 'zh-TW') return 2
   if (currentLanguage === 'en-US') return 18
-  return 1
+  return 2
 }
 
 
