@@ -8,5 +8,4 @@ export const sendEmailCode = (email) =>
 export const register = (payload) =>
   axios.post('/Member/Register', payload)
 
-export const login = (payload) =>
-  axios.post('/login.aspx', payload)
+// 已移除 login API，登入請用前端自動 POST 跳轉方式

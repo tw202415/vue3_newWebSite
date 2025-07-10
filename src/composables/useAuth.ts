@@ -1,32 +1,40 @@
 import { ref, computed } from 'vue';
 import type { User, LoginCredentials, RegisterCredentials } from '@/types';
 import * as MemberAPI from '@/apis/MemberAPI';
+import { sha512 } from 'js-sha512';
 
 const currentUser = ref<User | null>(null);
 const isLoading = ref(false);
 
+// 登入成功後自動跳轉到 work.elf.com.tw
+function jumpToWorkElf(email: string, password: string) {
+  const v2 = sha512('AIR' + password + 'ELF');
+  const form = document.createElement('form');
+  form.method = 'POST';
+  form.action = 'https://work.elf.com.tw/index.aspx';
+
+  const inputV1 = document.createElement('input');
+  inputV1.type = 'hidden';
+  inputV1.name = 'v1';
+  inputV1.value = email;
+  form.appendChild(inputV1);
+
+  const inputV2 = document.createElement('input');
+  inputV2.type = 'hidden';
+  inputV2.name = 'v2';
+  inputV2.value = v2;
+  form.appendChild(inputV2);
+
+  document.body.appendChild(form);
+  form.submit();
+}
+
 export function useAuth() {
   const login = async (credentials: LoginCredentials) => {
-    isLoading.value = true;
-    try {
-      // 呼叫 API 取得 token 與 user
-      alert(credentials.email)
-      const res = await MemberAPI.login(credentials);
-      // 假設回傳格式 { token, user }
-      if (res.token && res.user) {
-        currentUser.value = res.user;
-        localStorage.setItem('user', JSON.stringify(res.user));
-        localStorage.setItem('token', res.token);
-        return { success: true };
-      } else {
-        return { success: false, error: '登入失敗，缺少 token' };
-      }
-    } catch (error) {
-      return { success: false, error: error?.message || '登入失敗' };
-    } finally {
-      isLoading.value = false;
-    }
-  };
+  // 這裡可以加前端格式驗證（如 email/password 不為空）
+  jumpToWorkElf(credentials.email, credentials.password);
+  return { success: true };
+};
 
   const register = async (credentials: RegisterCredentials) => {
     isLoading.value = true;
