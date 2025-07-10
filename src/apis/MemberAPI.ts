@@ -38,4 +38,4 @@ export const register = (payload: RegisterPayload): Promise<AxiosResponse<Regist
   axios.post('/api/Member/Register', payload)
 
 export const login = (payload: LoginPayload): Promise<AxiosResponse<LoginResponse>> =>
-  axios.post('/api/Member/Login', payload)
+  axios.post('http://localhost:8081/auth/login', payload)

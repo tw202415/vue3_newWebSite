@@ -9,6 +9,19 @@ const instance = axios.create({
   timeout: 10000
 })
 
+//  新增 request 攔截器，自動帶入 JWT token
+instance.interceptors.request.use(
+  (config) => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      config.headers = config.headers || {};
+      config.headers['Authorization'] = `Bearer ${token}`;
+    }
+    return config;
+  },
+  (error) => Promise.reject(error)
+);
+
 // ✅ 統一攔截 response，回傳成功就取出 data，失敗就丟錯誤
 instance.interceptors.response.use(
   (response) => {

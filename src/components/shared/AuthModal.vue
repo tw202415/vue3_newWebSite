@@ -187,6 +187,7 @@ const switchMode = () => {
 };
 
 const handleLogin = async () => {
+  alert(loginForm.email)
   const result = await login(loginForm);
   if (result.success) {
     closeModal();

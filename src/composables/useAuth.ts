@@ -1,5 +1,6 @@
 import { ref, computed } from 'vue';
 import type { User, LoginCredentials, RegisterCredentials } from '@/types';
+import * as MemberAPI from '@/apis/MemberAPI';
 
 const currentUser = ref<User | null>(null);
 const isLoading = ref(false);
@@ -8,26 +9,20 @@ export function useAuth() {
   const login = async (credentials: LoginCredentials) => {
     isLoading.value = true;
     try {
-      // 模擬 API 調用
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      // 模擬登入成功
-      const user: User = {
-        id: '1',
-        email: credentials.email,
-        name: '測試用戶',
-        avatar: 'https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=100',
-        isVip: false,
-        joinDate: new Date(),
-        totalOrders: 5,
-        totalSpent: 15000
-      };
-      
-      currentUser.value = user;
-      localStorage.setItem('user', JSON.stringify(user));
-      return { success: true };
+      // 呼叫 API 取得 token 與 user
+      alert(credentials.email)
+      const res = await MemberAPI.login(credentials);
+      // 假設回傳格式 { token, user }
+      if (res.token && res.user) {
+        currentUser.value = res.user;
+        localStorage.setItem('user', JSON.stringify(res.user));
+        localStorage.setItem('token', res.token);
+        return { success: true };
+      } else {
+        return { success: false, error: '登入失敗，缺少 token' };
+      }
     } catch (error) {
-      return { success: false, error: '登入失敗' };
+      return { success: false, error: error?.message || '登入失敗' };
     } finally {
       isLoading.value = false;
     }
@@ -64,6 +59,7 @@ export function useAuth() {
   const logout = () => {
     currentUser.value = null;
     localStorage.removeItem('user');
+    localStorage.removeItem('token');
   };
 
   const initAuth = () => {
@@ -80,6 +76,10 @@ export function useAuth() {
     }
   };
 
+  const getToken = () => {
+    return localStorage.getItem('token') || '';
+  };
+
   return {
     currentUser: computed(() => currentUser.value),
     isAuthenticated: computed(() => !!currentUser.value),
@@ -88,6 +88,7 @@ export function useAuth() {
     register,
     logout,
     initAuth,
-    upgradeToVip
+    upgradeToVip,
+    getToken
   };
 }
