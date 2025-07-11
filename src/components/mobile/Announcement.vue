@@ -4,7 +4,7 @@
     class="relative overflow-hidden"
   >
     <div
-      class="w-1/2 mx-auto bg-gray-200 border border-white/10 rounded-lg p-4 text-gray-200 relative overflow-hidden"
+      class="w-full mx-auto bg-gray-200 border border-white/10 rounded-lg p-4 text-gray-200 relative overflow-hidden"
     >
       <!-- 標題 -->
       <div class="flex items-center justify-between mb-4">
