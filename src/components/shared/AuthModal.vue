@@ -30,9 +30,9 @@
             </label>
             <input
               v-model="loginForm.email"
-              type="email"
+              type="text"
               required
-              class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-colors duration-200"
+              class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-gray-700 text-var(--color-text-gray-900) dark:text-var(--color-text-white) transition-colors duration-200"
               :placeholder="t('auth.email.placeholder')"
             />
           </div>
@@ -44,7 +44,7 @@
               v-model="loginForm.password"
               type="password"
               required
-              class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-colors duration-200"
+              class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-gray-700 text-var(--color-text-gray-900) dark:text-var(--color-text-white) transition-colors duration-200"
               :placeholder="t('auth.password.placeholder')"
             />
           </div>
@@ -67,7 +67,7 @@
               v-model="registerForm.name"
               type="text"
               required
-              class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-colors duration-200"
+              class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-gray-700 text-var(--color-text-gray-900) dark:text-var(--color-text-white) transition-colors duration-200"
               :placeholder="t('auth.name.placeholder')"
             />
           </div>
@@ -79,7 +79,7 @@
               v-model="registerForm.email"
               type="email"
               required
-              class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-colors duration-200"
+              class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-gray-700 text-var(--color-text-gray-900) dark:text-var(--color-text-white) transition-colors duration-200"
               :placeholder="t('auth.email.placeholder')"
             />
           </div>
@@ -91,7 +91,7 @@
               v-model="registerForm.password"
               type="password"
               required
-              class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-colors duration-200"
+              class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-gray-700 text-var(--color-text-gray-900) dark:text-var(--color-text-white) transition-colors duration-200"
               :placeholder="t('auth.password.placeholder')"
             />
           </div>
@@ -103,7 +103,7 @@
               v-model="registerForm.confirmPassword"
               type="password"
               required
-              class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-colors duration-200"
+              class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-gray-700 text-var(--color-text-gray-900) dark:text-var(--color-text-white) transition-colors duration-200"
               :placeholder="t('auth.confirmPassword.placeholder')"
             />
           </div>

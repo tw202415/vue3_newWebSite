@@ -27,130 +27,101 @@
               </div>
             </div>
           </div>
-          <div
-            class="m-2 rounded-xl shadow-lg bg-gray-100 p-6"
-          >
-            <table class="index-table col">
-              <tbody>
-                <!-- 集貨站選擇 -->
-                <tr>
-                  <th>集貨站：</th>
-                  <td>
-                    <ul
-                      style="
-                        display: flex;
-                        gap: 12px;
-                        list-style: none;
-                        padding: 0;
-                        margin: 0;
-                      "
-                    >
-                      <li v-for="(station, index) in stations" :key="index">
-                        <label>
-                          <input
-                            type="radio"
-                            name="colplace"
-                            v-model="selectedStation"
-                            :value="station.value"
-                          />
-                          {{ station.label }}
-                        </label>
-                      </li>
-                    </ul>
-                  </td>
-                </tr>
-                <!-- 實重 -->
-                <tr>
-                  <th>實重：</th>
-                  <td>
+          <div class="m-2 rounded-xl shadow-lg bg-gray-100 p-6">
+            <!-- 集貨站選擇 -->
+            <div class="mb-4">
+              <div class="font-semibold mb-1">集貨站：</div>
+              <ul class="flex flex-col gap-2 list-none p-0 m-0">
+                <li v-for="(station, index) in stations" :key="index">
+                  <label class="flex items-center space-x-2">
                     <input
-                      v-model="realWeight"
-                      inputmode="numeric"
-                      type="tel"
-                      maxlength="3"
-                      pattern="[0-9]*"
-                      placeholder="實重"
-                      class="w-32 px-4 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white transition-colors duration-200"
+                      type="radio"
+                      name="colplace"
+                      v-model="selectedStation"
+                      :value="station.value"
                     />
-                    <span>{{ weightUnit }}</span>
-                  </td>
-                </tr>
+                    <span>{{ station.label }}</span>
+                  </label>
+                </li>
+              </ul>
+            </div>
 
-                <!-- 材積重 -->
-                <tr>
-                  <th>材積重：</th>
-                  <td>
-                    <ul
-                      style="
-                        display: flex;
-                        gap: 12px;
-                        list-style: none;
-                        padding: 0;
-                        margin: 0;
-                      "
-                    >
-                      <li style="display: inline-flex; align-items: center">
-                        <input
-                          v-model="length"
-                          inputmode="numeric"
-                          type="tel"
-                          maxlength="5"
-                          pattern="[0-9]*"
-                          placeholder="長"
-                          class="w-32 px-4 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white transition-colors duration-200"
-                        />
-                        <span>×</span>
-                      </li>
-                      <li style="display: inline-flex; align-items: center">
-                        <input
-                          v-model="width"
-                          inputmode="numeric"
-                          type="tel"
-                          maxlength="5"
-                          pattern="[0-9]*"
-                          placeholder="寬"
-                          class="w-32 px-4 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white transition-colors duration-200"
-                        />
-                        <span>×</span>
-                      </li>
-                      <li style="display: inline-flex; align-items: center">
-                        <input
-                          v-model="height"
-                          inputmode="numeric"
-                          type="tel"
-                          maxlength="5"
-                          pattern="[0-9]*"
-                          placeholder="高"
-                          class="w-32 px-4 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white transition-colors duration-200"
-                        />
-                        <span>{{ volumeFormulaText }}</span>
-                      </li>
-                      <li style="display: inline-flex; align-items: center">
-                        <input
-                          :value="calculatedVolumeWeight"
-                          type="text"
-                          disabled
-                          class="w-32 px-4 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white transition-colors duration-200"
-                        />
-                        <span>{{ weightUnit }}</span>
-                      </li>
-                      <li style="display: inline-flex; align-items: center">
-                        <span>(尺寸單位為公分)</span>
-                      </li>
-                    </ul>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+            <!-- 實重 -->
+            <div class="mb-4">
+              <div class="font-semibold mb-1">實重：</div>
+              <div class="flex items-center">
+                <input
+                  v-model="realWeight"
+                  inputmode="numeric"
+                  type="tel"
+                  maxlength="3"
+                  pattern="[0-9]*"
+                  placeholder="實重"
+                  class="w-32 px-4 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white transition-colors duration-200"
+                />
+                <span>{{ weightUnit }}</span>
+              </div>
+            </div>
+
+            <!-- 材積重 -->
+            <div class="mb-4">
+              <div class="font-semibold mb-1">材積重：</div>
+              <div class="flex flex-col">
+                <div class="flex items-center">
+                  <input
+                    v-model="length"
+                    inputmode="numeric"
+                    type="tel"
+                    maxlength="5"
+                    pattern="[0-9]*"
+                    placeholder="長"
+                    class="w-32 px-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white text-gray-900 transition-colors duration-200"
+                  />
+                  <span>×</span>
+                  <input
+                    v-model="width"
+                    inputmode="numeric"
+                    type="tel"
+                    maxlength="5"
+                    pattern="[0-9]*"
+                    placeholder="寬"
+                    class="w-32 px-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white text-gray-900 transition-colors duration-200"
+                  />
+                  <span>×</span>
+                </div>
+                <div class="items-center">
+                  <input
+                    v-model="height"
+                    inputmode="numeric"
+                    type="tel"
+                    maxlength="5"
+                    pattern="[0-9]*"
+                    placeholder="高"
+                    class="w-32 px-4 mt-2 mb-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white text-gray-900 transition-colors duration-200"
+                  />
+                  <span>{{ volumeFormulaText }}</span>
+                </div>
+                <div class="flex items-center">
+                  <input
+                    :value="calculatedVolumeWeight"
+                    type="text"
+                    disabled
+                    class="w-32 px-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white text-gray-900 transition-colors duration-200"
+                  />
+                  <span>{{ weightUnit }}</span>
+                </div>
+                <span class="text-gray-400">(尺寸單位為公分)</span>
+              </div>
+            </div>
           </div>
         </div>
 
         <!-- 運費計算結果 -->
-        <div v-if="feeResult" class="m-2 rounded-xl shadow-lg bg-white">
+        <div v-if="feeResult" class="m-2">
           <table class="index-table result-table same-style">
             <thead>
               <tr>
-                <th>集貨站</th>
+                <th rowspan="2">集貨站</th>
                 <th
                   :colspan="feeResult.warehouses[0].methods.length"
                   v-for="warehouse in feeResult.warehouses"
@@ -159,22 +130,21 @@
                   {{ warehouse.warehouseName }}
                 </th>
               </tr>
-            </thead>
-            <tbody>
               <tr>
-                <td>集貨方式</td>
                 <template
                   v-for="warehouse in feeResult.warehouses"
                   :key="warehouse.warehouseName + '-methods'"
                 >
-                  <td
+                  <th
                     v-for="method in warehouse.methods"
                     :key="method.methodName"
                   >
                     {{ method.methodName }}
-                  </td>
+                  </th>
                 </template>
               </tr>
+            </thead>
+            <tbody>
               <tr>
                 <td>集貨幣運費</td>
                 <template
@@ -304,6 +274,7 @@ const fetchShippingFee = async () => {
       width: width.value,
       height: height.value,
     };
+    console.log("payload:", payload);
 
     // 防呆：欄位未填寫就中止
     if (!selectedStation.value) {
@@ -330,7 +301,7 @@ const calculatedVolumeWeight = computed(() => {
   const volume = (length.value * width.value * height.value) / 6000;
   if (isNaN(volume)) return '0.00';
   const result = isUSA.value ? volume * 2.2 : volume;
-  return result.toFixed(2);
+  return result.toFixed(2) ;
 });
 
 // 清除表單

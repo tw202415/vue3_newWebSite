@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
+  <div class="min-h-screen bg-gradient-to-br from-orange-400 via-orange-700 to-orange-300 transition-colors duration-300">
     <!-- Header -->
     <ResponsiveComponent
       :desktop-component="DesktopHeader"

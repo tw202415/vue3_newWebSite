@@ -92,28 +92,28 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f5f9;
+  background: var(--color-bg-light);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
+  background: var(--color-bg-medium);
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
+  background: var(--color-bg-gray-light);
 }
 
 .dark ::-webkit-scrollbar-track {
-  background: #374151;
+  background: var(--color-bg-dark);
 }
 
 .dark ::-webkit-scrollbar-thumb {
-  background: #6b7280;
+  background: var(--color-bg-gray);
 }
 
 .dark ::-webkit-scrollbar-thumb:hover {
-  background: #9ca3af;
+  background: var(--color-bg-gray-light);
 }
 
 /* 確保彈窗在所有情況下都能正確顯示 */

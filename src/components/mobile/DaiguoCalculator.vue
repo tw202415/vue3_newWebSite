@@ -27,139 +27,93 @@
               </div>
             </div>
           </div>
-          <div
-            class="m-2 rounded-xl shadow-lg bg-gray-100 dark:bg-gray-900 p-6"
-          >
-            <table class="index-table col">
-              <tbody>
-                <tr>
-                  <th>國家：</th>
-                  <td>
-                    <ul
-                      style="
-                        display: flex;
-                        gap: 12px;
-                        list-style: none;
-                        padding: 0;
-                        margin: 0;
-                      "
-                    >
-                      <li v-for="(country, index) in countries" :key="index">
-                        <label>
-                          <input
-                            type="radio"
-                            name="daiplace"
-                            v-model="selectedCountry"
-                            :value="country.value"
-                          />
-                          {{ country.label }}
-                        </label>
-                      </li>
-                    </ul>
-                  </td>
-                </tr>
-                <tr>
-                  <th>商品購買金額：</th>
-                  <td>
-                    <input
-                      v-model="purchaseAmount"
-                      inputmode="numeric"
-                      type="tel"
-                      pattern="[0-9]*"
-                      placeholder="購買金額"
-                      class="w-32 px-4 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white transition-colors duration-200"
-                    />
-                    <span>{{ selectedCurrency }}</span>
-                  </td>
-                </tr>
-                <tr>
-                  <th>預估當地運費：</th>
-                  <td>
-                    <ul
-                      style="
-                        display: flex;
-                        gap: 12px;
-                        list-style: none;
-                        padding: 0;
-                        margin: 0;
-                      "
-                    >
-                      <li style="display: inline-flex; align-items: center">
-                        <input
-                          v-model="localFreight"
-                          inputmode="numeric"
-                          type="tel"
-                          pattern="[0-9]*"
-                          placeholder="當地運費"
-                          class="w-32 px-4 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white transition-colors duration-200"
-                        />
-                        <span>{{ selectedCurrency }}</span>
-                      </li>
-                      <li><span>(購買後送至集貨站的運費)</span></li>
-                    </ul>
-                  </td>
-                </tr>
-                <tr>
-                  <th>銀行轉帳手續費：</th>
-                  <td>
-                    <ul
-                      style="
-                        display: flex;
-                        align-items: center;
-                        gap: 12px;
-                        list-style: none;
-                        padding: 0;
-                        margin: 0;
-                      "
-                    >
-                      <li style="display: inline-flex; align-items: center">
-                        <input
-                          :value="calculatedTransferFee"
-                          class="w-32 px-4 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white transition-colors duration-200"
-                          type="tel"
-                          disabled
-                        />
-                        <span class="text-muted">{{ selectedCurrency }}</span>
-                      </li>
-                      <li><span>(當地銀行轉帳給賣家費用)</span></li>
-                    </ul>
-                  </td>
-                </tr>
-                <tr>
-                  <th>代購服務費：</th>
-                  <td>
-                    <ul
-                      style="
-                        display: flex;
-                        align-items: center;
-                        gap: 12px;
-                        list-style: none;
-                        padding: 0;
-                        margin: 0;
-                      "
-                    >
-                      <li style="display: inline-flex; align-items: center">
-                        <input
-                          :value="calculatedServiceFee"
-                          class="w-32 px-4 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white transition-colors duration-200"
-                          type="tel"
-                          disabled
-                        />
-                        <span class="text-muted">{{ selectedCurrency }}</span>
-                      </li>
-                      <li><span>(集貨網收取費用)</span></li>
-                    </ul>
-                  </td>
-                </tr>
-                <tr
-                  class="calcu-after"
-                  :style="{ display: isSubmitted ? 'table-row' : 'none' }"
-                >
-                  <th class="th_3">預估台幣費用：</th>
-                  <td>{{ totalAmountTWD }} 台幣（集貨幣扣款）</td>
-                </tr>
-              </tbody>
-            </table>
+          <div class="m-2 rounded-xl shadow-lg bg-gray-100 p-6">
+            <div class="mb-4">
+              <div class="font-semibold mb-1">國家：</div>
+              <td>
+                <ul class="flex flex-col gap-2 list-none p-0 m-0">
+                  <li v-for="(country, index) in countries" :key="index">
+                    <label>
+                      <input
+                        type="radio"
+                        name="daiplace"
+                        v-model="selectedCountry"
+                        :value="country.value"
+                      />
+                      {{ country.label }}
+                    </label>
+                  </li>
+                </ul>
+              </td>
+            </div>
+            <div class="mb-4">
+              <div class="font-semibold mb-1">商品購買金額：</div>
+              <div class="flex items-center">
+                <input
+                  v-model="purchaseAmount"
+                  inputmode="numeric"
+                  type="tel"
+                  pattern="[0-9]*"
+                  placeholder="購買金額"
+                  class="w-32 px-4 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white transition-colors duration-200"
+                />
+                <span>{{ selectedCurrency }}</span>
+              </div>
+            </div>
+            <div class="mb-4">
+              <div class="font-semibold mb-1">預估當地運費：</div>
+              <div class="flex flex-col">
+                <div class="flex items-center">
+                  <input
+                    v-model="localFreight"
+                    inputmode="numeric"
+                    type="tel"
+                    pattern="[0-9]*"
+                    placeholder="當地運費"
+                    class="w-32 px-4 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white transition-colors duration-200"
+                  />
+                  <span>{{ selectedCurrency }}</span>
+                </div>
+              </div>
+            <span>(購買後送至集貨站的運費)</span>
+            </div>
+            <div class="mb-4">
+              <div class="font-semibold mb-1">銀行轉帳手續費：</div>
+              <div class="flex flex-col">
+                <div class="flex items-center">
+                  <input
+                    :value="calculatedTransferFee"
+                    class="w-32 px-4 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white transition-colors duration-200"
+                    type="tel"
+                    disabled
+                  />
+                  <span class="text-muted">{{ selectedCurrency }}</span>
+                </div>
+                <span>(當地銀行轉帳給賣家費用)</span>
+              </div>
+            </div>
+            <div class="mb-4">
+              <div class="font-semibold mb-1">代購服務費：</div>
+              <div class="flex flex-col">
+                <div class="flex items-center">
+                  <input
+                    :value="calculatedServiceFee"
+                    class="w-32 px-4 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white transition-colors duration-200"
+                    type="tel"
+                    disabled
+                  />
+                  <span class="text-muted">{{ selectedCurrency }}</span>
+                </div>
+                <span>(集貨網收取費用)</span>
+              </div>
+            </div>
+            <div
+              class="calcu-after"
+              :style="{ display: isSubmitted ? 'table-row' : 'none' }"
+            >
+              <div class="font-semibold mb-1">預估台幣費用：</div>
+              <td>{{ totalAmountTWD }} 台幣（集貨幣扣款）</td>
+            </div>
           </div>
         </div>
 
@@ -217,8 +171,8 @@ const countries = ref([
 ]);
 
 const selectedCountry = ref(null);
-const purchaseAmount = ref(0);
-const localFreight = ref(0);
+const purchaseAmount = ref();
+const localFreight = ref();
 const isSubmitted = ref(false);
 const feeMap = ref({});
 const noticeHtml = ref("");
@@ -228,7 +182,7 @@ const noticeId = 99261; // 代購頁用的 ID
 
 const selectedCurrency = computed(() => {
   const c = countries.value.find((c) => c.value === selectedCountry.value);
-  return c ? c.currency : "請選擇國家";
+  return c ? c.currency : "";
 });
 
 const selectedConfig = computed(() => {

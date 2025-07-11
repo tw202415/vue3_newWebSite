@@ -1,0 +1,17 @@
+:root {
+  --color-white: #fff;
+  --color-bg-light: #f1f5f9;
+  --color-bg-medium: #cbd5e1;
+  --color-bg-dark: #374151;
+  --color-bg-gray: #6b7280;
+  --color-bg-gray-light: #9ca3af;
+  --color-bg-gray-medium: #a8a8a8;
+  --color-bg-gray-dark: #c1c1c1;
+  --color-primary: #3b82f6;
+  --color-secondary: #8b5cf6;
+  --color-orange: #f0650e;
+  --color-beige: #f9f4ea;
+  --color-border: #ddd;
+  --color-border-light: #eee;
+  --color-text-gray: #999;
+}

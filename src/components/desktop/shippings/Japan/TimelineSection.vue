@@ -10,10 +10,10 @@
         @click="toggleFaq(index)"
         class="w-full px-6 py-4 text-left flex justify-between items-center group"
       >
-        <span class="font-bold text-lg text-gray-200 group-hover:text-cyan-300 transition-colors">
+        <span class="font-bold text-lg text-gray-200 group-hover:text-orange-300 transition-colors">
            {{ item.item }}
         </span>
-        <span class="text-cyan-400 text-xl transition-transform duration-300" :class="{ 'rotate-45': openFaqs[index] }">
+        <span class="text-orange-400 text-xl transition-transform duration-300" :class="{ 'rotate-45': openFaqs[index] }">
           +
         </span>
       </button>
@@ -33,10 +33,10 @@
                 <tr 
                   v-for="(item, index) in dateItems"
                   :key="index"
-                  class="border-b border-cyan-500/10 hover:bg-gray-800/30"
+                  class="text-gray-300 border-b border-cyan-500/10 hover:bg-gray-800/30"
                 >
-                  <td class="p-4 text-gray-300">{{ item.dateStr }}</td>
-                  <td class="p-4 text-gray-400">{{ item.dateEnd }}</td>
+                  <td class="p-4">{{ item.dateStr }}</td>
+                  <td class="p-4">{{ item.dateEnd }}</td>
                 </tr>
               </tbody>
             </table>
@@ -57,19 +57,19 @@
                 <tr 
                   v-for="(item, index) in dateItems2"
                   :key="index"
-                  class="border-b border-cyan-500/10 hover:bg-gray-800/30"
+                  class="text-gray-300 border-b border-cyan-500/10 hover:bg-gray-800/30"
                 >
-                  <td class="p-4 text-gray-300">{{ item.dateStr }}</td>
-                  <td class="p-4 text-gray-400">{{ item.dateEnd }}</td>
+                  <td class="p-4">{{ item.dateStr }}</td>
+                  <td class="p-4">{{ item.dateEnd }}</td>
                 </tr>
               </tbody>
             </table>
           </div>
-          <p class="text-cyan-400 mt-2">{{ t('shipping.routes.notice') }}</p>
+          <p class="text-orange-400 mt-2">{{ t('shipping.routes.notice') }}</p>
           <p class="mt-2 text-gray-400" v-for="(i, idx) in item.content">
               {{ idx + 1 }}.{{ i }}
           </p>
-          <p class="text-cyan-400 mt-2 font-bold">{{ t('shipping.routes.countries.menu3.subtitle2') }}</p>
+          <p class="text-orange-400 mt-2 font-bold">{{ t('shipping.routes.countries.menu3.subtitle2') }}</p>
           <p class="mt-2 text-gray-200 font-bold">{{ t('shipping.routes.countries.menu3.subtitle6') }}</p>
           <ul class="mt-2 text-gray-400 flex flex-wrap gap-4">
             <li v-for="n in 6" :key="n" class="flex items-center gap-2">
@@ -81,8 +81,8 @@
               {{ t(`shipping.routes.countries.menu3.deliveryWay.row${n}`) }}
             </li>
           </ul>
-          <p class="mt-2 text-cyan-400 font-bold">{{ t('shipping.routes.countries.menu3.subtitle3') }}</p>
-          <p class="mt-2 text-cyan-400 font-bold">{{ t('shipping.routes.countries.menu3.subtitle4') }}</p>
+          <p class="mt-2 text-orange-400 font-bold">{{ t('shipping.routes.countries.menu3.subtitle3') }}</p>
+          <p class="mt-2 text-orange-400 font-bold">{{ t('shipping.routes.countries.menu3.subtitle4') }}</p>
         </div>
       </div>
       <div v-if="index === 1">

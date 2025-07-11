@@ -1,6 +1,6 @@
 <template>
-  <div class="dialog-mask" @click.self="close">
-    <div class="dialog-box">
+  <div class="fixed inset-0 bg-black/50 z-50 flex items-center justify-center" @click.self="close">
+    <div class="bg-gray-200/90 rounded-lg shadow-lg p-6 min-w-[240px] max-w-[90vw]">
       <div class="dialog-header">
         <slot name="header">
           <h3>提示訊息</h3>
@@ -45,7 +45,7 @@ const close = () => emit('close')
 }
 
 .dialog-box {
-  background: #fff;
+  background: var(--color-white);
   border-radius: 8px;
   width: 300px;
   max-width: 90vw;
@@ -54,9 +54,9 @@ const close = () => emit('close')
 }
 
 .dialog-header {
-  background: #f8f8f8;
+  background: var(--color-bg-light);
   padding: 16px;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid var(--color-border);
   font-weight: bold;
   text-align: center;
 }
@@ -71,12 +71,12 @@ const close = () => emit('close')
 .dialog-footer {
   padding: 16px;
   text-align: center;
-  border-top: 1px solid #eee;
+  border-top: 1px solid var(--color-border-light);
 }
 
 .btn-close {
   padding: 6px 20px;
-  background: #f0650e;
+  background: var(--color-orange);
   color: white;
   border: none;
   border-radius: 4px;
@@ -86,6 +86,6 @@ const close = () => emit('close')
 }
 
 .btn-close:hover {
-  background: #f0650e;
+  background: var(--color-orange);
 }
 </style>

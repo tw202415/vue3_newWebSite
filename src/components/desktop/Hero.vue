@@ -1,10 +1,7 @@
 <template>
-  <section id="home" class="relative min-h-screen overflow-hidden bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
+  <section id="home" class="relative min-h-screen overflow-hidden bg-orange-700">
     <!-- Animated Background -->
     <div class="absolute inset-0">
-      <!-- Gradient Mesh -->
-      <div class="absolute inset-0 bg-gradient-to-br from-blue-600/20 via-purple-600/20 to-cyan-600/20"></div>
-      
       <!-- Floating Particles -->
       <div class="absolute inset-0">
         <div
@@ -19,11 +16,6 @@
           }"
         ></div>
       </div>
-
-      <!-- Grid Pattern -->
-      <div class="absolute inset-0 opacity-10">
-        <div class="grid-pattern"></div>
-      </div>
     </div>
 
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 min-h-screen flex items-center">
@@ -31,12 +23,8 @@
         <!-- Content -->
         <div class="animate-fade-in-up">
           <!-- Badge -->
-          <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-8">
+          <div class="flex flex-col lg:flex-row items-center justify-center gap-8">
             <div class="flex-1">
-              <div class="inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-blue-500/20 to-purple-500/20 border border-blue-500/30 backdrop-blur-sm mb-6">
-                <Zap :size="16" class="text-blue-400 mr-2" />
-                <span class="text-blue-300 text-sm font-medium">AI驅動的智能集運</span>
-              </div>
 
               <h1 class="text-6xl lg:text-7xl font-bold mb-6 leading-tight">
                 <span class="bg-gradient-to-r from-white via-blue-100 to-purple-100 bg-clip-text text-transparent">
@@ -52,10 +40,16 @@
                 {{ t('hero.description') }}
               </p>
             </div>
+            <!-- 公告 -->
+            <ResponsiveComponent
+              class="w-full lg:w-1/2"
+              :desktop-component="DesktopAnnouncement"
+              :mobile-component="MobileAnnouncement"
+            />
           </div>
 
           <!-- REASON TO CHOOSE US -->
-          <h1 class="text-6xl lg:text-6xl font-bold mb-6 leading-tight flex items-center justify-center">REASON TO CHOOSE US</h1>
+          <h1 class="text-6xl lg:text-6xl font-bold mb-6 mt-12 leading-tight flex items-center justify-center">REASON TO CHOOSE US</h1>
           <div class="gap-6 mb-8 flex items-center justify-center">
           <ul class="rea-space flex gap-24 list-none p-0 m-0">
             <li class="rea-circel" v-for="(reason, index) in reasons" :key="index">
@@ -83,6 +77,9 @@ import { Truck, Zap, Shield, Cpu, ChevronDown } from 'lucide-vue-next';
 import { useI18n } from '@/composables/useI18n';
 import { ref, onMounted } from "vue";
 import { getAboutUsReasons } from "@/apis/CMSAPI";
+import ResponsiveComponent from '@/components/shared/ResponsiveComponent.vue';
+import DesktopAnnouncement from '@/components/desktop/Announcement.vue';
+import MobileAnnouncement from '@/components/mobile/Announcement.vue';
 
 const { t } = useI18n();
 

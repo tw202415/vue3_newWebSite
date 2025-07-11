@@ -1,15 +1,15 @@
 <template>
   <section
     id="home"
-    class="relative overflow-hidden bg-gradient-to-br from-slate-900 via-indigo-900 to-slate-900"
+    class="relative overflow-hidden"
   >
     <div
-      class="w-1/2 mx-auto bg-white/5 border border-white/10 rounded-lg p-6 text-gray-200 relative overflow-hidden"
+      class="w-1/2 mx-auto bg-gray-200 border border-white/10 rounded-lg p-4 text-gray-200 relative overflow-hidden"
     >
       <!-- 標題 -->
       <div class="flex items-center justify-between mb-4">
-        <h2 class="text-2xl font-semibold">📢 最新公告</h2>
-        <div class="flex items-center space-x-2 text-sm text-gray-400">
+        <h2 class="text-2xl font-semibold text-gray-500">📢 最新公告</h2>
+        <div class="flex items-center space-x-2 text-sm text-gray-500">
           <span>{{ currentIndex + 1 }} / {{ newsList.length }}</span>
         </div>
       </div>
@@ -40,10 +40,10 @@
                 <p class="text-sm text-gray-400">📅 {{ announcement.date }}</p>
 
                 <!-- 公告內容 
-              <div class="text-gray-300 leading-relaxed">
-                <p v-if="announcement.content" class="mb-3">{{ announcement.content }}</p>
-                
-              </div> -->
+                <div class="text-gray-300 leading-relaxed">
+                  <p v-if="announcement.content" class="mb-3">{{ announcement.content }}</p>
+                  
+                </div> -->
                 <!-- more -->
                 <button
                   @click="openNews(announcement)"
@@ -122,29 +122,29 @@
         <button
           @click="previousAnnouncement"
           :disabled="currentIndex === 0"
-          class="flex items-center justify-center w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+          class="flex items-center justify-center w-10 h-10 rounded-full bg-gray-400 hover:bg-gray-500 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
         >
           <ChevronLeft :size="20" />
         </button>
 
         <!-- 指示器 
-      <div class="flex space-x-2">
-        <button
-          v-for="(_, index) in newsList.value"
-          :key="index"
-          @click="goToAnnouncement(index)"
-          :class="[
-            'w-2 h-2 rounded-full transition-colors',
-            currentIndex === index ? 'bg-blue-400' : 'bg-white/30 hover:bg-white/50'
-          ]"
-        />
-      </div> -->
+        <div class="flex space-x-2">
+          <button
+            v-for="(_, index) in newsList.value"
+            :key="index"
+            @click="goToAnnouncement(index)"
+            :class="[
+              'w-2 h-2 rounded-full transition-colors',
+              currentIndex === index ? 'bg-blue-400' : 'bg-gray-400 hover:bg-gray-500'
+            ]"
+          />
+        </div> -->
 
         <!-- 右箭頭 -->
         <button
           @click="nextAnnouncement"
           :disabled="currentIndex === newsList.length - 1"
-          class="flex items-center justify-center w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+          class="flex items-center justify-center w-10 h-10 rounded-full bg-gray-400 hover:bg-gray-500 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
         >
           <ChevronRight :size="20" />
         </button>
@@ -152,12 +152,12 @@
 
       <!-- 自動播放控制 -->
       <div
-        class="flex items-center justify-center mt-4"
+        class="flex items-center justify-center"
         v-if="newsList.length > 0"
       >
         <button
           @click="toggleAutoPlay"
-          class="flex items-center space-x-2 px-3 py-1 rounded-full bg-white/10 hover:bg-white/20 transition-colors text-sm"
+          class="flex items-center space-x-2 px-3 py-1 rounded-full bg-gray-400 hover:bg-gray-500 transition-colors text-sm"
         >
           <component :is="isAutoPlay ? Pause : Play" :size="14" />
           <span>{{ isAutoPlay ? "暫停" : "播放" }}</span>

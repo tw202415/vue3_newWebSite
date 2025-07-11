@@ -1,26 +1,15 @@
 <template>
-  <footer class="bg-gray-900 text-white">
+  <footer class="bg-white text-gray-900">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         <!-- Company Info -->
-        <div class="lg:col-span-2">
+        <div class="lg:col-span-1">
           <div class="flex items-center space-x-2 mb-4">
-            <Truck :size="28" class="text-primary-400" />
-            <span class="text-xl font-bold">{{ t('footer.company') }}</span>
+            <img src="https://work.elf.com.tw/images/logo.png" alt="Logo" class="align-middle object-contain" style="width:30%;height:auto;" />
           </div>
-          <p class="text-gray-300 mb-4 max-w-md">
+          <p class="text-gray-600 mb-4 max-w-md">
             {{ t('footer.description') }}
           </p>
-          <div class="flex space-x-4">
-            <a
-              v-for="social in socialLinks"
-              :key="social.name"
-              :href="social.url"
-              class="text-gray-400 hover:text-white transition-colors duration-200"
-            >
-              <component :is="social.icon" :size="20" />
-            </a>
-          </div>
         </div>
 
         <!-- Quick Links -->
@@ -30,7 +19,7 @@
             <li v-for="link in quickLinks" :key="link.key">
               <a
                 :href="link.href"
-                class="text-gray-300 hover:text-white transition-colors duration-200"
+                class="text-gray-600 hover:text-orange-500 transition-colors duration-200"
               >
                 {{ t(`footer.links.${link.key}`) }}
               </a>
@@ -41,11 +30,11 @@
         <!-- Contact Info -->
         <div>
           <h3 class="text-lg font-semibold mb-4">{{ t('contact.title') }}</h3>
-          <div class="space-y-2">
-            <p class="text-gray-300 text-sm">{{ t('footer.info.phone') }}: (02) 8201-7020</p>
-            <p class="text-gray-300 text-sm">{{ t('footer.info.fax') }}: (02) 8201-7030</p>
-            <p class="text-gray-300 text-sm">{{ t('footer.info.address') }}</p>
-            <p class="text-gray-300 text-sm">{{ t('footer.info.businessHour') }}</p>
+          <div class="space-y-2 text-gray-600 text-sm">
+            <p>{{ t('footer.info.phone') }}: (02) 8201-7020</p>
+            <p>{{ t('footer.info.fax') }}: (02) 8201-7030</p>
+            <p>{{ t('footer.info.address') }}</p>
+            <p>{{ t('footer.info.businessHour') }}</p>
           </div>
         </div>
       </div>

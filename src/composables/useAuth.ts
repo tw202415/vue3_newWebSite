@@ -1,14 +1,37 @@
 import { ref, computed } from 'vue';
 import type { User, LoginCredentials, RegisterCredentials } from '@/types';
-import * as MemberAPI from '@/apis/MemberAPI';
 import { sha512 } from 'js-sha512';
+import { md5 } from 'js-md5';
+import CryptoJS from 'crypto-js';
 
 const currentUser = ref<User | null>(null);
 const isLoading = ref(false);
 
+// 與C#相同的 DES+MD5 加密函式
+function md5Encrypt(txt: string, skey: string): string {
+  // 1. 先用 MD5 算出 key
+  const md5Key = CryptoJS.MD5(skey).toString().substring(0, 8);
+  const key = CryptoJS.enc.Utf8.parse(md5Key);
+  const iv = CryptoJS.enc.Utf8.parse(md5Key);
+
+   // DES 加密
+   const encrypted = CryptoJS.DES.encrypt(txt, key, {
+    iv: iv,
+    mode: CryptoJS.mode.CBC,
+    padding: CryptoJS.pad.Pkcs7
+  });
+
+  // 3. 轉成大寫十六進制字串
+  return encrypted.ciphertext.toString(CryptoJS.enc.Hex).toUpperCase();
+}
+
 // 登入成功後自動跳轉到 work.elf.com.tw
 function jumpToWorkElf(email: string, password: string) {
-  const v2 = sha512('AIR' + password + 'ELF');
+  // 範例：用 C# 相同邏輯加密 password
+  const skey = "9B3DCD0BA36C67A9B8CA7D0D1C669D42";
+  const encrypted = md5Encrypt(password, skey);
+
+  const v2 = sha512('AIR' + encrypted + 'ELF');
   const form = document.createElement('form');
   form.method = 'POST';
   form.action = 'https://work.elf.com.tw/index.aspx';

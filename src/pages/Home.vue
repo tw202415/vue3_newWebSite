@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
+  <div class="min-h-screen bg-white transition-colors duration-300">
     <!-- Header -->
     <ResponsiveComponent
       :desktop-component="DesktopHeader"
@@ -12,12 +12,6 @@
       <ResponsiveComponent
         :desktop-component="DesktopHero"
         :mobile-component="MobileHero"
-      />
-
-      <!-- Announcement Section -->
-      <ResponsiveComponent
-        :desktop-component="DesktopAnnouncement"
-        :mobile-component="MobileAnnouncement"
       />
 
       <!-- Shipping Routes Section -->
@@ -72,7 +66,6 @@ import DesktopShippingRoutes from '@/components/desktop/ShippingRoutes.vue';
 import DesktopServices from '@/components/desktop/Services.vue';
 import DesktopFeatures from '@/components/desktop/Features.vue';
 import DesktopContact from '@/components/desktop/Contact.vue';
-import DesktopAnnouncement from '@/components/desktop/Announcement.vue';
 
 // Mobile Components
 import MobileHeader from '@/components/mobile/Header.vue';
@@ -81,7 +74,6 @@ import MobileShippingRoutes from '@/components/mobile/ShippingRoutes.vue';
 import MobileServices from '@/components/mobile/Services.vue';
 import MobileFeatures from '@/components/mobile/Features.vue';
 import MobileContact from '@/components/mobile/Contact.vue';
-import MobileAnnouncement from '@/components/mobile/Announcement.vue';
 
 // Initialize composables
 const { initLanguage } = useI18n();

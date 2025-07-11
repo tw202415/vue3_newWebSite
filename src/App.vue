@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="min-h-screen bg-white">
+  <div id="app" class="min-h-screen">
     <router-view />
   </div>
 </template>
@@ -81,27 +81,32 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: var(--color-bg-light);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #c1c1c1;
+  background: var(--color-bg-gray-dark);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #a8a8a8;
+  background: var(--color-bg-gray-medium);
 }
 
 .dark ::-webkit-scrollbar-track {
-  background: #374151;
+  background: var(--color-bg-dark);
 }
 
 .dark ::-webkit-scrollbar-thumb {
-  background: #6b7280;
+  background: var(--color-bg-gray);
 }
 
 .dark ::-webkit-scrollbar-thumb:hover {
-  background: #9ca3af;
+  background: var(--color-bg-gray-light);
 }
+#app {
+  /* 橘色漸層背景 */
+  background: linear-gradient(135deg, #FF9800 0%, #FFB74D 100%);
+}
+
 </style>

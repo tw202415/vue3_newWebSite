@@ -1,5 +1,5 @@
 <template>
-  <section class="py-10 bg-gradient-to-br from-slate-900 via-indigo-900 to-slate-900 relative overflow-hidden">
+  <section class="py-10 bg-gradient-to-br from-orange-400 via-orange-700 to-orange-300 relative overflow-hidden">
     <!-- Background Effects -->
     <div class="absolute inset-0">
       <div class="absolute inset-0 bg-gradient-to-br from-blue-600/10 via-purple-600/10 to-cyan-600/10"></div>
@@ -7,8 +7,8 @@
       <svg class="absolute inset-0 w-full h-full opacity-20" viewBox="0 0 1000 1000">
         <defs>
           <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:1" />
-            <stop offset="100%" style="stop-color:#8b5cf6;stop-opacity:1" />
+            <stop offset="0%" style="stop-color:var(--color-primary);stop-opacity:1" />
+            <stop offset="100%" style="stop-color:var(--color-secondary);stop-opacity:1" />
           </linearGradient>
         </defs>
         <path d="M100,200 Q500,100 900,300" stroke="url(#lineGradient)" stroke-width="2" fill="none" class="animate-draw-line">
@@ -25,17 +25,21 @@
 
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <!-- 運費試算 -->
-      <FreightCalculator />
+      <ResponsiveComponent
+        class="w-full"
+        :desktop-component="DesktopFreightCalculator"
+        :mobile-component="MobileFreightCalculator"
+      />
       <!-- 代購試算 -->
-      <DaiguoCalculator />
+      <ResponsiveComponent
+        class="w-full"
+        :desktop-component="DesktopDaiguoCalculator"
+        :mobile-component="MobileDaiguoCalculator"
+      />
 
       <!-- 全球集運服務 -->
       <!-- Header -->
       <div class="text-center mb-16 animate-fade-in">
-        <div class="inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-blue-500/20 to-purple-500/20 border border-blue-500/30 backdrop-blur-sm mb-6">
-          <Globe :size="16" class="text-blue-400 mr-2" />
-          <span class="text-blue-300 text-sm font-medium">全球智能網絡</span>
-        </div>
         <h2 class="text-4xl font-bold mb-4">
           <span class="bg-gradient-to-r from-white via-blue-100 to-purple-100 bg-clip-text text-transparent">
             {{ t('shipping.routes.title') }}
@@ -128,9 +132,12 @@
 <script setup lang="ts">
 import { ArrowDown, ArrowRight, Globe } from 'lucide-vue-next';
 import { useI18n } from '@/composables/useI18n';
-import FreightCalculator from '@/components/desktop/FreightCalculator.vue';
-import DaiguoCalculator from '@/components/desktop/DaiguoCalculator.vue';
-import { useRoute, useRouter } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router';
+import ResponsiveComponent from '@/components/shared/ResponsiveComponent.vue';
+import DesktopFreightCalculator from '@/components/desktop/FreightCalculator.vue';
+import DesktopDaiguoCalculator from '@/components/desktop/DaiguoCalculator.vue';
+import MobileFreightCalculator from '@/components/mobile/FreightCalculator.vue';
+import MobileDaiguoCalculator from '@/components/mobile/DaiguoCalculator.vue';
 
 const { t } = useI18n();
 
@@ -138,9 +145,9 @@ const route = useRoute()
 const router = useRouter()
 
 const countries = [
-  { code: 'shanghai', name: '中國', flag: '🇨🇳'},
-  { code: 'shenzhen', name: '中國', flag: '🇨🇳'},
-  { code: 'shenzhen2', name: '中國', flag: '🇨🇳'},
+  { code: 'shanghaiAirFreight', name: '中國', flag: '🇨🇳'},
+  { code: 'shenzhenAirFreight', name: '中國', flag: '🇨🇳'},
+  { code: 'shenzhenSeaExpress', name: '中國', flag: '🇨🇳'},
   { code: 'japan', name: '日本', flag: '🇯🇵'},
   { code: 'korea', name: '韓國', flag: '🇰🇷'},
   { code: 'japanEmsAir', name: '日本', flag: '🇯🇵'},

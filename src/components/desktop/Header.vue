@@ -5,8 +5,7 @@
         <!-- Logo -->
         <div class="flex items-center space-x-4">
           <router-link to="/" class="flex items-center space-x-2">
-            <Truck :size="32" class="text-primary-600" />
-            <span class="text-xl font-bold text-gray-900 dark:text-white">{{ t('footer.company') }}</span>
+            <img src="https://work.elf.com.tw/images/logo.png" alt="Logo" class="align-middle object-contain" style="width:30%;height:auto;" />
           </router-link>
         </div>
 
@@ -59,7 +58,7 @@
           <button
             v-else
             @click="showAuthModal = true"
-            class="bg-primary-600 hover:bg-primary-700 text-white px-6 py-2 rounded-lg font-medium transition-colors duration-200"
+            class="bg-var(--color-primary) hover:bg-primary-700 text-var(--color-white) px-6 py-2 rounded-lg font-medium transition-colors duration-200"
           >
             {{ t('auth.login.title') }}
           </button>
