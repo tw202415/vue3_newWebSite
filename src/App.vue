@@ -26,6 +26,8 @@ html {
 body {
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
   line-height: 1.6;
+  background: var(--primary-gradient);
+  transition: background 0.5s;
 }
 
 /* Animation classes */
@@ -105,8 +107,8 @@ body {
   background: var(--color-bg-gray-light);
 }
 #app {
-  /* 橘色漸層背景 */
-  background: linear-gradient(135deg, #FF9800 0%, #FFB74D 100%);
+  /* 保持透明，避免覆蓋 body 主題背景 */
+  background: transparent;
 }
 
 </style>

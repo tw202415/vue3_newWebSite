@@ -1,0 +1,15 @@
+:root {
+  --primary-color: #0a2342; /* 科技深藍 */
+  --primary-gradient: transparent;
+  --primary-shadow: 0 4px 14px 0 rgba(10,35,66,0.30);
+}
+.theme-blue {
+  --primary-color: #0a2342; /* 科技深藍 */
+  --primary-gradient: linear-gradient(135deg, #0a2342 0%, #1e3a8a 40%, #111827 100%);
+  --primary-shadow: 0 4px 14px 0 rgba(10,35,66,0.30);
+}
+.theme-orange {
+  --primary-color: #c2410c; /* 深科技橘 */
+  --primary-gradient: linear-gradient(135deg, #7c2d12 0%, #c2410c 60%, #ea580c 100%);
+  --primary-shadow: 0 4px 14px 0 rgba(194,65,12,0.25);
+}

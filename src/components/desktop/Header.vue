@@ -51,6 +51,22 @@
               {{ cartItemsCount }}
             </span>
           </router-link>
+
+          <!-- 主題色切換按鈕 -->
+          <button
+            @click="setTheme('blue')"
+            :class="['px-2 py-1 rounded text-white font-semibold transition-colors', currentTheme === 'blue' ? 'bg-[var(--primary-color)]' : 'bg-gray-400']"
+            style="margin-right:2px;"
+          >
+            科技藍
+          </button>
+          <button
+            @click="setTheme('orange')"
+            :class="['px-2 py-1 rounded text-white font-semibold transition-colors', currentTheme === 'orange' ? 'bg-[var(--primary-color)]' : 'bg-gray-400']"
+          >
+            科技橘
+          </button>
+
           <LanguageToggle />
           
           <!-- User Menu or Login Button -->
@@ -80,6 +96,7 @@ import { useAuth } from '@/composables/useAuth';
 import LanguageToggle from '@/components/shared/LanguageToggle.vue';
 import UserMenu from '@/components/shared/UserMenu.vue';
 import AuthModal from '@/components/shared/AuthModal.vue';
+import '@/assets/theme.css';
 
 const { t } = useI18n();
 const { items } = useCart();
@@ -91,7 +108,20 @@ const cartItemsCount = computed(() => {
   return items.value.reduce((total, item) => total + item.quantity, 0);
 });
 
+const currentTheme = ref('blue');
+function setTheme(theme: 'blue' | 'orange') {
+  // 先移除所有 theme- 類class
+  document.body.className = document.body.className
+    .split(' ')
+    .filter(c => !c.startsWith('theme-'))
+    .join(' ');
+  document.body.classList.add('theme-' + theme);
+  currentTheme.value = theme;
+}
+
 onMounted(() => {
   initAuth();
+  // 預設主題
+  setTheme('blue');
 });
 </script>

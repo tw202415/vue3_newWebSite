@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-white transition-colors duration-300">
+  <div class="min-h-screen bg-transparent transition-colors duration-300">
     <!-- Header -->
     <ResponsiveComponent
       :desktop-component="DesktopHeader"
