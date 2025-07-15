@@ -8,6 +8,7 @@ import Home from '@/pages/Home.vue';
 import ShoppingMall from '@/pages/ShoppingMall.vue';
 import CountryShop from '@/pages/CountryShop.vue';
 import Cart from '@/pages/Cart.vue';
+import Register from '@/pages/Register.vue';
 import ITT from '@/pages/services/ITT.vue';
 import Privacy from '@/pages/services/Privacy.vue';
 import Prohibited from '@/pages/services/Prohibited.vue';
@@ -30,6 +31,7 @@ const routes = [
   { path: '/shopping', name: 'ShoppingMall', component: ShoppingMall },
   { path: '/shop/:country', name: 'CountryShop', component: CountryShop, props: true },
   { path: '/cart', name: 'Cart', component: Cart },
+  { path: '/register', name: 'Register', component: Register },
   { path: '/itt', name: 'ITT', component: ITT },
   { path: '/privacy', name: 'Privacy', component: Privacy },
   { path: '/prohibited', name: 'Prohibited', component: Prohibited },

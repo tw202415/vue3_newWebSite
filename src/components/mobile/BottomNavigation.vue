@@ -98,12 +98,6 @@
           <MessageCircle :size="18" />
           <span>{{ t('nav.contact') }}</span>
         </button>
-        <button
-          class="w-full px-4 py-3 text-left hover:bg-gray-100  transition-colors duration-200 flex items-center space-x-3"
-        >
-          <Calculator :size="18" />
-          <span>{{ t('nav.quote') }}</span>
-        </button>
         
         <!-- 會員功能 -->
         <div v-if="isAuthenticated">
@@ -141,6 +135,13 @@
         <div class="border-t border-gray-200  my-2"></div>
         <div class="px-4 py-2 flex items-center justify-between">
           <span class="text-sm text-gray-600 ">主題</span>
+          <!-- 主題色切換按鈕 -->
+          <button
+            @click="toggleTheme"
+            :class="['whitespace-nowrap px-4 py-1 rounded text-white font-semibold transition-colors', currentTheme === 'blue' ? 'bg-[var(--primary-color)]' : 'bg-[var(--primary-color)]']"
+          >
+            {{ currentTheme === 'blue' ? '科技藍' : '科技橘' }}
+          </button>
           
         </div>
         <div class="px-4 py-2 flex items-center justify-between">
@@ -191,6 +192,22 @@ const route = useRoute()
 const router = useRouter()
 const showMoreMenu = ref(false)
 const showAuthModal = ref(false)
+const currentTheme = ref('blue');
+
+function setTheme(theme: 'blue' | 'orange') {
+  // 先移除所有 theme- 類class
+  document.body.className = document.body.className
+    .split(' ')
+    .filter(c => !c.startsWith('theme-'))
+    .join(' ');
+  document.body.classList.add('theme-' + theme);
+  currentTheme.value = theme;
+}
+
+function toggleTheme() {
+  const newTheme = currentTheme.value === 'blue' ? 'orange' : 'blue';
+  setTheme(newTheme);
+}
 
 const cartItemsCount = computed(() => {
   return items.value.reduce((total, item) => total + item.quantity, 0)
@@ -246,6 +263,7 @@ const handleLogout = () => {
 
 onMounted(() => {
   initAuth()
+  setTheme('blue');
 })
 </script>
 

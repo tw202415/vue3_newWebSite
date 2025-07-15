@@ -7,9 +7,13 @@
   --primary-color: #0a2342; /* 科技深藍 */
   --primary-gradient: linear-gradient(135deg, #0a2342 0%, #1e3a8a 40%, #111827 100%);
   --primary-shadow: 0 4px 14px 0 rgba(10,35,66,0.30);
+  --primary-hover: #2612db; 
+  --primary-button: #82a8ef; 
 }
 .theme-orange {
   --primary-color: #c2410c; /* 深科技橘 */
-  --primary-gradient: linear-gradient(135deg, #7c2d12 0%, #c2410c 60%, #ea580c 100%);
+  --primary-gradient: linear-gradient(135deg, #fb923c 0%, #e05c0f 70%, #fdba74 100%);
   --primary-shadow: 0 4px 14px 0 rgba(194,65,12,0.25);
+  --primary-hover: #fb923c; /* orange-400 */
+  --primary-button: #fdba74; /* orange-300 */
 }

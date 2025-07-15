@@ -166,13 +166,13 @@
         <!-- 按鈕 -->
         <div class="text-center">
           <button
-            class="m-5 bg-orange-300 hover:bg-orange-400 text-white px-6 py-3 rounded-lg font-semibold transition-colors duration-200"
+            class="m-5 bg-[var(--primary-button)] hover:bg-[var(--primary-hover)] text-white px-6 py-3 rounded-lg font-semibold transition-colors duration-200"
             @click="resetForm"
           >
             重新填寫
           </button>
           <button
-            class="bg-orange-300 hover:bg-orange-400 text-white px-6 py-3 rounded-lg font-semibold transition-colors duration-200"
+            class="bg-[var(--primary-button)] hover:bg-[var(--primary-hover)] text-white px-6 py-3 rounded-lg font-semibold transition-colors duration-200"
             v-if="!isSubmitted"
             @click="submitForm"
           >

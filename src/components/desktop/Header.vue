@@ -13,60 +13,58 @@
         <nav class="hidden md:flex items-center space-x-8">
           <router-link
             to="/"
-            class="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-medium transition-colors duration-200"
+            class="whitespace-nowrap text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-medium transition-colors duration-200"
           >
             {{ t('nav.home') }}
           </router-link>
           <router-link
             to="/shopping"
-            class="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-medium transition-colors duration-200"
+            class="whitespace-nowrap text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-medium transition-colors duration-200"
           >
             {{ t('nav.shopping') }}
           </router-link>
           <a
             href="#shipping"
-            class="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-medium transition-colors duration-200"
+            class="whitespace-nowrap text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-medium transition-colors duration-200"
           >
             {{ t('nav.shipping') }}
           </a>
           <a
             href="#contact"
-            class="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-medium transition-colors duration-200"
+            class="whitespace-nowrap text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-medium transition-colors duration-200"
           >
             {{ t('nav.contact') }}
           </a>
+
+          <router-link
+            to="/cart"
+            class="whitespace-nowrap flex items-center space-x-1 p-2 text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200"
+          >
+            <div class="relative">
+              <ShoppingCart :size="20" />
+              <span
+                v-if="cartItemsCount > 0"
+                class="absolute -top-2 -right-2 bg-primary-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center"
+              >
+                {{ cartItemsCount }}
+              </span>
+            </div>
+            <span>{{ t('cart.title') }}</span>
+          </router-link>
         </nav>
 
         <!-- Actions -->
         <div class="flex items-center space-x-4">
-          <router-link
-            to="/cart"
-            class="relative p-2 text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200"
-          >
-            <ShoppingCart :size="20" />
-            <span
-              v-if="cartItemsCount > 0"
-              class="absolute -top-1 -right-1 bg-primary-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center"
-            >
-              {{ cartItemsCount }}
-            </span>
-          </router-link>
+
 
           <!-- 主題色切換按鈕 -->
           <button
-            @click="setTheme('blue')"
-            :class="['px-2 py-1 rounded text-white font-semibold transition-colors', currentTheme === 'blue' ? 'bg-[var(--primary-color)]' : 'bg-gray-400']"
-            style="margin-right:2px;"
+            @click="toggleTheme"
+            :class="['whitespace-nowrap px-4 py-1 rounded text-white font-semibold transition-colors', currentTheme === 'blue' ? 'bg-[var(--primary-color)]' : 'bg-[var(--primary-color)]']"
           >
-            科技藍
+            {{ currentTheme === 'blue' ? '科技藍' : '科技橘' }}
           </button>
-          <button
-            @click="setTheme('orange')"
-            :class="['px-2 py-1 rounded text-white font-semibold transition-colors', currentTheme === 'orange' ? 'bg-[var(--primary-color)]' : 'bg-gray-400']"
-          >
-            科技橘
-          </button>
-
+        
           <LanguageToggle />
           
           <!-- User Menu or Login Button -->
@@ -74,7 +72,7 @@
           <button
             v-else
             @click="showAuthModal = true"
-            class="bg-var(--color-primary) hover:bg-primary-700 text-var(--color-white) px-6 py-2 rounded-lg font-medium transition-colors duration-200"
+            class="whitespace-nowrap bg-var(--color-primary) hover:bg-primary-700 text-var(--color-white) px-6 py-2 rounded-lg font-medium transition-colors duration-200"
           >
             {{ t('auth.login.title') }}
           </button>
@@ -109,6 +107,7 @@ const cartItemsCount = computed(() => {
 });
 
 const currentTheme = ref('blue');
+
 function setTheme(theme: 'blue' | 'orange') {
   // 先移除所有 theme- 類class
   document.body.className = document.body.className
@@ -117,6 +116,11 @@ function setTheme(theme: 'blue' | 'orange') {
     .join(' ');
   document.body.classList.add('theme-' + theme);
   currentTheme.value = theme;
+}
+
+function toggleTheme() {
+  const newTheme = currentTheme.value === 'blue' ? 'orange' : 'blue';
+  setTheme(newTheme);
 }
 
 onMounted(() => {

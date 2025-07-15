@@ -1,5 +1,5 @@
 <template>
-  <section id="home" class="relative min-h-screen overflow-hidden bg-orange-700">
+  <section id="home" class="relative min-h-screen overflow-hidden bg-[var(--primary-color)]">
     <!-- Animated Background -->
     <div class="absolute inset-0">
       <!-- Floating Particles -->

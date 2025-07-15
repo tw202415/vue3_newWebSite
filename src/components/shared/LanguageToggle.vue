@@ -5,7 +5,7 @@
       class="flex items-center space-x-2 px-3 py-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200"
     >
       <Globe :size="18" />
-      <span class="text-sm font-medium">{{ currentLanguage === 'zh-TW' ? '繁中' : 'EN' }}</span>
+      <span class="whitespace-nowrap text-sm font-medium">{{ currentLanguage === 'zh-TW' ? '繁中' : 'EN' }}</span>
       <ChevronDown :size="16" :class="{ 'rotate-180': isOpen }" class="transition-transform duration-200" />
     </button>
     
