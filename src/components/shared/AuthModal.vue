@@ -88,7 +88,7 @@ defineProps<Props>();
 const emit = defineEmits<Emits>();
 
 const { t } = useI18n();
-const { login, register, isLoading } = useAuth();
+const { login, register } = useAuth();
 
 const isLoginMode = ref(true);
 

@@ -2,7 +2,7 @@
 import axios from 'axios'
 
 const instance = axios.create({
-  baseURL: 'https://new_web.elf.tw/api', // 經由 nginx 代理，避免 SSL 錯誤
+  baseURL: 'https://new-web.elf.tw/api', // 經由 nginx 代理，避免 SSL 錯誤
   headers: {
     'Content-Type': 'application/json'
   },

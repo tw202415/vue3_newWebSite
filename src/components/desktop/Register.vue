@@ -494,9 +494,22 @@ const handleRegister = async () => {
   
   // 所有驗證通過，執行註冊
   try {
-    await register(registerForm);
-    // 註冊成功後跳轉到登入頁面
-    //router.push('/login');
+  const userData = {
+  email: registerForm.email,
+  name: registerForm.name,
+  birthYear: String(registerForm.birthYear),
+  birthMonth: String(registerForm.birthMonth),
+  birthDay: String(registerForm.birthDay),
+  mobile: registerForm.mobile,
+  phone: registerForm.phone,
+  address: registerForm.address,
+  idNumber: registerForm.idNumber,
+  password: registerForm.password
+};
+    const result = await register(userData);
+    if (result.success) {
+      router.push('/');
+    } 
   } catch (error) {
     console.error('註冊失敗:', error);
   }

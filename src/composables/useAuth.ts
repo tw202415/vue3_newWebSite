@@ -6,44 +6,25 @@ import CryptoJS from 'crypto-js';
 const currentUser = ref<User | null>(null);
 const isLoading = ref(false);
 
-// 與C#相同的 DES+MD5 加密函式
-function md5Encrypt(txt: string, skey: string): string {
-  // 1. 先用 MD5 算出 key
-  const md5Key = CryptoJS.MD5(skey).toString().substring(0, 8);
-  const key = CryptoJS.enc.Utf8.parse(md5Key);
-  const iv = CryptoJS.enc.Utf8.parse(md5Key);
-
-   // DES 加密
-   const encrypted = CryptoJS.DES.encrypt(txt, key, {
-    iv: iv,
-    mode: CryptoJS.mode.CBC,
-    padding: CryptoJS.pad.Pkcs7
-  });
-
-  // 3. 轉成大寫十六進制字串
-  return encrypted.ciphertext.toString(CryptoJS.enc.Hex).toUpperCase();
-}
-
-
 function desEncrypt(text: string, skey: string): string {
-  // ➤ Step 1：產生 MD5 (hex string)，如 C#：Encoding.UTF8.GetBytes(skey)
+  // 產生 MD5 (hex string)
   const md5Bytes = CryptoJS.MD5(CryptoJS.enc.Utf8.parse(skey))
   const md5Hex = md5Bytes.toString(CryptoJS.enc.Hex).toUpperCase()
 
-  // ➤ Step 2：取前 8 個字元（注意：這是字串，不是 hex byte）
+  // 取前 8 個字元（注意：這是字串，不是 hex byte）
   const keyStr = md5Hex.substring(0, 8)
 
-  // ➤ Step 3：用 ASCII（Latin1）解碼成 bytes → 與 C# Encoding.ASCII.GetBytes 相同
+  // 用 ASCII（Latin1）解碼成 bytes → 與 C# Encoding.ASCII.GetBytes 相同
   const keyBytes = CryptoJS.enc.Latin1.parse(keyStr)
 
-  // ➤ Step 4：用 DES-CBC 加密 + PKCS7 padding
+  // 用 DES-CBC 加密 + PKCS7 padding
   const encrypted = CryptoJS.DES.encrypt(text, keyBytes, {
     iv: keyBytes,
     mode: CryptoJS.mode.CBC,
     padding: CryptoJS.pad.Pkcs7
   })
 
-  // ➤ Step 5：輸出為 HEX（與 C# ToHexString 相同）
+  // 輸出為 HEX（與 C# ToHexString 相同）
   return encrypted.ciphertext.toString(CryptoJS.enc.Hex).toUpperCase()
 }
 
@@ -77,9 +58,6 @@ function jumpToWorkElf(email: string, password: string) {
 
 export function useAuth() {
   const login = async (credentials: LoginCredentials) => {
-  // 這裡可以加前端格式驗證（如 email/password 不為空）
-  alert(credentials.username)
-  alert(credentials.password)
   jumpToWorkElf(credentials.username, credentials.password);
   return { success: true };
 };
@@ -87,22 +65,29 @@ export function useAuth() {
   const register = async (userData: any) => {
     try {
       console.log('發送註冊請求，資料：', userData);
+      const skey = "9B3DCD0BA36C67A9B8CA7D0D1C669D42";
+      userData.password = desEncrypt(userData.password, skey);
       // 這裡替換成實際的 API 端點
-      const response = await fetch('http://localhost:8081/auth/register', {
+      const response = await fetch('https://new-web.elf.tw/api/auth/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(userData)
       });
-      
-      if (!response.ok) {
-        const error = await response.json();
-        throw new Error(error.message || '註冊失敗');
-      }
-      
       const data = await response.json();
-      return { success: true, data };
+      if (data.code === '001') {
+        alert('信箱已註冊過!!')
+        return { success: false };
+      } else if (data.code === '002') {
+        alert('身分證字號或手機號碼已註冊過!!')
+        return { success: false };
+      } else if (data.code === '999') {
+        alert('註冊失敗!!')
+        return { success: false };
+      }
+      alert('註冊成功!!')
+      return { success: true };
     } catch (error) {
       console.error('註冊錯誤:', error);
       throw error;
