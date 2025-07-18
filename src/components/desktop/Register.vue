@@ -2,7 +2,7 @@
   <div class="py-12 bg-[var(--primary-gradient)] transition-colors duration-300">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="lg:text-center mb-12">
-        <h2 class="text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
+        <h2 class="text-3xl font-extrabold tracking-tight text-white text-center sm:text-4xl">
           {{ t('auth.register.title') }}
         </h2>
       </div>

@@ -1,35 +1,13 @@
 <template>
-  <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+  <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
     <!-- Product Image -->
-    <div class="aspect-square bg-gray-200 dark:bg-gray-700 relative">
+    <div class="aspect-square bg-gray-200 relative">
       <img
-        :src="product.image"
+        :src="product.imageUrl"
         :alt="product.name"
         class="w-full h-full object-cover"
       />
       
-      <!-- Badges -->
-      <div class="absolute top-2 left-2 flex flex-col space-y-1">
-        <span
-          v-if="product.isHot"
-          class="bg-red-500 text-white text-xs px-2 py-1 rounded-full font-medium"
-        >
-          🔥 熱銷
-        </span>
-        <span
-          v-if="product.is24HShipping"
-          class="bg-green-500 text-white text-xs px-2 py-1 rounded-full font-medium"
-        >
-          ⚡ 24H出貨
-        </span>
-        <span
-          v-if="product.isVipOnly"
-          class="bg-yellow-500 text-white text-xs px-2 py-1 rounded-full font-medium"
-        >
-          👑 VIP專屬
-        </span>
-      </div>
-
       <!-- Favorite Button -->
       <button
         @click="toggleFavorite"
@@ -43,9 +21,27 @@
     </div>
 
     <!-- Product Info -->
-    <div class="p-4">
+    <div class="p-4">     
       <!-- Product Name -->
-      <h3 class="font-semibold text-gray-900 dark:text-white mb-2 line-clamp-2">
+      <span
+          v-if="product.isHot"
+          class="mr-2 bg-red-500 text-white text-xs px-2 py-1 rounded-full font-medium"
+        >
+          🔥 熱銷
+        </span>
+        <span
+          v-if="product.is24hshipping"
+          class="mr-2 bg-green-500 text-white text-xs px-2 py-1 rounded-full font-medium"
+        >
+          ⚡ 24H出貨
+        </span>
+        <span
+          v-if="product.isVipOnly"
+          class="bg-yellow-500 text-white text-xs px-2 py-1 rounded-full font-medium"
+        >
+          👑 VIP專屬
+        </span>
+      <h3 class="font-semibold text-gray-900 mb-2 line-clamp-2">
         {{ product.name }}
       </h3>
 
@@ -56,13 +52,13 @@
             v-for="i in 5"
             :key="i"
             :size="14"
-            :class="i <= Math.floor(product.rating) ? 'text-yellow-400 fill-current' : 'text-gray-300'"
+            :class="i <= Math.floor(product.ratingAvg) ? 'text-yellow-400 fill-current' : 'text-gray-300'"
           />
         </div>
-        <span class="text-sm text-gray-600 dark:text-gray-400">
-          {{ product.rating.toFixed(1) }}
+        <span class="text-sm text-gray-600">
+          {{ product.ratingAvg.toFixed(1) }}
         </span>
-        <span class="text-sm text-gray-500 dark:text-gray-500">
+        <span class="text-sm text-gray-500">
           ({{ product.reviewCount }})
         </span>
       </div>
@@ -73,7 +69,7 @@
           {{ product.purchaseCount }}人購買
         </div>
         <div class="text-sm text-gray-500 dark:text-gray-500">
-          庫存: {{ product.stock }}
+          庫存: {{ product.stockQuantity }}
         </div>
       </div>
 

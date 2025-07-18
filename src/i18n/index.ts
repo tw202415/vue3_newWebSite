@@ -900,6 +900,7 @@ export const translations = {
     shopping: {
       title: '海外代購',
       browse: '立即購買',
+      search: '搜尋',
       mall: {
         title: '代購商城',
         subtitle: '精選全球優質商品，專業代購服務'
@@ -924,12 +925,22 @@ export const translations = {
       categories: {
         title: '商品分類',
         all: '全部',
-        fashion: '時尚',
-        beauty: '美妝',
-        electronics: '電子',
-        food: '食品',
-        books: '書籍',
-        home: '居家'
+        1: '3C',
+        2: '周邊',
+        3: '筆電',
+        4: '通訊',
+        5: '數位',
+        6: '家電',
+        7: '日用',
+        8: '母嬰',
+        9: '食品',
+        10: '生活',
+        11: '居家',
+        12: '休閒',
+        13: '保健',
+        14: '美妝',
+        15: '時尚',
+        16: '書店'
       },
       features: {
         title: '代購優勢',
@@ -1254,6 +1265,7 @@ export const translations = {
     shopping: {
       title: 'Overseas Shopping',
       browse: 'Shop Now',
+      search: 'search',
       mall: {
         title: 'Shopping Mall',
         subtitle: 'Curated global products with professional shopping service'
@@ -1278,12 +1290,22 @@ export const translations = {
       categories: {
         title: 'Categories',
         all: 'All',
-        fashion: 'Fashion',
-        beauty: 'Beauty',
-        electronics: 'Electronics',
-        food: 'Food',
-        books: 'Books',
-        home: 'Home'
+        1: '3C',
+        2: 'Accessories',
+        3: 'Laptops',
+        4: 'Mobile',
+        5: 'Digital',
+        6: 'Home Appliances',
+        7: 'Daily Necessities',
+        8: 'Mother & Baby',
+        9: 'Food',
+        10: 'Lifestyle',
+        11: 'Home Living',
+        12: 'Leisure',
+        13: 'Health',
+        14: 'Beauty',
+        15: 'Fashion',
+        16: 'Bookstore'
       },
       features: {
         title: 'Shopping Advantages',

@@ -41,3 +41,7 @@ export const getFooterLinks = () =>
 export const getFooterDetail = (uid) =>
   axios.get(`/footer/links/${uid}`)
 
+// ✅ 取得商品資料
+export const getProducts = (payload) =>
+  axios.post(`/shop/products`, payload)
+

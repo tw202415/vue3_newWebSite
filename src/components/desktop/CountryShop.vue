@@ -12,42 +12,70 @@
         </p>
       </div>
 
-      <!-- Filters -->
-      <div class="mb-12 space-y-6">
-        <!-- Categories -->
+      
+      <!-- Search Bar -->
+      <div class="mb-6">
+        <div class="flex gap-2 max-w-2xl">
+          <div class="relative flex-1">
+            <input
+              v-model="searchQuery"
+              type="text"
+              :placeholder="t('shopping.search')"
+              class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+              @keyup.enter="fetchProducts"
+            >
+            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+              <svg class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+            </div>
+          </div>
+          <button
+            @click="queryProducts(searchQuery, '')"
+            class="px-4 py-2 bg-primary-500 text-white rounded-lg hover:bg-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 transition-colors"
+          >
+            {{ t('shopping.search') }}
+          </button>
+        </div>
+      </div>
+
+      <!-- Category Navigation -->
+      <div class="mb-12">
         <div>
-          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+          <h2 class="text-2xl font-bold text-gray-900 mb-4">
             {{ t('shopping.categories.title') }}
           </h2>
-          <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4">
-            <button
+          <div class="relative">
+            <div class="flex space-x-1 overflow-x-auto pb-2">
+              <button
               v-for="category in categories"
               :key="category.id"
-              @click="selectedCategory = category.id"
+              @click="queryProducts('', category.id)"
               :class="[
-                'p-4 rounded-lg border-2 transition-all duration-200',
+                'whitespace-nowrap px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200',
                 selectedCategory === category.id
-                  ? 'border-primary-500 bg-primary-50 dark:bg-primary-900'
-                  : 'border-gray-200 dark:border-gray-700 hover:border-primary-300'
+                  ? 'bg-primary-500 text-white shadow-md'
+                  : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900'
               ]"
             >
-              <div class="text-2xl mb-2">{{ category.icon }}</div>
-              <div class="text-sm font-medium text-gray-900 dark:text-white">
-                {{ t(`shopping.categories.${category.id}`) }}
-              </div>
+              {{ t(`shopping.categories.${category.id}`) }}
             </button>
           </div>
         </div>
+      </div>
+
+      
 
         <!-- Filters -->
-        <div class="flex flex-wrap gap-4">
+        <div class="flex flex-wrap items-center gap-4 mb-6">
+          <!-- Hot Products Toggle -->
           <button
             @click="showHotOnly = !showHotOnly"
             :class="[
               'px-4 py-2 rounded-lg border transition-colors duration-200',
               showHotOnly
                 ? 'bg-red-50 border-red-200 text-red-600'
-                : 'border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800'
+                : 'border-gray-200 hover:bg-gray-50'
             ]"
           >
             🔥 熱銷商品
@@ -85,6 +113,8 @@
           :key="product.id"
           :product="product"
           :country-info="countryInfo"
+          class="cursor-pointer hover:shadow-lg transition-hover:-translate-y-1 duration-200"
+          @click="toProductDetail(product.id, country)"
         />
       </div>
 
@@ -102,8 +132,10 @@
 import { ref, computed, onMounted } from 'vue';
 import { useI18n } from '@/composables/useI18n';
 import { useAuth } from '@/composables/useAuth';
+import { useRouter } from 'vue-router'
 import ProductCard from '@/components/shared/ProductCard.vue';
 import type { EnhancedProduct } from '@/types';
+import { getProducts } from '@/apis/CMSAPI';
 
 interface Props {
   country: string;
@@ -112,11 +144,44 @@ interface Props {
 const props = defineProps<Props>();
 const { t } = useI18n();
 const { isAuthenticated, currentUser, initAuth } = useAuth();
+const router = useRouter()
 
-const selectedCategory = ref('all');
+const selectedCategory = ref('');
+const products = ref([]);
 const showHotOnly = ref(false);
 const show24HOnly = ref(false);
 const showVipOnly = ref(false);
+const searchQuery = ref('');
+const currentPage = ref(1);
+
+
+const queryProducts = async (name: string, categoryId: number) => {
+  selectedCategory.value = categoryId;
+  const payload = {
+    country: props.country,
+    name: name,
+    categoryId: categoryId,
+  }
+
+  try {
+    const response = await getProducts(payload)
+    products.value = response;
+    console.log(products.value)
+
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+const toProductDetail = (productId: string, country: string) => {
+  router.push({
+    name: 'ProductDetail', // 請替換為您的商品詳情頁路由名稱
+    params: { 
+      id: productId,
+      country: country
+    }
+  })
+}
 
 const countryInfo = computed(() => {
   const countries = {
@@ -128,536 +193,26 @@ const countryInfo = computed(() => {
 });
 
 const categories = [
-  { id: 'all', icon: '🛍️' },
-  { id: 'fashion', icon: '👕' },
-  { id: 'beauty', icon: '💄' },
-  { id: 'electronics', icon: '📱' },
-  { id: 'food', icon: '🍜' },
-  { id: 'books', icon: '📚' },
-  { id: 'home', icon: '🏠' }
+  { id: 1, name: '3C' },
+  { id: 2, name: '周邊' },
+  { id: 3, name: '筆電' },
+  { id: 4, name: '通訊' },
+  { id: 5, name: '數位' },
+  { id: 6, name: '家電' },
+  { id: 7, name: '日用' },
+  { id: 8, name: '母嬰' },
+  { id: 9, name: '食品' },
+  { id: 10, name: '生活' },
+  { id: 11, name: '居家' },
+  { id: 12, name: '休閒' },
+  { id: 13, name: '保健' },
+  { id: 14, name: '美妝' },
+  { id: 15, name: '時尚' },
+  { id: 16, name: '書店' }
 ];
-
-// Enhanced mock products data
-const products = ref<EnhancedProduct[]>([
-  {
-    id: '1',
-    name: '日本限定櫻花護手霜套裝',
-    price: 1800,
-    originalPrice: 2200,
-    vipPrice: 1600,
-    image: 'https://images.pexels.com/photos/2113994/pexels-photo-2113994.jpeg?auto=compress&cs=tinysrgb&w=400',
-    category: 'beauty',
-    country: props.country,
-    rating: 4.8,
-    reviewCount: 156,
-    purchaseCount: 892,
-    stock: 45,
-    isHot: true,
-    is24HShipping: true,
-    isVipOnly: false
-  },
-  {
-    id: '2',
-    name: '韓國人氣面膜組合',
-    price: 2500,
-    originalPrice: 3000,
-    vipPrice: 2200,
-    image: 'https://images.pexels.com/photos/1649771/pexels-photo-1649771.jpeg?auto=compress&cs=tinysrgb&w=400',
-    category: 'beauty',
-    country: props.country,
-    rating: 4.6,
-    reviewCount: 89,
-    purchaseCount: 445,
-    stock: 23,
-    isHot: false,
-    is24HShipping: true,
-    isVipOnly: false
-  },
-  {
-    id: '3',
-    name: 'VIP專屬限量電子產品',
-    price: 15000,
-    originalPrice: 18000,
-    vipPrice: 13500,
-    image: 'https://images.pexels.com/photos/788946/pexels-photo-788946.jpeg?auto=compress&cs=tinysrgb&w=400',
-    category: 'electronics',
-    country: props.country,
-    rating: 4.9,
-    reviewCount: 234,
-    purchaseCount: 67,
-    stock: 8,
-    isHot: true,
-    is24HShipping: false,
-    isVipOnly: true
-  },
-  {
-    id: '4',
-    name: '特色零食大禮包',
-    price: 800,
-    originalPrice: 1000,
-    vipPrice: 720,
-    image: 'https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=400',
-    category: 'food',
-    country: props.country,
-    rating: 4.3,
-    reviewCount: 78,
-    purchaseCount: 234,
-    stock: 0,
-    isHot: false,
-    is24HShipping: true,
-    isVipOnly: false
-  },
-    {
-    id: '5',
-    name: '日本限定櫻花護手霜套裝',
-    price: 1800,
-    originalPrice: 2200,
-    vipPrice: 1600,
-    image: 'https://images.pexels.com/photos/2113994/pexels-photo-2113994.jpeg?auto=compress&cs=tinysrgb&w=400',
-    category: 'beauty',
-    country: props.country,
-    rating: 4.8,
-    reviewCount: 156,
-    purchaseCount: 892,
-    stock: 45,
-    isHot: true,
-    is24HShipping: true,
-    isVipOnly: false
-  },
-    {
-    id: '6',
-    name: '日本限定櫻花護手霜套裝ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq',
-    price: 1800000000000000000000000000000000000000000000000000000000000000,
-    originalPrice: 2200000000000000000000000000000000000000000000000000000000000000,
-    vipPrice: 1600000000000000000000000000000000000000000000000000000000000000,
-    image: 'https://images.pexels.com/photos/2113994/pexels-photo-2113994.jpeg?auto=compress&cs=tinysrgb&w=400',
-    category: 'beauty',
-    country: props.country,
-    rating: 4.8,
-    reviewCount: 156,
-    purchaseCount: 892,
-    stock: 45,
-    isHot: true,
-    is24HShipping: true,
-    isVipOnly: false
-  },
-    {
-    id: '7',
-    name: '日本限定櫻花護手霜套裝',
-    price: 1800,
-    originalPrice: 2200,
-    vipPrice: 1600,
-    image: 'https://images.pexels.com/photos/2113994/pexels-photo-2113994.jpeg?auto=compress&cs=tinysrgb&w=400',
-    category: 'beauty',
-    country: props.country,
-    rating: 4.8,
-    reviewCount: 156,
-    purchaseCount: 892,
-    stock: 45,
-    isHot: true,
-    is24HShipping: true,
-    isVipOnly: false
-  },
-    {
-    id: '8',
-    name: '日本限定櫻花護手霜套裝',
-    price: 1800,
-    originalPrice: 2200,
-    vipPrice: 1600,
-    image: 'https://images.pexels.com/photos/2113994/pexels-photo-2113994.jpeg?auto=compress&cs=tinysrgb&w=400',
-    category: 'beauty',
-    country: props.country,
-    rating: 4.8,
-    reviewCount: 156,
-    purchaseCount: 892,
-    stock: 45,
-    isHot: true,
-    is24HShipping: true,
-    isVipOnly: false
-  },
-    {
-    id: '9',
-    name: '日本限定櫻花護手霜套裝',
-    price: 1800,
-    originalPrice: 2200,
-    vipPrice: 1600,
-    image: 'https://images.pexels.com/photos/2113994/pexels-photo-2113994.jpeg?auto=compress&cs=tinysrgb&w=400',
-    category: 'beauty',
-    country: props.country,
-    rating: 4.8,
-    reviewCount: 156,
-    purchaseCount: 892,
-    stock: 45,
-    isHot: true,
-    is24HShipping: true,
-    isVipOnly: false
-  },
-    {
-    id: '10',
-    name: '日本限定櫻花護手霜套裝',
-    price: 1800,
-    originalPrice: 2200,
-    vipPrice: 1600,
-    image: 'https://images.pexels.com/photos/2113994/pexels-photo-2113994.jpeg?auto=compress&cs=tinysrgb&w=400',
-    category: 'beauty',
-    country: props.country,
-    rating: 4.8,
-    reviewCount: 156,
-    purchaseCount: 892,
-    stock: 45,
-    isHot: true,
-    is24HShipping: true,
-    isVipOnly: false
-  },
-    {
-    id: '11',
-    name: '日本限定櫻花護手霜套裝',
-    price: 1800,
-    originalPrice: 2200,
-    vipPrice: 1600,
-    image: 'https://images.pexels.com/photos/2113994/pexels-photo-2113994.jpeg?auto=compress&cs=tinysrgb&w=400',
-    category: 'beauty',
-    country: props.country,
-    rating: 4.8,
-    reviewCount: 156,
-    purchaseCount: 892,
-    stock: 45,
-    isHot: true,
-    is24HShipping: true,
-    isVipOnly: false
-  },
-    {
-    id: '12',
-    name: '日本限定櫻花護手霜套裝',
-    price: 1800,
-    originalPrice: 2200,
-    vipPrice: 1600,
-    image: 'https://images.pexels.com/photos/2113994/pexels-photo-2113994.jpeg?auto=compress&cs=tinysrgb&w=400',
-    category: 'beauty',
-    country: props.country,
-    rating: 4.8,
-    reviewCount: 156,
-    purchaseCount: 892,
-    stock: 45,
-    isHot: true,
-    is24HShipping: true,
-    isVipOnly: false
-  },
-    {
-    id: '13',
-    name: '日本限定櫻花護手霜套裝',
-    price: 1800,
-    originalPrice: 2200,
-    vipPrice: 1600,
-    image: 'https://images.pexels.com/photos/2113994/pexels-photo-2113994.jpeg?auto=compress&cs=tinysrgb&w=400',
-    category: 'beauty',
-    country: props.country,
-    rating: 4.8,
-    reviewCount: 156,
-    purchaseCount: 892,
-    stock: 45,
-    isHot: true,
-    is24HShipping: true,
-    isVipOnly: false
-  },
-    {
-    id: '14',
-    name: '日本限定櫻花護手霜套裝',
-    price: 1800,
-    originalPrice: 2200,
-    vipPrice: 1600,
-    image: 'https://images.pexels.com/photos/2113994/pexels-photo-2113994.jpeg?auto=compress&cs=tinysrgb&w=400',
-    category: 'beauty',
-    country: props.country,
-    rating: 4.8,
-    reviewCount: 156,
-    purchaseCount: 892,
-    stock: 45,
-    isHot: true,
-    is24HShipping: true,
-    isVipOnly: false
-  },
-    {
-    id: '15',
-    name: '日本限定櫻花護手霜套裝',
-    price: 1800,
-    originalPrice: 2200,
-    vipPrice: 1600,
-    image: 'https://images.pexels.com/photos/2113994/pexels-photo-2113994.jpeg?auto=compress&cs=tinysrgb&w=400',
-    category: 'beauty',
-    country: props.country,
-    rating: 4.8,
-    reviewCount: 156,
-    purchaseCount: 892,
-    stock: 45,
-    isHot: true,
-    is24HShipping: true,
-    isVipOnly: false
-  },
-    {
-    id: '16',
-    name: '日本限定櫻花護手霜套裝',
-    price: 1800,
-    originalPrice: 2200,
-    vipPrice: 1600,
-    image: 'https://images.pexels.com/photos/2113994/pexels-photo-2113994.jpeg?auto=compress&cs=tinysrgb&w=400',
-    category: 'beauty',
-    country: props.country,
-    rating: 4.8,
-    reviewCount: 156,
-    purchaseCount: 892,
-    stock: 45,
-    isHot: true,
-    is24HShipping: true,
-    isVipOnly: false
-  },
-    {
-    id: '17',
-    name: '日本限定櫻花護手霜套裝',
-    price: 1800,
-    originalPrice: 2200,
-    vipPrice: 1600,
-    image: 'https://images.pexels.com/photos/2113994/pexels-photo-2113994.jpeg?auto=compress&cs=tinysrgb&w=400',
-    category: 'beauty',
-    country: props.country,
-    rating: 4.8,
-    reviewCount: 156,
-    purchaseCount: 892,
-    stock: 45,
-    isHot: true,
-    is24HShipping: true,
-    isVipOnly: false
-  },
-    {
-    id: '18',
-    name: '日本限定櫻花護手霜套裝',
-    price: 1800,
-    originalPrice: 2200,
-    vipPrice: 1600,
-    image: 'https://images.pexels.com/photos/2113994/pexels-photo-2113994.jpeg?auto=compress&cs=tinysrgb&w=400',
-    category: 'beauty',
-    country: props.country,
-    rating: 4.8,
-    reviewCount: 156,
-    purchaseCount: 892,
-    stock: 45,
-    isHot: true,
-    is24HShipping: true,
-    isVipOnly: false
-  },
-    {
-    id: '19',
-    name: '日本限定櫻花護手霜套裝',
-    price: 1800,
-    originalPrice: 2200,
-    vipPrice: 1600,
-    image: 'https://images.pexels.com/photos/2113994/pexels-photo-2113994.jpeg?auto=compress&cs=tinysrgb&w=400',
-    category: 'beauty',
-    country: props.country,
-    rating: 4.8,
-    reviewCount: 156,
-    purchaseCount: 892,
-    stock: 45,
-    isHot: true,
-    is24HShipping: true,
-    isVipOnly: false
-  },
-    {
-    id: '20',
-    name: '日本限定櫻花護手霜套裝',
-    price: 1800,
-    originalPrice: 2200,
-    vipPrice: 1600,
-    image: 'https://images.pexels.com/photos/2113994/pexels-photo-2113994.jpeg?auto=compress&cs=tinysrgb&w=400',
-    category: 'beauty',
-    country: props.country,
-    rating: 4.8,
-    reviewCount: 156,
-    purchaseCount: 892,
-    stock: 45,
-    isHot: true,
-    is24HShipping: true,
-    isVipOnly: false
-  },
-    {
-    id: '21',
-    name: '日本限定櫻花護手霜套裝',
-    price: 1800,
-    originalPrice: 2200,
-    vipPrice: 1600,
-    image: 'https://images.pexels.com/photos/2113994/pexels-photo-2113994.jpeg?auto=compress&cs=tinysrgb&w=400',
-    category: 'beauty',
-    country: props.country,
-    rating: 4.8,
-    reviewCount: 156,
-    purchaseCount: 892,
-    stock: 45,
-    isHot: true,
-    is24HShipping: true,
-    isVipOnly: false
-  },
-    {
-    id: '22',
-    name: '日本限定櫻花護手霜套裝',
-    price: 1800,
-    originalPrice: 2200,
-    vipPrice: 1600,
-    image: 'https://images.pexels.com/photos/2113994/pexels-photo-2113994.jpeg?auto=compress&cs=tinysrgb&w=400',
-    category: 'beauty',
-    country: props.country,
-    rating: 4.8,
-    reviewCount: 156,
-    purchaseCount: 892,
-    stock: 45,
-    isHot: true,
-    is24HShipping: true,
-    isVipOnly: false
-  },
-    {
-    id: '23',
-    name: '日本限定櫻花護手霜套裝',
-    price: 1800,
-    originalPrice: 2200,
-    vipPrice: 1600,
-    image: 'https://images.pexels.com/photos/2113994/pexels-photo-2113994.jpeg?auto=compress&cs=tinysrgb&w=400',
-    category: 'beauty',
-    country: props.country,
-    rating: 4.8,
-    reviewCount: 156,
-    purchaseCount: 892,
-    stock: 45,
-    isHot: true,
-    is24HShipping: true,
-    isVipOnly: false
-  },
-    {
-    id: '24',
-    name: '日本限定櫻花護手霜套裝',
-    price: 1800,
-    originalPrice: 2200,
-    vipPrice: 1600,
-    image: 'https://images.pexels.com/photos/2113994/pexels-photo-2113994.jpeg?auto=compress&cs=tinysrgb&w=400',
-    category: 'beauty',
-    country: props.country,
-    rating: 4.8,
-    reviewCount: 156,
-    purchaseCount: 892,
-    stock: 45,
-    isHot: true,
-    is24HShipping: true,
-    isVipOnly: false
-  },
-    {
-    id: '25',
-    name: '日本限定櫻花護手霜套裝',
-    price: 1800,
-    originalPrice: 2200,
-    vipPrice: 1600,
-    image: 'https://images.pexels.com/photos/2113994/pexels-photo-2113994.jpeg?auto=compress&cs=tinysrgb&w=400',
-    category: 'beauty',
-    country: props.country,
-    rating: 4.8,
-    reviewCount: 156,
-    purchaseCount: 892,
-    stock: 45,
-    isHot: true,
-    is24HShipping: true,
-    isVipOnly: false
-  },
-    {
-    id: '26',
-    name: '日本限定櫻花護手霜套裝',
-    price: 1800,
-    originalPrice: 2200,
-    vipPrice: 1600,
-    image: 'https://images.pexels.com/photos/2113994/pexels-photo-2113994.jpeg?auto=compress&cs=tinysrgb&w=400',
-    category: 'beauty',
-    country: props.country,
-    rating: 4.8,
-    reviewCount: 156,
-    purchaseCount: 892,
-    stock: 45,
-    isHot: true,
-    is24HShipping: true,
-    isVipOnly: false
-  },
-    {
-    id: '27',
-    name: '日本限定櫻花護手霜套裝',
-    price: 1800,
-    originalPrice: 2200,
-    vipPrice: 1600,
-    image: 'https://images.pexels.com/photos/2113994/pexels-photo-2113994.jpeg?auto=compress&cs=tinysrgb&w=400',
-    category: 'beauty',
-    country: props.country,
-    rating: 4.8,
-    reviewCount: 156,
-    purchaseCount: 892,
-    stock: 45,
-    isHot: true,
-    is24HShipping: true,
-    isVipOnly: false
-  },
-    {
-    id: '28',
-    name: '日本限定櫻花護手霜套裝',
-    price: 1800,
-    originalPrice: 2200,
-    vipPrice: 1600,
-    image: 'https://images.pexels.com/photos/2113994/pexels-photo-2113994.jpeg?auto=compress&cs=tinysrgb&w=400',
-    category: 'beauty',
-    country: props.country,
-    rating: 4.8,
-    reviewCount: 156,
-    purchaseCount: 892,
-    stock: 45,
-    isHot: true,
-    is24HShipping: true,
-    isVipOnly: false
-  },
-    {
-    id: '29',
-    name: '日本限定櫻花護手霜套裝',
-    price: 1800,
-    originalPrice: 2200,
-    vipPrice: 1600,
-    image: 'https://images.pexels.com/photos/2113994/pexels-photo-2113994.jpeg?auto=compress&cs=tinysrgb&w=400',
-    category: 'beauty',
-    country: props.country,
-    rating: 4.8,
-    reviewCount: 156,
-    purchaseCount: 892,
-    stock: 45,
-    isHot: true,
-    is24HShipping: true,
-    isVipOnly: false
-  },
-    {
-    id: '30',
-    name: '日本限定櫻花護手霜套裝',
-    price: 1800,
-    originalPrice: 2200,
-    vipPrice: 1600,
-    image: 'https://images.pexels.com/photos/2113994/pexels-photo-2113994.jpeg?auto=compress&cs=tinysrgb&w=400',
-    category: 'beauty',
-    country: props.country,
-    rating: 4.8,
-    reviewCount: 156,
-    purchaseCount: 892,
-    stock: 45,
-    isHot: true,
-    is24HShipping: true,
-    isVipOnly: false
-  },
-]);
 
 const filteredProducts = computed(() => {
   let filtered = products.value;
-
-  // Category filter
-  if (selectedCategory.value !== 'all') {
-    filtered = filtered.filter(product => product.category === selectedCategory.value);
-  }
 
   // Hot products filter
   if (showHotOnly.value) {
@@ -666,7 +221,7 @@ const filteredProducts = computed(() => {
 
   // 24H shipping filter
   if (show24HOnly.value) {
-    filtered = filtered.filter(product => product.is24HShipping);
+    filtered = filtered.filter(product => product.is24hshipping);
   }
 
   // VIP only filter
@@ -679,5 +234,6 @@ const filteredProducts = computed(() => {
 
 onMounted(() => {
   initAuth();
+  queryProducts('', 1);
 });
 </script>

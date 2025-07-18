@@ -86,7 +86,7 @@
           class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden"
         >
           <!-- Product Image -->
-          <div class="aspect-square bg-gray-200 dark:bg-gray-700 relative">
+          <div class="aspect-square bg-gray-200 relative">
             <img
               :src="product.image"
               :alt="product.name"
@@ -137,9 +137,11 @@
                   :class="i <= Math.floor(product.rating) ? 'text-yellow-400 fill-current' : 'text-gray-300'"
                 />
               </div>
+              <!--
               <span class="text-xs text-gray-600 dark:text-gray-400">
                 {{ product.rating.toFixed(1) }}
               </span>
+              -->
             </div>
 
             <!-- Purchase Info -->

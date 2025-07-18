@@ -2,7 +2,8 @@
 import axios from 'axios'
 
 const instance = axios.create({
-  baseURL: 'https://new-web.elf.tw/api', // 經由 nginx 代理，避免 SSL 錯誤
+  //baseURL: 'https://new-web.elf.tw/api', // 經由 nginx 代理，避免 SSL 錯誤
+  baseURL: 'http://localhost:8081/api',
   headers: {
     'Content-Type': 'application/json'
   },
@@ -26,8 +27,8 @@ instance.interceptors.request.use(
 instance.interceptors.response.use(
   (response) => {
     const res = response.data
-    if (res.success) {
-      return res.data // 直接把 data 回傳
+    if (res.code === '200') {
+      return res.body // 直接把 data 回傳
     } else {
       return Promise.reject(new Error(res.message || '伺服器回傳錯誤'))
     }
