@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@headlessui/vue": "^1.7.22",
+    "@vueuse/core": "^13.5.0",
     "axios": "^1.10.0",
     "crypto-js": "^4.2.0",
     "js-md5": "^0.8.3",

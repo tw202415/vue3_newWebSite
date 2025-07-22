@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+  <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 flex flex-col h-full">
     <!-- Product Image -->
     <div class="aspect-square bg-gray-200 relative">
       <img
@@ -21,26 +21,28 @@
     </div>
 
     <!-- Product Info -->
-    <div class="p-4">     
-      <!-- Product Name -->
-      <span
+    <div class="p-3 sm:p-4 flex-grow flex flex-col">     
+      <!-- Badges -->
+      <div class="flex flex-wrap gap-2 mb-2">
+        <span
           v-if="product.isHot"
-          class="mr-2 bg-red-500 text-white text-xs px-2 py-1 rounded-full font-medium"
+          class="inline-flex items-center bg-red-500 text-white text-xs px-2 py-1 rounded-full font-medium whitespace-nowrap"
         >
           🔥 熱銷
         </span>
         <span
           v-if="product.is24hshipping"
-          class="mr-2 bg-green-500 text-white text-xs px-2 py-1 rounded-full font-medium"
+          class="inline-flex items-center bg-green-500 text-white text-xs px-2 py-1 rounded-full font-medium whitespace-nowrap"
         >
           ⚡ 24H出貨
         </span>
         <span
           v-if="product.isVipOnly"
-          class="bg-yellow-500 text-white text-xs px-2 py-1 rounded-full font-medium"
+          class="inline-flex items-center bg-yellow-500 text-white text-xs px-2 py-1 rounded-full font-medium whitespace-nowrap"
         >
           👑 VIP專屬
         </span>
+      </div>
       <h3 class="font-semibold text-gray-900 mb-2 line-clamp-2">
         {{ product.name }}
       </h3>
@@ -97,23 +99,26 @@
       <!-- VIP Price -->
       <div
         v-if="product.vipPrice && currentUser?.isVip"
-        class="bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-lg p-2 mb-3"
+        class="bg-yellow-50 border border-yellow-200 rounded-lg p-2 mb-3"
       >
         <div class="flex items-center justify-between">
-          <span class="text-sm text-yellow-800 dark:text-yellow-200">VIP專享價</span>
-          <span class="font-bold text-yellow-600 dark:text-yellow-400">
+          <span class="text-sm text-yellow-800">VIP專享價</span>
+          <span class="font-bold text-yellow-600">
             {{ formatPrice(product.vipPrice, countryInfo.currency) }}
           </span>
         </div>
       </div>
 
+      <!-- Spacer to push button to bottom -->
+      <div class="flex-grow"></div>
+      
       <!-- Add to Cart Button -->
       <button
-        @click="handleAddToCart"
-        :disabled="product.stock === 0 || (product.isVipOnly && !currentUser?.isVip)"
+        @click="handleAddToCart($event)"
+        :disabled="product.stockQuantity === 0 || (product.isVipOnly && !currentUser?.isVip)"
         class="w-full py-2 px-4 rounded-lg font-medium transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
         :class="[
-          product.stock === 0
+          product.stockQuantity === 0
             ? 'bg-gray-300 text-gray-500'
             : product.isVipOnly && !currentUser?.isVip
             ? 'bg-yellow-100 text-yellow-600 border border-yellow-300'
@@ -121,7 +126,7 @@
         ]"
       >
         {{
-          product.stock === 0
+          product.stockQuantity === 0
             ? '缺貨中'
             : product.isVipOnly && !currentUser?.isVip
             ? '需要VIP會員'
@@ -161,8 +166,9 @@ const formatPrice = (price: number, currency: string) => {
   return `${symbols[currency as keyof typeof symbols] || '$'}${price.toLocaleString()}`;
 };
 
-const handleAddToCart = () => {
-  if (props.product.stock === 0) return;
+const handleAddToCart = (event: Event) => {
+  event.stopPropagation();
+  if (props.product.stockQuantity === 0) return;
   if (props.product.isVipOnly && !currentUser.value?.isVip) return;
 
   const price = currentUser.value?.isVip && props.product.vipPrice

@@ -45,3 +45,11 @@ export const getFooterDetail = (uid) =>
 export const getProducts = (payload) =>
   axios.post(`/shop/products`, payload)
 
+// ✅ 取得商品資料
+export const getDetail = (productId) =>
+  axios.get(`/shop/detail/${productId}`)
+
+// ✅ 取得商品評論
+export const getReviews = (productId) =>
+  axios.get(`/shop/reviews/${productId}`)
+

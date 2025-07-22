@@ -31,7 +31,7 @@ const routes = [
   { path: '/', name: 'Home', component: Home },
   { path: '/shopping', name: 'ShoppingMall', component: ShoppingMall },
   { path: '/shop/:country', name: 'CountryShop', component: CountryShop, props: true },
-  { path: '/product/:country/:id', name: 'ProductDetail', component: ProductDetail, props: true },
+  { path: '/shop/:country/:id', name: 'ProductDetail', component: ProductDetail, props: true },
   { path: '/cart', name: 'Cart', component: Cart },
   { path: '/register', name: 'Register', component: Register },
   { path: '/itt', name: 'ITT', component: ITT },

@@ -6,7 +6,7 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
           <!-- 商品圖片 -->
           <div class="bg-white rounded-xl shadow-lg overflow-hidden">
-            <img :src="product.image" :alt="product.name" class="w-full h-auto object-cover">
+            <img :src="product.imageUrl" :alt="product.name" class="w-full h-auto object-cover">
           </div>
 
           <!-- 商品資訊 -->
@@ -44,14 +44,15 @@
             <!-- 價格區塊 -->
             <div class="bg-gray-50 p-4 rounded-lg">
               <div class="flex items-baseline">
-                <span class="text-3xl font-bold text-red-600">${{ product.price }}</span>
+                <span v-if="product.price" class="text-3xl font-bold text-red-600">{{ formatPrice(product.price, countryInfo.currency) }}</span>
+                <span v-else>載入中...</span>
                 <span v-if="product.originalPrice" class="ml-2 text-sm text-gray-500 line-through">${{ product.originalPrice }}</span>
                 <span v-if="product.vipPrice" class="ml-2 text-sm bg-yellow-100 text-yellow-800 px-2 py-1 rounded">
                   VIP 價 ${{ product.vipPrice }}
                 </span>
               </div>
-              <div v-if="product.stock > 0" class="mt-2 text-sm text-green-600">
-                庫存: {{ product.stock }} 件
+              <div v-if="product.stockQuantity > 0" class="mt-2 text-sm text-green-600">
+                庫存: {{ product.stockQuantity }} 件
               </div>
               <div v-else class="mt-2 text-sm text-red-600">
                 缺貨中
@@ -100,6 +101,15 @@
 
             <!-- 按鈕區 -->
             <div class="flex space-x-4 pt-4">
+              <button
+                @click="toggleFavorite"
+                class="w-16 flex items-center justify-center"
+              >
+                <Heart
+                  :size="24"
+                  :class="isFavorite ? 'text-red-500 fill-current' : 'text-gray-400'"
+                />追蹤
+              </button>
               <button 
                 @click="addToCart" 
                 class="flex-1 bg-primary-600 hover:bg-primary-700 text-white py-3 px-6 rounded-lg font-medium transition-colors"
@@ -145,23 +155,28 @@
       <div class="mt-12 bg-white rounded-xl shadow-sm p-6">
         <h2 class="text-xl font-bold text-gray-900 mb-6">商品評價 ({{ product.reviewCount }})</h2>
         <div class="space-y-6">
-          <div v-for="review in product.reviews" :key="review.id" class="border-b border-gray-100 pb-6 last:border-0 last:pb-0">
-            <div class="flex items-center justify-between">
-              <div class="flex items-center">
-                <div class="h-10 w-10 rounded-full bg-gray-200 flex items-center justify-center">
-                  <span class="text-gray-500">{{ review.author.charAt(0) }}</span>
+          <div v-for="review in reviews" :key="review.id" class="border-b border-gray-100 pb-6 last:border-0 last:pb-0">
+            <div class="flex justify-between items-start">
+              <div class="flex">
+                <div class="h-10 w-10 rounded-full bg-gray-200 flex-shrink-0 flex items-center justify-center">
+                  <span class="text-gray-500">{{ review.name.charAt(0) }}</span>
                 </div>
                 <div class="ml-3">
-                  <p class="text-sm font-medium text-gray-900">{{ review.author }}</p>
+                  <p class="text-sm font-medium text-gray-900">{{ review.name }}</p>
                   <div class="flex items-center">
-                    <span class="text-yellow-400">★★★★★</span>
-                    <span class="ml-2 text-sm text-gray-500">{{ review.date }}</span>
+                    <Star
+                      v-for="i in 5"
+                      :key="i"
+                      :size="14"
+                      :class="i <= review.rating ? 'text-yellow-400 fill-current' : 'text-gray-300'"
+                    />
                   </div>
                 </div>
               </div>
+              <span class="text-sm text-gray-500 ml-4">{{ review.createdAt }}</span>
             </div>
             <div class="mt-3 text-sm text-gray-600">
-              {{ review.content }}
+              {{ review.comment }}
             </div>
           </div>
         </div>
@@ -171,46 +186,57 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed, onMounted, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { useI18n } from '@/composables/useI18n'
+import { getDetail } from '@/apis/CMSAPI';
+import { getReviews } from '@/apis/CMSAPI';
+import { useCart } from '@/composables/useCart';
+import { Heart, Star } from 'lucide-vue-next';
+
 
 const route = useRoute()
 const { t } = useI18n()
+const { addItem } = useCart();
 
-// 模擬商品資料 - 實際應該從 API 獲取
-const product = ref({
-  id: route.params.id as string,
-  name: '商品名稱',
-  price: 999,
-  originalPrice: 1299,
-  vipPrice: 899,
-  image: 'https://via.placeholder.com/600x600',
-  description: '<p>這是一個範例商品描述，可以包含詳細的商品資訊、規格、使用方法等。</p><p>這裡可以放更多的商品介紹內容...</p>',
-  reviewCount: 128,
-  purchaseCount: 1560,
-  stock: 45,
-  specs: {
-    '顏色': ['紅色', '藍色', '綠色'],
-    '尺寸': ['S', 'M', 'L', 'XL']
-  },
-  reviews: [
-    {
-      id: 1,
-      author: '王小明',
-      rating: 5,
-      date: '2023-10-15',
-      content: '商品品質很好，非常滿意！'
-    },
-    {
-      id: 2,
-      author: '林小華',
-      rating: 4,
-      date: '2023-10-10',
-      content: 'CP值很高，下次還會再來購買！'
-    }
-  ]
-})
+const product = ref({})
+const isLoading = ref(false)
+const error = ref(null)
+const reviews = ref([])
+const isFavorite = ref(false);
+const productId = route.params.id;
+
+// 獲取商品詳情
+const fetchProductDetail = async () => {
+  isLoading.value = true
+  error.value = null
+  
+  try {
+    const response = await getDetail(productId)
+    product.value = response
+    console.log(product.value)
+  } catch (err) {
+    console.error('獲取商品詳情失敗:', err)
+    error.value = '獲取商品詳情失敗，請稍後再試'
+  } finally {
+    isLoading.value = false
+  }
+}
+
+const fetchProductReviews = async () => {
+  try {
+    const response = await getReviews(productId)
+    reviews.value = response
+    console.log(reviews.value)
+  } catch (err) {
+    console.error('獲取商品評論失敗:', err)
+    error.value = '獲取商品評論失敗，請稍後再試'
+  }
+}
+
+const toggleFavorite = () => {
+  isFavorite.value = !isFavorite.value;
+};
 
 const countryInfo = computed(() => {
   const countries = {
@@ -225,7 +251,7 @@ const quantity = ref(1)
 const selectedSpecs = ref<Record<string, string>>({})
 
 const increaseQuantity = () => {
-  if (quantity.value < product.value.stock) {
+  if (quantity.value < product.value.stockQuantity) {
     quantity.value++
   }
 }
@@ -243,35 +269,36 @@ const selectSpec = (spec: string, option: string) => {
 const addToCart = () => {
   // 加入購物車邏輯
   console.log('加入購物車', {
-    productId: product.value.id,
+    productId: product.value.productId,
     quantity: quantity.value,
     specs: selectedSpecs.value
   })
+
+    addItem({
+    ...product.value,
+    price: product.value.price
+  });
 }
 
 const buyNow = () => {
   // 直接購買邏輯
   console.log('立即購買', {
-    productId: product.value.id,
+    productId: product.value.productId,
     quantity: quantity.value,
     specs: selectedSpecs.value
   })
 }
 
-// 從 API 獲取商品詳情
-const fetchProductDetail = async () => {
-  try {
-    // const response = await fetch(`/api/products/${route.params.id}`)
-    // const data = await response.json()
-    // product.value = data
-  } catch (error) {
-    console.error('獲取商品詳情失敗:', error)
-  }
-}
+const formatPrice = (price: number, currency: string) => {
+  const symbols = { JPY: '¥', KRW: '₩', USD: '$', EUR: '€' };
+  return `${symbols[currency as keyof typeof symbols] || '$'}${price.toLocaleString()}`;
+};
 
 onMounted(() => {
   fetchProductDetail()
+  fetchProductReviews()
 })
+
 </script>
 
 <style scoped>

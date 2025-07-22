@@ -11,7 +11,6 @@
           {{ t(`shopping.countries.${country}.description`) }}
         </p>
       </div>
-
       
       <!-- Search Bar -->
       <div class="mb-6">
@@ -61,10 +60,9 @@
               {{ t(`shopping.categories.${category.id}`) }}
             </button>
           </div>
+          
         </div>
       </div>
-
-      
 
         <!-- Filters -->
         <div class="flex flex-wrap items-center gap-4 mb-6">
@@ -114,15 +112,13 @@
           :product="product"
           :country-info="countryInfo"
           class="cursor-pointer hover:shadow-lg transition-hover:-translate-y-1 duration-200"
-          @click="toProductDetail(product.id, country)"
+          @click="toProductDetail(product.productId, country)"
         />
       </div>
-
-      <!-- Load More -->
-      <div class="text-center mt-12">
-        <button class="bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-900 dark:text-white px-8 py-3 rounded-lg font-medium transition-colors duration-200">
-          {{ t('shopping.loadMore') }}
-        </button>
+      <div ref="loadMoreTrigger" style="height: 1px;"></div>
+      <div class="w-full text-center py-4">
+        <span v-if="isLoading">載入中...</span>
+        <span v-else-if="!hasMore">已經到最底部了喔!!</span>
       </div>
     </div>
   </section>
@@ -136,6 +132,7 @@ import { useRouter } from 'vue-router'
 import ProductCard from '@/components/shared/ProductCard.vue';
 import type { EnhancedProduct } from '@/types';
 import { getProducts } from '@/apis/CMSAPI';
+import { useInfiniteScroll } from '@vueuse/core'
 
 interface Props {
   country: string;
@@ -153,24 +150,59 @@ const show24HOnly = ref(false);
 const showVipOnly = ref(false);
 const searchQuery = ref('');
 const currentPage = ref(1);
+const pageSize = ref(12);
+const isLoading = ref(false);
+const loadMoreTrigger = ref(null)
+const hasMore = ref(true)
 
 
+const loadMore = async () => {
+  if (isLoading.value || !hasMore.value) return;
+
+  const payload = {
+    country: props.country,
+    name: searchQuery.value,
+    categoryId: selectedCategory.value,
+    page: ++currentPage.value,
+    size: pageSize.value
+  }
+
+  const newProducts = await getProducts(payload);
+  products.value.push(...newProducts);
+  
+  // 判斷是否還有更多資料
+  if (newProducts.length < pageSize.value) {
+    hasMore.value = false // 沒資料了，不再觸發 loadMore
+  } 
+
+};
+
+
+useInfiniteScroll(
+  loadMoreTrigger,
+  loadMore,
+  { distance: 100 }
+)
+
+// 查詢第一頁
 const queryProducts = async (name: string, categoryId: number) => {
   selectedCategory.value = categoryId;
+  hasMore.value = true;
+  currentPage.value = 1;
   const payload = {
     country: props.country,
     name: name,
     categoryId: categoryId,
+    page: currentPage.value,
+    size: pageSize.value
   }
-
   try {
     const response = await getProducts(payload)
     products.value = response;
-    console.log(products.value)
-
   } catch (error) {
     console.error(error)
   }
+  
 }
 
 const toProductDetail = (productId: string, country: string) => {
@@ -234,6 +266,6 @@ const filteredProducts = computed(() => {
 
 onMounted(() => {
   initAuth();
-  queryProducts('', 1);
+  queryProducts('', null);
 });
 </script>
