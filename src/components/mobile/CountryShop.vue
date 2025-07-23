@@ -105,6 +105,7 @@
       </div>
 
       <!-- Products Grid -->
+      <template v-if="filteredProducts.length > 0">
       <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6 px-2 sm:px-0">
         <ProductCard
           v-for="product in filteredProducts"
@@ -120,6 +121,12 @@
         <span v-if="isLoading">載入中...</span>
         <span v-else-if="!hasMore">已經到最底部了喔!!</span>
       </div>
+      </template>
+      <template v-else>
+        <div class="w-full text-center py-4">
+          <span>沒有找到商品</span>
+        </div>
+      </template>
     </div>
   </section>
 </template>

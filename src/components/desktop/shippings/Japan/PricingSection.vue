@@ -1,29 +1,29 @@
 <template>
   <div class="space-y-6">
-    <h2 class="text-xl font-bold text-black mb-4">{{ t('shipping.routes.countries.menu2.title') }}</h2>
+    <h2 class="text-xl font-bold text-cyan-400 mb-4">{{ t('shipping.routes.countries.menu2.title') }}</h2>
     <div class="space-y-4">
       <div 
         v-for="(item, index) in items"
         :key="index"
-        class="bg-gray-800/50 rounded-lg border border-orange-500/20 shadow-lg shadow-orange-500/10 overflow-hidden"
+        class="bg-gray-800/50 rounded-lg border border-cyan-500/20 shadow-lg shadow-cyan-500/10 overflow-hidden"
       >
         <button 
           @click="toggleFaq(index)"
           class="w-full px-6 py-4 text-left flex justify-between items-center group"
         >
-          <span class="font-bold text-lg text-gray-200 group-hover:text-orange-300 transition-colors">
+          <span class="font-bold text-lg text-white group-hover:text-cyan-300 transition-colors">
             {{ item.item }}
           </span>
-          <span class="text-orange-400 text-xl transition-transform duration-300" :class="{ 'rotate-45': openFaqs[index] }">
+          <span class="text-cyan-400 text-xl transition-transform duration-300" :class="{ 'rotate-45': openFaqs[index] }">
             +
           </span>
         </button>                 
         <div v-if="index === 0" v-show="openFaqs[index]" class="p-6 pt-0 border-t border-cyan-500/20">
           <div class="overflow-x-auto">
-            <h2 class="text-orange-400 font-bold mt-2">{{ t('shipping.routes.countries.menu2.item7') }} :</h2>
+            <h2 class="text-cyan-400 font-bold mt-2">{{ t('shipping.routes.countries.menu2.item7') }} :</h2>
             <table class="w-full border-collapse">
               <thead>
-                <tr class="bg-gray-800/70 text-gray-300">
+                <tr class="bg-gray-800/70 text-white">
                   <th class="p-4 text-left border-b border-cyan-500/20">{{ t('shipping.routes.countries.menu2.currency') }}</th>
                   <th class="p-4 text-left border-b border-cyan-500/20">{{ t('shipping.routes.countries.menu2.weight') }}</th>
                   <th class="p-4 text-left border-b border-cyan-500/20">{{ t('shipping.routes.countries.menu2.unitPrice') }}</th>
@@ -33,7 +33,7 @@
                 <tr 
                   v-for="(item, index) in pricingItems"
                   :key="index"
-                  class="text-gray-300 border-b border-cyan-500/10 hover:bg-gray-800/30"
+                  class="text-white border-b border-cyan-500/10 hover:bg-gray-800/30"
                 >
                   <td class="p-4">{{ item.currency }}</td>
                   <td class="p-4">{{ item.weight }}</td>
@@ -43,10 +43,10 @@
             </table>
           </div>
           <div class="overflow-x-auto">
-            <h2 class="text-orange-400 font-bold mt-2">{{ t('shipping.routes.countries.menu2.item8') }} :</h2>
+            <h2 class="text-cyan-400 font-bold mt-2">{{ t('shipping.routes.countries.menu2.item8') }} :</h2>
             <table class="w-full border-collapse">
               <thead>
-                <tr class="bg-gray-800/70 text-gray-300">
+                <tr class="bg-gray-800/70 text-white">
                   <th class="p-4 text-left border-b border-cyan-500/20">{{ t('shipping.routes.countries.menu2.currency') }}</th>
                   <th class="p-4 text-left border-b border-cyan-500/20">{{ t('shipping.routes.countries.menu2.weight') }}</th>
                   <th class="p-4 text-left border-b border-cyan-500/20">{{ t('shipping.routes.countries.menu2.unitPrice') }}</th>
@@ -56,7 +56,7 @@
                 <tr 
                   v-for="(item, index) in pricingItems2"
                   :key="index"
-                  class="text-gray-300 border-b border-cyan-500/10 hover:bg-gray-800/30"
+                  class="text-white border-b border-cyan-500/10 hover:bg-gray-800/30"
                 >
                   <td class="p-4">{{ item.currency }}</td>
                   <td class="p-4">{{ item.weight }}</td>
@@ -65,21 +65,21 @@
               </tbody>
             </table>
           </div>
-          <p class="mt-2 text-gray-300"> 
+          <p class="mt-2 text-white"> 
             {{ t('shipping.routes.countries.menu2.example') }} : {{ exampleCalc(0, 0, 1, 'Coin') }}
           </p>
-          <p class="text-orange-400 mt-2">{{ t('shipping.routes.notice') }}</p>
-          <p class="mt-2 text-gray-400" v-for="(i, idx) in item.content">
+          <p class="text-cyan-400 mt-2">{{ t('shipping.routes.notice') }}</p>
+          <p class="mt-2 text-white" v-for="(i, idx) in item.content">
               {{ idx + 1 }}.{{ i }}
           </p>
         </div>
 
         <div v-if="index === 1" v-show="openFaqs[index]" class="p-6 pt-0 border-t border-cyan-500/20">
-          <h2 class="text-orange-400 font-bold mt-2">{{ t(`shipping.routes.countries.menu2.subtitle5`) }}</h2>
+          <h2 class="text-cyan-400 font-bold mt-2">{{ t(`shipping.routes.countries.menu2.subtitle5`) }}</h2>
           <div class="overflow-x-auto">
             <table class="w-full border-collapse">
               <thead>
-                <tr class="bg-gray-800/70 text-gray-300">
+                <tr class="bg-gray-800/70 text-white">
                   <th class="p-4 text-left border-b border-cyan-500/20">{{ t('shipping.routes.countries.menu2.currency') }}</th>
                   <th class="p-4 text-left border-b border-cyan-500/20">{{ t('shipping.routes.countries.menu2.weight') }}</th>
                   <th class="p-4 text-left border-b border-cyan-500/20">{{ t('shipping.routes.countries.menu2.unitPrice') }}</th>
@@ -89,7 +89,7 @@
                 <tr 
                   v-for="(item, index) in pricingItems3"
                   :key="index"
-                  class="text-gray-300 border-b border-cyan-500/10 hover:bg-gray-800/30"
+                  class="text-white border-b border-cyan-500/10 hover:bg-gray-800/30"
                 >
                   <td class="p-4">{{ item.currency }}</td>
                   <td class="p-4">{{ item.weight }}</td>
@@ -101,7 +101,7 @@
           <div class="overflow-x-auto">
             <table class="w-full border-collapse">
               <thead>
-                <tr class="bg-gray-800/70 text-gray-300">
+                <tr class="bg-gray-800/70 text-white">
                   <th class="p-4 text-left border-b border-cyan-500/20">{{ t('shipping.routes.countries.menu2.currency') }}</th>
                   <th class="p-4 text-left border-b border-cyan-500/20">{{ t('shipping.routes.countries.menu2.weight') }}</th>
                   <th class="p-4 text-left border-b border-cyan-500/20">{{ t('shipping.routes.countries.menu2.unitPrice') }}</th>
@@ -111,7 +111,7 @@
                 <tr 
                   v-for="(item, index) in pricingItems4"
                   :key="index"
-                  class="text-gray-300 border-b border-cyan-500/10 hover:bg-gray-800/30"
+                  class="text-white border-b border-cyan-500/10 hover:bg-gray-800/30"
                 >
                   <td class="p-4">{{ item.currency }}</td>
                   <td class="p-4">{{ item.weight }}</td>
@@ -120,16 +120,16 @@
               </tbody>
             </table>
           </div>
-          <p class="text-orange-400 mt-2">{{ t('shipping.routes.notice') }}</p>
-          <p class="mt-2 text-gray-400" v-for="(i, idx) in item.content">
+          <p class="text-cyan-400 mt-2">{{ t('shipping.routes.notice') }}</p>
+          <p class="mt-2 text-white" v-for="(i, idx) in item.content">
               {{ idx + 1 }}.{{ i }}
           </p>
         </div>
 
         <div v-if="index === 2" v-show="openFaqs[index]" class="p-6 pt-0 border-t border-cyan-500/20">
-          <h2 class="text-orange-400 font-bold mt-2">{{ t(`shipping.routes.countries.menu2.subtitle4`) }}</h2>
-          <p class="text-orange-400 mt-2">{{ t('shipping.routes.notice') }}</p>
-          <p class="mt-2 text-gray-400" v-for="(i, idx) in item.content">
+          <h2 class="text-cyan-400 font-bold mt-2">{{ t(`shipping.routes.countries.menu2.subtitle4`) }}</h2>
+          <p class="text-cyan-400 mt-2">{{ t('shipping.routes.notice') }}</p>
+          <p class="mt-2 text-white" v-for="(i, idx) in item.content">
               {{ idx + 1 }}.{{ i }}
           </p>
         </div>
@@ -137,7 +137,7 @@
     </div>
 
     <!-- 兩種付款方式 -->
-    <h2 class="text-xl font-bold text-black mb-4">{{ t('shipping.routes.countries.menu2.title2') }}</h2>
+    <h2 class="text-xl font-bold text-cyan-400 mb-4">{{ t('shipping.routes.countries.menu2.title2') }}</h2>
     <div class="space-y-4">
       <div 
         v-for="(item, index) in items2"
@@ -148,16 +148,16 @@
           @click="toggleFaq2(index)"
           class="w-full px-6 py-4 text-left flex justify-between items-center group"
         >
-          <span class="font-bold text-lg text-gray-200 group-hover:text-orange-300 transition-colors">
+          <span class="font-bold text-lg text-white group-hover:text-cyan-300 transition-colors">
             {{ item.item }}
           </span>
-          <span class="text-orange-400 text-xl transition-transform duration-300" :class="{ 'rotate-45': openFaqs2[index] }">
+          <span class="text-cyan-400 text-xl transition-transform duration-300" :class="{ 'rotate-45': openFaqs2[index] }">
             +
           </span>
         </button>  
         <div v-show="openFaqs2[index]" class="p-6 pt-0 border-t border-cyan-500/20">
-          <p class="text-orange-400 mt-2">{{ t('shipping.routes.notice') }}</p>
-          <p class="mt-2 text-gray-400" v-for="(i, idx) in item.content">
+          <p class="text-cyan-400 mt-2">{{ t('shipping.routes.notice') }}</p>
+          <p class="mt-2 text-white" v-for="(i, idx) in item.content">
               {{ idx + 1 }}.{{ i }}
           </p>  
         </div>             
@@ -165,7 +165,7 @@
     </div>
     
     <!-- 附加服務 -->
-    <h2 class="text-xl font-bold text-black mb-4">{{ t('shipping.routes.countries.menu2.title3') }}</h2>
+    <h2 class="text-xl font-bold text-cyan-400 mb-4">{{ t('shipping.routes.countries.menu2.title3') }}</h2>
     <div class="space-y-4">
       <div 
         v-for="(item, index) in items3"
@@ -176,10 +176,10 @@
           @click="toggleFaq3(index)"
           class="w-full px-6 py-4 text-left flex justify-between items-center group"
         >
-          <span class="font-bold text-lg text-gray-200 group-hover:text-orange-300 transition-colors">
+          <span class="font-bold text-lg text-white group-hover:text-cyan-300 transition-colors">
             {{ item.item }}
           </span>
-          <span class="text-orange-400 text-xl transition-transform duration-300" :class="{ 'rotate-45': openFaqs3[index] }">
+          <span class="text-cyan-400 text-xl transition-transform duration-300" :class="{ 'rotate-45': openFaqs3[index] }">
             +
           </span>
         </button>                 
@@ -187,7 +187,7 @@
           <div class="overflow-x-auto">
             <table class="w-full border-collapse">
               <thead>
-                <tr class="bg-gray-800/70 text-gray-300">
+                <tr class="bg-gray-800/70 text-white">
                   <th class="p-4 text-left border-b border-cyan-500/20">{{ t('shipping.routes.countries.menu2.currency') }}</th>
                   <th class="p-4 text-left border-b border-cyan-500/20">{{ t('shipping.routes.countries.menu2.explain') }}</th>
                   <th class="p-4 text-left border-b border-cyan-500/20">{{ t('shipping.routes.countries.menu2.packagingFee') }}</th>
@@ -197,7 +197,7 @@
                 <tr 
                   v-for="(item, index) in pricingItems5"
                   :key="index"
-                  class="text-gray-300 border-b border-cyan-500/10 hover:bg-gray-800/30"
+                  class="text-white border-b border-cyan-500/10 hover:bg-gray-800/30"
                 >
                   <td class="p-4">{{ item.currency }}</td>
                   <td class="p-4">{{ item.explain }}</td>
@@ -206,24 +206,24 @@
               </tbody>
             </table>
           </div>
-          <p class="mt-2 text-gray-300"> 
+          <p class="mt-2 text-white"> 
             {{ t('shipping.routes.countries.menu2.example') }} : {{ t('shipping.routes.countries.menu2.exampleContent12') }}
           </p>
-          <p class="text-orange-400 mt-2">{{ t('shipping.routes.notice') }}</p>
-          <p class="mt-2 text-gray-400" v-for="(i, idx) in item.content">
+          <p class="text-cyan-400 mt-2">{{ t('shipping.routes.notice') }}</p>
+          <p class="mt-2 text-white" v-for="(i, idx) in item.content">
             <span>{{ idx + 1 }}.{{ i }}</span>
           </p>
         </div>
 
         <div v-if="index === 1" v-show="openFaqs3[index]" class="p-6 pt-0 border-t border-cyan-500/20">
-          <p class="text-orange-400 mt-2">{{ t('shipping.routes.notice2') }}</p>
-          <p class="mt-2 text-gray-400" v-for="(i, idx) in item.content">
+          <p class="text-cyan-400 mt-2">{{ t('shipping.routes.notice2') }}</p>
+          <p class="mt-2 text-white" v-for="(i, idx) in item.content">
               <span v-if="idx <= 3">{{ idx + 1 }}.{{ i }}</span>
           </p> 
           <div class="overflow-x-auto">
             <table class="w-full border-collapse">
               <thead>
-                <tr class="bg-gray-800/70 text-gray-300">
+                <tr class="bg-gray-800/70 text-white">
                   <th class="p-4 text-left border-b border-cyan-500/20">{{ t('shipping.routes.countries.menu2.currency') }}</th>
                   <th class="p-4 text-left border-b border-cyan-500/20">{{ t('shipping.routes.countries.menu2.weight') }}</th>
                   <th class="p-4 text-left border-b border-cyan-500/20">{{ t('shipping.routes.countries.menu2.unitPrice') }}</th>
@@ -233,7 +233,7 @@
                 <tr 
                   v-for="(item, index) in pricingItems6"
                   :key="index"
-                  class="text-gray-300 border-b border-cyan-500/10 hover:bg-gray-800/30"
+                  class="text-white border-b border-cyan-500/10 hover:bg-gray-800/30"
                 >
                   <td class="p-4">{{ item.currency }}</td>
                   <td class="p-4">{{ item.weight }}</td>
@@ -242,8 +242,8 @@
               </tbody>
             </table>
           </div>
-          <p class="text-orange-400 mt-2">{{ t('shipping.routes.notice') }}</p>
-          <p class="mt-2 text-gray-400" v-for="(i, idx) in item.content">
+          <p class="text-cyan-400 mt-2">{{ t('shipping.routes.notice') }}</p>
+          <p class="mt-2 text-white" v-for="(i, idx) in item.content">
               <span v-if="idx > 3">{{ idx - 3 }}.{{ i }}</span>
           </p>
         </div>
@@ -252,7 +252,7 @@
           <div class="overflow-x-auto">
             <table class="w-full border-collapse">
               <thead>
-                <tr class="bg-gray-800/70 text-gray-300">
+                <tr class="bg-gray-800/70 text-white">
                   <th class="p-4 text-left border-b border-cyan-500/20">{{ t('shipping.routes.countries.menu2.currency') }}</th>
                   <th class="p-4 text-left border-b border-cyan-500/20">{{ t('shipping.routes.countries.menu2.behalf') }}</th>
                   <th class="p-4 text-left border-b border-cyan-500/20">{{ t('shipping.routes.countries.menu2.unitPrice') }}</th>
@@ -262,7 +262,7 @@
                 <tr 
                   v-for="(item, index) in pricingItems9"
                   :key="index"
-                  class="text-gray-300 border-b border-cyan-500/10 hover:bg-gray-800/30"
+                  class="text-white border-b border-cyan-500/10 hover:bg-gray-800/30"
                 >
                   <td class="p-4">{{ item.currency }}</td>
                   <td class="p-4">{{ item.behalf }}</td>
@@ -271,11 +271,11 @@
               </tbody>
             </table>
           </div>
-          <p class="mt-2 text-gray-300"> 
+          <p class="mt-2 text-white"> 
             {{ t('shipping.routes.countries.menu2.example') }} : {{ t('shipping.routes.countries.menu2.exampleContent13') }}{{ t('shipping.routes.countries.menu2.webRate') }}{{  t('shipping.routes.countries.menu2.payType1') }}
           </p>
-          <p class="text-orange-400 mt-2">{{ t('shipping.routes.notice') }}</p>
-          <p class="mt-2 text-gray-400" v-for="(i, idx) in item.content">
+          <p class="text-cyan-400 mt-2">{{ t('shipping.routes.notice') }}</p>
+          <p class="mt-2 text-white" v-for="(i, idx) in item.content">
               {{ idx + 1 }}.{{ i }}
           </p>
         </div>
@@ -284,7 +284,7 @@
           <div class="overflow-x-auto">
             <table class="w-full border-collapse">
               <thead>
-                <tr class="bg-gray-800/70 text-gray-300">
+                <tr class="bg-gray-800/70 text-white">
                   <th class="p-4 text-left border-b border-cyan-500/20">{{ t('shipping.routes.countries.menu2.type') }}</th>
                   <th class="p-4 text-left border-b border-cyan-500/20">{{ t('shipping.routes.countries.menu2.simple') }}</th>
                   <th class="p-4 text-left border-b border-cyan-500/20">{{ t('shipping.routes.countries.menu2.formal') }}</th>
@@ -294,7 +294,7 @@
                 <tr 
                   v-for="(item, index) in pricingItems11"
                   :key="index"
-                  class="text-gray-300 border-b border-cyan-500/10 hover:bg-gray-800/30"
+                  class="text-white border-b border-cyan-500/10 hover:bg-gray-800/30"
                 >
                   <td class="p-4">{{ item.type }}</td>
                   <td class="p-4">60NTD</td>
@@ -303,10 +303,10 @@
               </tbody>
             </table>
           </div>
-          <p class="text-orange-400 mt-2">{{ t('shipping.routes.notice') }}</p>
-            <p class="mt-2 text-gray-400" v-for="(i, idx) in item.content">
+          <p class="text-cyan-400 mt-2">{{ t('shipping.routes.notice') }}</p>
+            <p class="mt-2 text-white" v-for="(i, idx) in item.content">
                 <div v-if="idx !== 4">{{ idx + 1 }}.{{ i }}</div>
-                <div v-else>{{ idx + 1 }}.<a class="text-orange-400 hover:text-cyan-300 underline transition-colors duration-200" href="https://portal.sw.nat.gov.tw/APGQ/LoginFree?request_locale=zh_TW&breadCrumbs=JTdCJTIyYnJlYWRDcnVtYnMlMjIlM0ElNUIlN0IlMjJuYW1lJTIyJTNBJTIyJUU1JTg1JThEJUU4JUFEJTg5JUU2JTlGJUE1JUU4JUE5JUEyJUU2JTlDJThEJUU1JThCJTk5JTIyJTJDJTIydXJsJTIyJTNBJTIyJTIyJTdEJTJDJTdCJTIybmFtZSUyMiUzQSUyMiVFNyVBOCU4NSVFNSU4OSU4NyVFNyVBOCU4NSVFNyU4RSU4NyVFNiU5RiVBNSVFOCVBOSVBMiUyMiUyQyUyMnVybCUyMiUzQSUyMmNoYW5nZU1lbnVVcmwyKCclRTclQTglODUlRTUlODklODclRTclQTglODUlRTclOEUlODclRTYlOUYlQTUlRTglQTklQTInJTJDJ0FQR1FfNycpJTIyJTdEJTJDJTdCJTIybmFtZSUyMiUzQSUyMihHQzQxMyklRTclQTglODUlRTUlODklODclRTclQTglODUlRTclOEUlODclRTYlQjglODUlRTglQTElQTglRTMlODAlODFFQ0ZBJUU2JTk3JUE5JUU2JTk0JUI2JUU2JUI4JTg1JUU1JTk2JUFFJUU1JThGJThBJUU2JUFEJUI3JUU2JUFDJUExJUU3JUE4JTg1JUU1JTg5JTg3JUU0JUJGJUFFJUU2JUFEJUEzJUU4JUIzJTg3JUU2JTk2JTk5JTIyJTJDJTIydXJsJTIyJTNBJTIyb3Blbk1lbnUoJyUyRkFQR1ElMkZHQzQxMycpJTIyJTdEJTJDJTdCJTdEJTJDJTdCJTdEJTVEJTJDJTIycGF0aFVybCUyMiUzQSUyMiUyM01FTlVfQVBHUSUyQyUyM01FTlVfQVBHUV83JTJDJTJGQVBHUSUyRkdDNDEzJTIyJTdE">{{ t(`shipping.routes.countries.menu1.content2.row7`) }}</a></div>
+                <div v-else>{{ idx + 1 }}.<a class="text-cyan-400 hover:text-cyan-300 underline transition-colors duration-200" href="https://portal.sw.nat.gov.tw/APGQ/LoginFree?request_locale=zh_TW&breadCrumbs=JTdCJTIyYnJlYWRDcnVtYnMlMjIlM0ElNUIlN0IlMjJuYW1lJTIyJTNBJTIyJUU1JTg1JThEJUU4JUFEJTg5JUU2JTlGJUE1JUU4JUE5JUEyJUU2JTlDJThEJUU1JThCJTk5JTIyJTJDJTIydXJsJTIyJTNBJTIyJTIyJTdEJTJDJTdCJTIybmFtZSUyMiUzQSUyMiVFNyVBOCU4NSVFNSU4OSU4NyVFNyVBOCU4NSVFNyU4RSU4NyVFNiU5RiVBNSVFOCVBOSVBMiUyMiUyQyUyMnVybCUyMiUzQSUyMmNoYW5nZU1lbnVVcmwyKCclRTclQTglODUlRTUlODklODclRTclQTglODUlRTclOEUlODclRTYlOUYlQTUlRTglQTklQTInJTJDJ0FQR1FfNycpJTIyJTdEJTJDJTdCJTIybmFtZSUyMiUzQSUyMihHQzQxMyklRTclQTglODUlRTUlODklODclRTclQTglODUlRTclOEUlODclRTYlQjglODUlRTglQTElQTglRTMlODAlODFFQ0ZBJUU2JTk3JUE5JUU2JTk0JUI2JUU2JUI4JTg1JUU1JTk2JUFFJUU1JThGJThBJUU2JUFEJUI3JUU2JUFDJUExJUU3JUE4JTg1JUU1JTg5JTg3JUU0JUJGJUFFJUU2JUFEJUEzJUU4JUIzJTg3JUU2JTk2JTk5JTIyJTJDJTIydXJsJTIyJTNBJTIyb3Blbk1lbnUoJyUyRkFQR1ElMkZHQzQxMycpJTIyJTdEJTJDJTdEJTJDJTdEJTVEJTJDJTIycGF0aFVybCUyMiUzQSUyMiUyM01FTlVfQVBHUSUyQyUyM01FTlVfQVBHUV83JTJDJTJGQVBHUSUyRkdDNDEzJTIyJTdE">{{ t(`shipping.routes.countries.menu1.content2.row7`) }}</a></div>
             </p>
         </div>
 
@@ -314,7 +314,7 @@
           <div class="overflow-x-auto">
             <table class="w-full border-collapse">
               <thead>
-                <tr class="bg-gray-800/70 text-gray-300">
+                <tr class="bg-gray-800/70 text-white">
                   <th class="p-4 text-left border-b border-cyan-500/20">{{ t('shipping.routes.countries.menu2.insurance') }}</th>
                   <th class="p-4 text-left border-b border-cyan-500/20">≤5,000</th>
                   <th class="p-4 text-left border-b border-cyan-500/20">≤10,000</th>
@@ -328,7 +328,7 @@
                 <tr 
                   v-for="(item, index) in pricingItems12"
                   :key="index"
-                  class="text-gray-300 border-b border-cyan-500/10 hover:bg-gray-800/30"
+                  class="text-white border-b border-cyan-500/10 hover:bg-gray-800/30"
                 >
                   <td class="p-4">{{ item.rate }}</td>
                   <td class="p-4">1.5%</td>
@@ -341,8 +341,8 @@
               </tbody>
             </table>
           </div>
-          <p class="text-orange-400 mt-2">{{ t('shipping.routes.notice') }}</p>
-          <p class="mt-2 text-gray-400" v-for="(i, idx) in item.content">
+          <p class="text-cyan-400 mt-2">{{ t('shipping.routes.notice') }}</p>
+          <p class="mt-2 text-white" v-for="(i, idx) in item.content">
               {{ idx + 1 }}.{{ i }}
           </p>
         </div>
@@ -351,7 +351,7 @@
           <div class="overflow-x-auto">
             <table class="w-full border-collapse">
               <thead>
-                <tr class="bg-gray-800/70 text-gray-300">
+                <tr class="bg-gray-800/70 text-white">
                   <th class="p-4 text-left border-b border-cyan-500/20">{{ t('shipping.routes.countries.menu2.currency') }}</th>
                   <th class="p-4 text-left border-b border-cyan-500/20">{{ t('shipping.routes.countries.menu2.time') }}</th>
                   <th class="p-4 text-left border-b border-cyan-500/20">{{ t('shipping.routes.countries.menu2.storeFee') }}</th>
@@ -361,7 +361,7 @@
                 <tr 
                   v-for="(item, index) in pricingItems13"
                   :key="index"
-                  class="text-gray-300 border-b border-cyan-500/10 hover:bg-gray-800/30"
+                  class="text-white border-b border-cyan-500/10 hover:bg-gray-800/30"
                 >
                   <td class="p-4">{{ item.currency }}</td>
                   <td class="p-4">{{ item.time }}</td>
@@ -370,11 +370,11 @@
               </tbody>
             </table>
           </div>
-          <p class="mt-2 text-gray-300"> 
+          <p class="mt-2 text-swhite"> 
             {{ t('shipping.routes.countries.menu2.example') }} : {{ t('shipping.routes.countries.menu2.exampleContent14') }}
           </p>
-          <p class="text-orange-400 mt-2">{{ t('shipping.routes.notice') }}</p>
-          <p class="mt-2 text-gray-400" v-for="(i, idx) in item.content">
+          <p class="text-cyan-400 mt-2">{{ t('shipping.routes.notice') }}</p>
+          <p class="mt-2 text-white" v-for="(i, idx) in item.content">
               {{ idx + 1 }}.{{ i }}
           </p>
           
@@ -382,7 +382,7 @@
         
       </div>
     </div>    
-    <h2 class="text-xl font-bold text-black mb-4">{{ t('shipping.routes.countries.menu2.title4') }}</h2>
+    <h2 class="text-xl font-bold text-cyan-400 mb-4">{{ t('shipping.routes.countries.menu2.title4') }}</h2>
 
   </div>
 </template>
@@ -452,11 +452,11 @@ const fetchShippingFee = async () => {
     const res5 = await calculateShippingFee(payload5)
 
 
-    feeResult.value = res
-    feeResult2.value = res2
-    feeResult3.value = res3
-    feeResult4.value = res4
-    feeResult5.value = res5
+    feeResult.value = res.data.data
+    feeResult2.value = res2.data.data
+    feeResult3.value = res3.data.data
+    feeResult4.value = res4.data.data
+    feeResult5.value = res5.data.data
     console.log('✅ 成功接收到 feeResult:', feeResult.value)
     console.log('✅ 成功接收到 feeResult:', feeResult2.value)
     console.log('✅ 成功接收到 feeResult:', feeResult3.value)

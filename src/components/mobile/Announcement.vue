@@ -184,7 +184,7 @@ const selectedNews = ref(null);
 const announcements = async () => {
   try {
     const response = await getAnnouncements();
-    newsList.value = response;
+    newsList.value = response.data.data;
   } catch (error) {
     console.error("無法取得新聞資料:", error.message);
   }

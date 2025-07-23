@@ -1,17 +1,27 @@
 // plugins/axios.js
 import axios from 'axios'
 
+// 打去43
 const instance = axios.create({
   baseURL: 'https://new-web.elf.tw/api', // 經由 nginx 代理，避免 SSL 錯誤
-  //baseURL: 'http://localhost:8081/api',
   headers: {
     'Content-Type': 'application/json'
   },
-  timeout: 10000
+  timeout: 10000,
+})
+
+// 打去140
+const instance2 = axios.create({
+  baseURL: 'https://new-web.elf.tw/api2', // 經由 nginx 代理，避免 SSL 錯誤
+  //baseURL: 'http://localhost:8081/api2',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  timeout: 10000,
 })
 
 //  新增 request 攔截器，自動帶入 JWT token
-instance.interceptors.request.use(
+instance2.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem('token');
     if (token) {
@@ -24,7 +34,7 @@ instance.interceptors.request.use(
 );
 
 // ✅ 統一攔截 response，回傳成功就取出 data，失敗就丟錯誤
-instance.interceptors.response.use(
+instance2.interceptors.response.use(
   (response) => {
     const res = response.data
     if (res.code === '200') {
@@ -39,3 +49,4 @@ instance.interceptors.response.use(
 )
 
 export default instance
+export { instance, instance2 }

@@ -318,7 +318,7 @@ const fetchShippingFee = async () => {
     }
 
     const res = await calculateShippingFee(payload);
-    feeResult.value = res;
+    feeResult.value = res.data.data;
   } catch (error) {
     dialogMessage.value = error.message || "試算失敗";
     showDialog.value = true;
@@ -353,7 +353,7 @@ watch(selectedStation, async (newVal) => {
 
   try {
     const htmlRaw = await getCalculatorNotice(station.noticeId);
-    let html = htmlRaw.htmlContent;
+    let html = htmlRaw.data.data.htmlContent;
     html = html
       .replace(/elf-tixing-ol/g, "precaution")
       .replace(/title/g, "pre-tit")

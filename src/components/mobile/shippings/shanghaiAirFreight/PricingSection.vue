@@ -579,13 +579,13 @@ const fetchShippingFee = async () => {
     const res7 = await calculateShippingFee(payload7)
 
 
-    feeResult.value = res
-    feeResult2.value = res2
-    feeResult3.value = res3
-    feeResult4.value = res4
-    feeResult5.value = res5
-    feeResult6.value = res6
-    feeResult7.value = res7
+    feeResult.value = res.data.data
+    feeResult2.value = res2.data.data
+    feeResult3.value = res3.data.data
+    feeResult4.value = res4.data.data
+    feeResult5.value = res5.data.data
+    feeResult6.value = res6.data.data
+    feeResult7.value = res7.data.data
     console.log('✅ 成功接收到 feeResult:', feeResult.value)
     console.log('✅ 成功接收到 feeResult:', feeResult2.value)
     console.log('✅ 成功接收到 feeResult:', feeResult3.value)

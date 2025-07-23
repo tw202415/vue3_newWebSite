@@ -241,11 +241,12 @@ const resetForm = () => {
   isSubmitted.value = false;
 };
 
-onMounted(async () => {
+const purchaseSettings = async () => {
   try {
     const settings = await getPurchaseSettings();
+    const data = settings.data.data;
     const map = {};
-    settings.forEach((item) => {
+    data.forEach((item) => {
       map[item.idCompany] = {
         transferFee: item.transferFee,
         serviceFee: item.serviceFee,
@@ -257,10 +258,12 @@ onMounted(async () => {
   } catch (err) {
     console.error("載入費率失敗", err);
   }
+};
 
+const calculatorNotice = async () => {
   try {
     const htmlRaw = await getCalculatorNotice(noticeId);
-    let html = htmlRaw.htmlContent;
+    let html = htmlRaw.data.data.htmlContent;
     html = html
       .replace(/elf-tixing-ol/g, "precaution")
       .replace(/title/g, "pre-tit")
@@ -271,6 +274,11 @@ onMounted(async () => {
   } catch (err) {
     console.error("載入注意事項失敗", err);
   }
+};
+
+onMounted(async () => {
+  purchaseSettings();
+  calculatorNotice();
 });
 </script>
 

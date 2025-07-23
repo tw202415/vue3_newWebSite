@@ -99,11 +99,12 @@ const formatNumber = (val) => {
   return isNaN(num) ? val : num.toLocaleString("en-US")
 }
 
-onMounted(async () => {
+// 關於我們
+const getAboutUs = async () => {
   try {
-    const data = await getAboutUsReasons()
+    const response = await getAboutUsReasons()
     const keys = ["reason1", "reason2", "reason3", "reason4", "reason5"]
-    const values = keys.map(k => data[k] ?? 0)
+    const values = keys.map(k => response.data.data[k] ?? 0)
 
     reasons.value = reasonMeta.map((meta, index) => ({
       ...meta,
@@ -112,6 +113,10 @@ onMounted(async () => {
   } catch (err) {
     console.error("取得 reason 資料失敗：", err.message)
   }
+}
+
+onMounted(async () => {
+  getAboutUs();
 })
 </script>
 
