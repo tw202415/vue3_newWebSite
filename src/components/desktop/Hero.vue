@@ -1,23 +1,5 @@
 <template>
   <section id="home" class="relative min-h-screen overflow-hidden bg-[var(--primary-color)]">
-    <!-- Animated Background -->
-    <div class="absolute inset-0">
-      <!-- Floating Particles -->
-      <div class="absolute inset-0">
-        <div
-          v-for="i in 50"
-          :key="i"
-          class="absolute w-1 h-1 bg-white/30 rounded-full animate-float"
-          :style="{
-            left: Math.random() * 100 + '%',
-            top: Math.random() * 100 + '%',
-            animationDelay: Math.random() * 5 + 's',
-            animationDuration: (3 + Math.random() * 4) + 's'
-          }"
-        ></div>
-      </div>
-    </div>
-
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 min-h-screen flex items-center">
       <div class="items-center w-full">
         <!-- Content -->

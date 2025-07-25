@@ -23,18 +23,21 @@
           >
             {{ t('nav.shopping') }}
           </router-link>
-          <a
-            href="#shipping"
+          <router-link
+            to="/"
+            @click="scrollToShipping"
             class="whitespace-nowrap text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-medium transition-colors duration-200"
           >
             {{ t('nav.shipping') }}
-          </a>
-          <a
-            href="#contact"
+          </router-link>
+
+          <router-link
+            to="/"
+            @click="scrollToContact"
             class="whitespace-nowrap text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-medium transition-colors duration-200"
           >
             {{ t('nav.contact') }}
-          </a>
+          </router-link>
 
           <router-link
             to="/cart"
@@ -57,8 +60,9 @@
         <div class="flex items-center space-x-4">
 
 
-          <!-- 主題色切換按鈕 -->
+          <!-- 主題色切換按鈕 - 僅在首頁顯示 -->
           <button
+            v-if="isHomePage"
             @click="toggleTheme"
             :class="['whitespace-nowrap px-4 py-1 rounded text-white font-semibold transition-colors', currentTheme === 'blue' ? 'bg-[var(--primary-color)]' : 'bg-[var(--primary-color)]']"
           >
@@ -87,6 +91,7 @@
 
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
 import { Truck, ShoppingCart } from 'lucide-vue-next';
 import { useI18n } from '@/composables/useI18n';
 import { useCart } from '@/composables/useCart';
@@ -98,6 +103,53 @@ import '@/assets/theme.css';
 
 const { t } = useI18n();
 const { items } = useCart();
+const route = useRoute();
+const router = useRouter();
+
+// 滾動到集貨介紹
+const scrollToShipping = (event) => {
+  // 如果在首頁
+  if (route.path === '/') {
+    setTimeout(() => {
+      const element = document.getElementById('shipping');
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 100);
+  } else {
+      router.push('/');
+      setTimeout(() => {
+        const element = document.getElementById('shipping');
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+  }
+};
+
+// 滾動到聯絡我們
+const scrollToContact = (event) => {
+  // 如果在首頁
+  if (route.path === '/') {
+    setTimeout(() => {
+      const element = document.getElementById('footer');
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 100);
+  } else {
+      router.push('/');
+      setTimeout(() => {
+        const element = document.getElementById('footer');
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+  }
+};
+
+// 檢查當前是否為首頁
+const isHomePage = computed(() => route.path === '/');
 const { isAuthenticated, initAuth } = useAuth();
 
 const showAuthModal = ref(false);

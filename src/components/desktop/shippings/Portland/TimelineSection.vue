@@ -10,7 +10,7 @@
         @click="toggleFaq(index)"
         class="w-full px-6 py-4 text-left flex justify-between items-center group"
       >
-        <span class="font-bold text-lg text-gray-200 group-hover:text-cyan-300 transition-colors">
+        <span class="font-bold text-lg text-white group-hover:text-cyan-300 transition-colors">
            {{ item.item }}
         </span>
         <span class="text-cyan-400 text-xl transition-transform duration-300" :class="{ 'rotate-45': openFaqs[index] }">
@@ -25,12 +25,12 @@
         </div>
         <div v-show="openFaqs[index]" class="p-6 pt-0 border-t border-cyan-500/20">
           <p class="text-cyan-400 mt-2">{{ t('shipping.routes.notice') }}</p>
-          <p class="mt-2 text-gray-400" v-for="(i, idx) in item.content">
+          <p class="mt-2 text-white" v-for="(i, idx) in item.content">
               {{ idx + 1 }}.{{ i }}
           </p>
           <p class="text-cyan-400 mt-2 font-bold">{{ t('shipping.routes.countries.menu3.subtitle2') }}</p>
-          <p class="mt-2 text-gray-200 font-bold">{{ t('shipping.routes.countries.menu3.subtitle6') }}</p>
-          <ul class="mt-2 text-gray-400 flex flex-wrap gap-4">
+          <p class="mt-2 text-white font-bold">{{ t('shipping.routes.countries.menu3.subtitle6') }}</p>
+          <ul class="mt-2 text-white flex flex-wrap gap-4">
             <li v-for="n in 6" :key="n" class="flex items-center gap-2">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-cyan-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M3 13l2.293-2.293a1 1 0 01.707-.293H17a1 1 0 01.707.293L21 13m-18 0v6a2 2 0 002 2h14a2 2 0 002-2v-6m-18 0h18" />

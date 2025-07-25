@@ -11,7 +11,7 @@
           @click="toggleFaq(index)"
           class="w-full px-6 py-4 text-left flex justify-between items-center group"
         >
-          <span class="font-bold text-lg text-gray-200 group-hover:text-cyan-300 transition-colors">
+          <span class="font-bold text-lg text-white group-hover:text-cyan-300 transition-colors">
             {{ item.item }}
           </span>
           <span class="text-cyan-400 text-xl transition-transform duration-300" :class="{ 'rotate-45': openFaqs[index] }">
@@ -22,7 +22,7 @@
           <div class="overflow-x-auto">
             <table class="w-full border-collapse">
               <thead>
-                <tr class="bg-gray-800/70 text-gray-300">
+                <tr class="bg-gray-800/70 text-white">
                   <th class="p-4 text-left border-b border-cyan-500/20">{{ t('shipping.routes.countries.menu2.currency') }}</th>
                   <th class="p-4 text-left border-b border-cyan-500/20">{{ t('shipping.routes.countries.menu2.weight') }}</th>
                   <th class="p-4 text-left border-b border-cyan-500/20">{{ t('shipping.routes.countries.menu2.unitPrice') }}</th>
@@ -34,31 +34,31 @@
                   :key="index"
                   class="border-b border-cyan-500/10 hover:bg-gray-800/30"
                 >
-                  <td class="p-4 text-gray-300">{{ item.currency }}</td>
-                  <td class="p-4 text-gray-400">{{ item.weight }}</td>
+                  <td class="p-4 text-white">{{ item.currency }}</td>
+                  <td class="p-4 text-white">{{ item.weight }}</td>
                   <td class="p-4 text-cyan-400 font-medium">{{ item.price }}</td>
                 </tr>
               </tbody>
             </table>
           </div>
-          <p class="mt-2 text-gray-300"> 
+          <p class="mt-2 text-white"> 
             {{ t('shipping.routes.countries.menu2.example') }} : {{ exampleCalc(1, 0, 1, 'Coin') }}
           </p>
-          <p class="mt-2 text-gray-300"> 
+          <p class="mt-2 text-white"> 
             {{ t('shipping.routes.countries.menu2.memo') }} :
           </p>
-          <p class="mt-2 text-gray-400" v-for="(i, idx) in item.memo">
+          <p class="mt-2 text-white" v-for="(i, idx) in item.memo">
               {{ idx + 1 }}.{{ i }}
           </p>
           <p class="text-cyan-400 mt-2">{{ t('shipping.routes.notice') }}</p>
-          <p class="mt-2 text-gray-400" v-for="(i, idx) in item.content">
+          <p class="mt-2 text-white" v-for="(i, idx) in item.content">
               {{ idx + 1 }}.{{ i }}
           </p>
         </div>
 
         <div v-if="index === 1" v-show="openFaqs[index]" class="p-6 pt-0 border-t border-cyan-500/20">
           <p class="text-cyan-400 mt-2">{{ t('shipping.routes.notice') }}</p>
-          <p class="mt-2 text-gray-400" v-for="(i, idx) in item.content">
+          <p class="mt-2 text-white" v-for="(i, idx) in item.content">
               {{ idx + 1 }}.{{ i }}
           </p>
         </div>
@@ -68,7 +68,7 @@
           <div class="overflow-x-auto">
             <table class="w-full border-collapse">
               <thead>
-                <tr class="bg-gray-800/70 text-gray-300">
+                <tr class="bg-gray-800/70 text-white">
                   <th class="p-4 text-left border-b border-cyan-500/20">{{ t('shipping.routes.countries.menu2.currency') }}</th>
                   <th class="p-4 text-left border-b border-cyan-500/20">{{ t('shipping.routes.countries.menu2.weight') }}</th>
                   <th class="p-4 text-left border-b border-cyan-500/20">{{ t('shipping.routes.countries.menu2.unitPrice') }}</th>
@@ -80,20 +80,20 @@
                   :key="index"
                   class="border-b border-cyan-500/10 hover:bg-gray-800/30"
                 >
-                  <td class="p-4 text-gray-300">{{ item.currency }}</td>
-                  <td class="p-4 text-gray-400">{{ item.weight }}</td>
+                  <td class="p-4 text-white">{{ item.currency }}</td>
+                  <td class="p-4 text-white">{{ item.weight }}</td>
                   <td class="p-4 text-cyan-400 font-medium">{{ item.price }}</td>
                 </tr>
               </tbody>
             </table>
           </div>
-          <p class="mt-2 text-gray-300"> 
+          <p class="mt-2 text-white"> 
             {{ t('shipping.routes.countries.menu2.example') }} : {{ exampleCalc(1, 2, 58, 'Coin') }} {{ t('shipping.routes.countries.menu2.payType1') }}
           </p>
           <div class="overflow-x-auto">
             <table class="w-full border-collapse">
               <thead>
-                <tr class="bg-gray-800/70 text-gray-300">
+                <tr class="bg-gray-800/70 text-white">
                   <th class="p-4 text-left border-b border-cyan-500/20">{{ t('shipping.routes.countries.menu2.currency') }}</th>
                   <th class="p-4 text-left border-b border-cyan-500/20">{{ t('shipping.routes.countries.menu2.weight') }}</th>
                   <th class="p-4 text-left border-b border-cyan-500/20">{{ t('shipping.routes.countries.menu2.unitPrice') }}</th>
@@ -105,18 +105,18 @@
                   :key="index"
                   class="border-b border-cyan-500/10 hover:bg-gray-800/30"
                 >
-                  <td class="p-4 text-gray-300">{{ item.currency }}</td>
-                  <td class="p-4 text-gray-400">{{ item.weight }}</td>
+                  <td class="p-4 text-white">{{ item.currency }}</td>
+                  <td class="p-4 text-white">{{ item.weight }}</td>
                   <td class="p-4 text-cyan-400 font-medium">{{ item.price }}</td>
                 </tr>
               </tbody>
             </table>
           </div>        
-          <p class="mt-2 text-gray-300"> 
+          <p class="mt-2 text-white"> 
             {{ t('shipping.routes.countries.menu2.example') }} : {{ exampleCalc(1, 2, 58, 'CreditCard') }} {{ t('shipping.routes.countries.menu2.payType2') }}
           </p>
           <p class="text-cyan-400 mt-2">{{ t('shipping.routes.notice') }}</p>
-          <p class="mt-2 text-gray-400" v-for="(i, idx) in item.content">
+          <p class="mt-2 text-white" v-for="(i, idx) in item.content">
               {{ idx + 1 }}.{{ i }}
           </p>
         </div>
@@ -124,26 +124,26 @@
         <div v-if="index === 3" v-show="openFaqs[index]" class="p-6 pt-0 border-t border-cyan-500/20">
           <h2 class="text-cyan-400 font-bold mt-2">{{ t(`shipping.routes.countries.menu2.subtitle4`) }}</h2>
           <p class="text-cyan-400 mt-2">{{ t('shipping.routes.notice') }}</p>
-          <p class="mt-2 text-gray-400" v-for="(i, idx) in item.content">
+          <p class="mt-2 text-white" v-for="(i, idx) in item.content">
               {{ idx + 1 }}.{{ i }}
           </p>
         </div>
 
         <div v-if="index === 4" v-show="openFaqs[index]" class="p-6 pt-0 border-t border-cyan-500/20">
           <p class="text-cyan-400 mt-2">{{ t('shipping.routes.notice') }}</p>
-          <p class="mt-2 text-gray-400" v-for="(i, idx) in item.content">
+          <p class="mt-2 text-white" v-for="(i, idx) in item.content">
               {{ idx + 1 }}.{{ i }}
           </p>
         </div>
 
         <div v-if="index === 5" v-show="openFaqs[index]" class="p-6 pt-0 border-t border-cyan-500/20">
           <p class="text-cyan-400 mt-2">{{ t('shipping.routes.notice') }}</p>
-          <p class="mt-2 text-gray-400" v-for="(i, idx) in item.content">
+          <p class="mt-2 text-white" v-for="(i, idx) in item.content">
               {{ idx + 1 }}.{{ i }}
             <div v-if="idx === 4" class="overflow-x-auto">
             <table class="w-full border-collapse">
               <thead>
-                <tr class="bg-gray-800/70 text-gray-300">
+                <tr class="bg-gray-800/70 text-white">
                   <th class="p-4 text-left border-b border-cyan-500/20">{{ t('shipping.routes.countries.menu2.single') }}</th>
                   <th class="p-4 text-left border-b border-cyan-500/20">{{ t('shipping.routes.countries.menu2.customsFee') }}</th>
                   <th class="p-4 text-left border-b border-cyan-500/20">{{ t('shipping.routes.countries.menu2.warehouseFee') }}</th>
@@ -156,10 +156,10 @@
                   :key="index"
                   class="border-b border-cyan-500/10 hover:bg-gray-800/30"
                 >
-                  <td class="p-4 text-gray-300">{{ item.single }}</td>
-                  <td class="p-4 text-gray-400">{{ item.customsFee }}</td>
-                  <td class="p-4 text-gray-300">{{ item.warehouseFee }}</td>
-                  <td class="p-4 text-gray-300">{{ item.duty }}</td>
+                  <td class="p-4 text-white">{{ item.single }}</td>
+                  <td class="p-4 text-white">{{ item.customsFee }}</td>
+                  <td class="p-4 text-white">{{ item.warehouseFee }}</td>
+                  <td class="p-4 text-white">{{ item.duty }}</td>
                 </tr>
               </tbody>
             </table>

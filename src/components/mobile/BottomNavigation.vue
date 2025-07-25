@@ -23,8 +23,8 @@
 
       <!-- 服務項目 -->
       <button
-        to="/shipping"
-        @click="scrollToServices"
+        to="/"
+        @click="scrollToShipping"
         class="flex flex-col items-center justify-center space-y-1 transition-colors duration-200 text-gray-500 dark:text-gray-400"
       >
         <Truck :size="20" />
@@ -133,7 +133,7 @@
         
         <!-- 設定選項 -->
         <div class="border-t border-gray-200  my-2"></div>
-        <div class="px-4 py-2 flex items-center justify-between">
+        <div v-if="isHomePage" class="px-4 py-2 flex items-center justify-between">
           <span class="text-sm text-gray-600 ">主題</span>
           <!-- 主題色切換按鈕 -->
           <button
@@ -194,6 +194,9 @@ const showMoreMenu = ref(false)
 const showAuthModal = ref(false)
 const currentTheme = ref('blue');
 
+// 檢查當前是否為首頁
+const isHomePage = computed(() => route.path === '/');
+
 function setTheme(theme: 'blue' | 'orange') {
   // 先移除所有 theme- 類class
   document.body.className = document.body.className
@@ -220,41 +223,46 @@ const isActive = (path: string) => {
   return route.path.startsWith(path)
 }
 
-const scrollToServices = () => {
-  if (route.path !== '/') {
-    router.push('/')
+const scrollToShipping = (event) => {
+  // 如果在首頁
+  if (route.path === '/') {
     setTimeout(() => {
-      const element = document.getElementById('services')
+      const element = document.getElementById('shipping');
       if (element) {
-        element.scrollIntoView({ behavior: 'smooth' })
+        element.scrollIntoView({ behavior: 'smooth' });
       }
-    }, 100)
+    }, 100);
   } else {
-    const element = document.getElementById('services')
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
-    }
+      router.push('/');
+      setTimeout(() => {
+        const element = document.getElementById('shipping');
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
   }
-  showMoreMenu.value = false
-}
+};
 
-const scrollToContact = () => {
-  if (route.path !== '/') {
-    router.push('/')
+// 滾動到聯絡我們
+const scrollToContact = (event) => {
+  // 如果在首頁
+  if (route.path === '/') {
     setTimeout(() => {
-      const element = document.getElementById('contact')
+      const element = document.getElementById('footer');
       if (element) {
-        element.scrollIntoView({ behavior: 'smooth' })
+        element.scrollIntoView({ behavior: 'smooth' });
       }
-    }, 100)
+    }, 100);
   } else {
-    const element = document.getElementById('contact')
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
-    }
+      router.push('/');
+      setTimeout(() => {
+        const element = document.getElementById('footer');
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
   }
-  showMoreMenu.value = false
-}
+};
 
 const handleLogout = () => {
   logout()

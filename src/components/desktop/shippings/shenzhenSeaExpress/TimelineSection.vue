@@ -10,7 +10,7 @@
         @click="toggleFaq(index)"
         class="w-full px-6 py-4 text-left flex justify-between items-center group"
       >
-        <span class="font-bold text-lg text-gray-200 group-hover:text-cyan-300 transition-colors">
+        <span class="font-bold text-lg text-white group-hover:text-cyan-300 transition-colors">
            {{ item.item }}
         </span>
         <span class="text-cyan-400 text-xl transition-transform duration-300" :class="{ 'rotate-45': openFaqs[index] }">
@@ -20,11 +20,11 @@
       <div v-if="index === 0">
         <div v-show="openFaqs[index]" class="p-6 pt-0 border-t border-cyan-500/20">
           <div class="overflow-x-auto">
-            <h2 class="text-gray-200 font-bold mt-2">{{ t(`shipping.routes.countries.menu3.subtitle1`) }}</h2>
-            <h2 class="text-gray-200 font-bold mt-2">{{ t(`shipping.routes.countries.menu3.text7`) }}</h2>
+            <h2 class="text-white font-bold mt-2">{{ t(`shipping.routes.countries.menu3.subtitle1`) }}</h2>
+            <h2 class="text-white font-bold mt-2">{{ t(`shipping.routes.countries.menu3.text7`) }}</h2>
             <table class="w-full border-collapse">
               <thead>
-                <tr class="bg-gray-800/70 text-gray-300">
+                <tr class="bg-gray-800/70 text-white">
                   <th class="p-4 text-left border-b border-cyan-500/20">{{ t('shipping.routes.countries.menu3.sunday') }}</th>
                   <th class="p-4 text-left border-b border-cyan-500/20">{{ t('shipping.routes.countries.menu3.monday') }}</th>
                   <th class="p-4 text-left border-b border-cyan-500/20">{{ t('shipping.routes.countries.menu3.tuesday') }}</th>
@@ -43,16 +43,16 @@
                   :key="index"
                   class="border-b border-cyan-500/10 hover:bg-gray-800/30"
                 >
-                  <td class="p-4 text-gray-300">{{ item.shipping }}</td>
-                  <td class="p-4 text-gray-300">{{ item.shipping }}</td>
-                  <td class="p-4 text-gray-300">{{ item.declaraction }}</td>
-                  <td class="p-4 text-gray-300">{{ item.depature }}</td>
-                  <td class="p-4 text-gray-300">{{ item.arrivalPort }}</td>
-                  <td class="p-4 text-gray-300">{{ item.clearance }}</td>
-                  <td class="p-4 text-gray-300">{{ item.awaiting }}</td>
-                  <td class="p-4 text-gray-300">{{ item.awaiting }}</td>
-                  <td class="p-4 text-gray-300">{{ item.provider }}</td>
-                  <td class="p-4 text-gray-300">{{ item.delivered }}</td>
+                  <td class="p-4 text-white">{{ item.shipping }}</td>
+                  <td class="p-4 text-white">{{ item.shipping }}</td>
+                  <td class="p-4 text-white">{{ item.declaraction }}</td>
+                  <td class="p-4 text-white">{{ item.depature }}</td>
+                  <td class="p-4 text-white">{{ item.arrivalPort }}</td>
+                  <td class="p-4 text-white">{{ item.clearance }}</td>
+                  <td class="p-4 text-white">{{ item.awaiting }}</td>
+                  <td class="p-4 text-white">{{ item.awaiting }}</td>
+                  <td class="p-4 text-white">{{ item.provider }}</td>
+                  <td class="p-4 text-white">{{ item.delivered }}</td>
                 </tr>
               </tbody>
             </table>
@@ -60,10 +60,10 @@
         </div>
         <div v-show="openFaqs[index]" class="p-6 pt-0 border-t border-cyan-500/20">
           <div class="overflow-x-auto">
-            <h2 class="text-gray-200 font-bold mt-2">{{ t(`shipping.routes.countries.menu3.text8`) }}</h2>
+            <h2 class="text-white font-bold mt-2">{{ t(`shipping.routes.countries.menu3.text8`) }}</h2>
             <table class="w-full border-collapse">
               <thead>
-                <tr class="bg-gray-800/70 text-gray-300">
+                <tr class="bg-gray-800/70 text-white">
                   <th class="p-4 text-left border-b border-cyan-500/20">{{ t('shipping.routes.countries.menu3.tuesday') }}</th>
                   <th class="p-4 text-left border-b border-cyan-500/20">{{ t('shipping.routes.countries.menu3.wednesday') }}</th>
                   <th class="p-4 text-left border-b border-cyan-500/20">{{ t('shipping.routes.countries.menu3.thursday') }}</th>
@@ -82,16 +82,16 @@
                   :key="index"
                   class="border-b border-cyan-500/10 hover:bg-gray-800/30"
                 >
-                  <td class="p-4 text-gray-300">{{ item.shipping }}</td>
-                  <td class="p-4 text-gray-300">{{ item.shipping }}</td>
-                  <td class="p-4 text-gray-300">{{ item.shipping }}</td>
-                  <td class="p-4 text-gray-300">{{ item.declaraction }}</td>
-                  <td class="p-4 text-gray-300">{{ item.depature }}</td>
-                  <td class="p-4 text-gray-300">{{ item.transit }}</td>
-                  <td class="p-4 text-gray-300">{{ item.arrivalPort }}</td>
-                  <td class="p-4 text-gray-300">{{ item.clearance }}</td>
-                  <td class="p-4 text-gray-300">{{ item.provider }}</td>
-                  <td class="p-4 text-gray-300">{{ item.delivered }}</td>
+                  <td class="p-4 text-white">{{ item.shipping }}</td>
+                  <td class="p-4 text-white">{{ item.shipping }}</td>
+                  <td class="p-4 text-white">{{ item.shipping }}</td>
+                  <td class="p-4 text-white">{{ item.declaraction }}</td>
+                  <td class="p-4 text-white">{{ item.depature }}</td>
+                  <td class="p-4 text-white">{{ item.transit }}</td>
+                  <td class="p-4 text-white">{{ item.arrivalPort }}</td>
+                  <td class="p-4 text-white">{{ item.clearance }}</td>
+                  <td class="p-4 text-white">{{ item.provider }}</td>
+                  <td class="p-4 text-white">{{ item.delivered }}</td>
                 </tr>
               </tbody>
             </table>
@@ -99,10 +99,10 @@
         </div>
         <div v-show="openFaqs[index]" class="p-6 pt-0 border-t border-cyan-500/20">
           <div class="overflow-x-auto">
-            <h2 class="text-gray-200 font-bold mt-2">{{ t(`shipping.routes.countries.menu3.text8`) }}</h2>
+            <h2 class="text-white font-bold mt-2">{{ t(`shipping.routes.countries.menu3.text8`) }}</h2>
             <table class="w-full border-collapse">
               <thead>
-                <tr class="bg-gray-800/70 text-gray-300">
+                <tr class="bg-gray-800/70 text-white">
                   <th class="p-4 text-left border-b border-cyan-500/20">{{ t('shipping.routes.countries.menu3.friday') }}</th>
                   <th class="p-4 text-left border-b border-cyan-500/20">{{ t('shipping.routes.countries.menu3.saturday') }}</th>
                   <th class="p-4 text-left border-b border-cyan-500/20">{{ t('shipping.routes.countries.menu3.sunday') }}</th>
@@ -121,27 +121,27 @@
                   :key="index"
                   class="border-b border-cyan-500/10 hover:bg-gray-800/30"
                 >
-                  <td class="p-4 text-gray-300">{{ item.shipping }}</td>
-                  <td class="p-4 text-gray-300">{{ item.shipping }}</td>
-                  <td class="p-4 text-gray-300">{{ item.declaraction }}</td>
-                  <td class="p-4 text-gray-300">{{ item.depature }}</td>
-                  <td class="p-4 text-gray-300">{{ item.arrivalPort }}</td>
-                  <td class="p-4 text-gray-300">{{ item.clearance }}</td>
-                  <td class="p-4 text-gray-300">{{ item.provider }}</td>
-                  <td class="p-4 text-gray-300">{{ item.delivered }}</td>
-                  <td class="p-4 text-gray-300">{{ item.delivered }}</td>
-                  <td class="p-4 text-gray-300">{{ item.awaiting }}</td>
+                  <td class="p-4 text-white">{{ item.shipping }}</td>
+                  <td class="p-4 text-white">{{ item.shipping }}</td>
+                  <td class="p-4 text-white">{{ item.declaraction }}</td>
+                  <td class="p-4 text-white">{{ item.depature }}</td>
+                  <td class="p-4 text-white">{{ item.arrivalPort }}</td>
+                  <td class="p-4 text-white">{{ item.clearance }}</td>
+                  <td class="p-4 text-white">{{ item.provider }}</td>
+                  <td class="p-4 text-white">{{ item.delivered }}</td>
+                  <td class="p-4 text-white">{{ item.delivered }}</td>
+                  <td class="p-4 text-white">{{ item.awaiting }}</td>
                 </tr>
               </tbody>
             </table>
           </div>
           <p class="text-cyan-400 mt-2">{{ t('shipping.routes.notice') }}</p>
-          <p class="mt-2 text-gray-400" v-for="(i, idx) in item.content">
+          <p class="mt-2 text-white" v-for="(i, idx) in item.content">
               {{ idx + 1 }}.{{ i }}
           </p>
           <p class="text-cyan-400 mt-2 font-bold">{{ t('shipping.routes.countries.menu3.subtitle2') }}</p>
-          <p class="mt-2 text-gray-200 font-bold">{{ t('shipping.routes.countries.menu3.subtitle6') }}</p>
-          <ul class="mt-2 text-gray-400 flex flex-wrap gap-4">
+          <p class="mt-2 text-white font-bold">{{ t('shipping.routes.countries.menu3.subtitle6') }}</p>
+          <ul class="mt-2 text-white flex flex-wrap gap-4">
             <li v-for="n in 6" :key="n" class="flex items-center gap-2">
               <template v-if="n !== 4 && n !== 6">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-cyan-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -160,9 +160,9 @@
       <div v-if="index === 1">
         <div v-show="openFaqs[index]" class="p-6 pt-0 border-t border-cyan-500/20">
           <div class="overflow-x-auto">
-            <h2 class="text-gray-200 font-bold mt-2">{{ t(`shipping.routes.countries.menu3.text4`) }}</h2>
+            <h2 class="text-white font-bold mt-2">{{ t(`shipping.routes.countries.menu3.text4`) }}</h2>
           </div>
-          <p class="mt-2 text-gray-400">{{ t(`shipping.routes.countries.menu3.text5`) }}</p>
+          <p class="mt-2 text-white">{{ t(`shipping.routes.countries.menu3.text5`) }}</p>
         </div>
       </div>
     </div>

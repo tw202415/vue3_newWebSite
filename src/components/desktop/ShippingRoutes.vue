@@ -39,7 +39,7 @@
 
       <!-- 全球集運服務 -->
       <!-- Header -->
-      <div class="text-center mb-16 animate-fade-in">
+      <div id="shipping" class="text-center mb-16 animate-fade-in pt-20 -mt-20">
         <h2 class="text-4xl font-bold mb-4">
           <span class="bg-gradient-to-r from-white via-blue-100 to-purple-100 bg-clip-text text-transparent">
             {{ t('shipping.routes.title') }}
@@ -80,11 +80,7 @@
                   {{ t(`shipping.routes.countries.${country.code}`) }}
                 </div>
 
-                <!-- Status Indicator -->
-                <div class="mt-3 flex items-center justify-center space-x-2">
-                  <div class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-                  <span class="text-xs text-green-400">線上</span>
-                </div>
+
               </div>
 
               <!-- Hover Effect Lines -->
